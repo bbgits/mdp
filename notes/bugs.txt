@@ -1,0 +1,6 @@
+1. SERVER CRASH ON REGISTRATION SUMBIT
+    -On submit, /register posts to DB
+    -Successfully posts user data to db('main').collection('users')
+    -Sucsessfully posts report data to db('main").collection('users')
+    -Server crashes after 
+
