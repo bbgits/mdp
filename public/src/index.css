@@ -19,6 +19,10 @@ body {
 
 }
 
+ul {
+    list-style-type: none;
+}
+
 .container {
     background-color: white;
     padding: 1rem 3rem;
@@ -63,11 +67,12 @@ button {
     border: none;
     padding: 0.5rem;
     font-family: Poppins, Geneva, Tahoma, sans-serif;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
     border-radius: 0.3rem;
     width: 70%;
     align-self: center;
+    justify-self: center;
 }
 
 span a {
@@ -89,9 +94,164 @@ span a {
     gap: 1rem;
 }
 
+.formStepHolder {
+    width: 350px;
+}
+
+.dropdownSelector {
+
+    width: fit-content;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    border: 1px solid gray;
+    font-size: 1.1rem;
+
+}
+
+.checkboxDiv {
+    display: flex;
+    align-items: center;
+}
+
+.checkQuestionLabel {
+    display: flex;
+}
+
+
+
+
+.checkOptionLabel {
+    float: inline-end;
+    justify-self: center;
+    padding-left: 5px;
+}
+
+.checkInputBox {
+    color: rgb(255, 123, 0);
+}
+
+
 .private button {
     background-color: black;
     padding: 2rem 10rem;
     font-size: 4rem;
     border-radius: 2rem;
+}
+
+.buttonHolderDiv {
+    display: inline;
+    text-align: center;
+    width: 100%
+}
+
+.prevButton {
+    width: 40%;
+    margin: 3px;
+
+}
+
+.nextButton {
+    width: 40%;
+    margin: 3px;
+}
+
+
+.submitButton {
+    width: 40%;
+    margin: 3px;
+    background-color: rgb(255, 255, 255);
+    outline-color: rgb(32, 213, 197);
+    ;
+    color: rgb(32, 213, 197);
+    outline-style: solid;
+    font-weight: 500;
+    outline-width: 3px;
+}
+
+
+#step1div {
+    display: flex;
+
+}
+
+#step2div {
+    display: none;
+
+}
+
+#step3div {
+    display: none;
+}
+
+#step4div {
+    display: none;
+}
+
+#step5div {
+    display: none;
+}
+
+#step6div {
+    display: none;
+}
+
+#LgDiv1Sub1Twitter {
+    display: flex
+}
+
+#LgDiv1Sub2Insta {
+    display: none
+}
+
+#LgDiv1Sub3News {
+    display: none
+}
+
+
+#LgDiv2Sub1Twitter {
+    display: flex
+}
+
+#LgDiv2Sub2Insta {
+    display: none
+}
+
+#LgDiv2Sub3News {
+    display: none
+}
+
+
+#LgDiv3Sub1Twitter {
+    display: flex
+}
+
+#LgDiv3Sub2Insta {
+    display: none
+}
+
+#LgDiv3Sub3News {
+    display: none
+}
+
+#formFooterDiv {
+    max-width: 300px;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    background-color: rgb(56, 138, 110);
+}
+
+#formFooterLogo {
+    max-width: 200px;
+
+}
+
+.buttonSpacer {
+    height: 15px
+}
+
+#mainContainer {
+    display: flex;
+
+    align-items: center
 }

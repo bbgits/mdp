@@ -1,0 +1,24 @@
+To add a DB Destination: ** Fill in next time ***
+
+
+To add a field:
+In pages/Register.jsx:
+    -Declare and set State to Empty String (Line 17)
+    -Add as Error Log Constant {OPTIONAL, SKIPPED FOR MANY/MOST} (Line 139)
+    -Add to Error Log Logic {OPTIONAL, SKIPPED FOR MANY/MOST} (Line 140)
+    -Add input field in HTML  (htmlFor, type, and name) (Line 163+)
+
+in AuthControllers.js:
+    -Add to handleErrors as empty string (Line 13) {OPTIONAL, SKIPPED FOR MANY/MOST}
+    -Add to the Exports.register as const  (Line 41)
+    -Add to Exports.register as User.create or Report.create paramater (Line 42)
+
+in models/UserModel.js:
+    -Add to UserModel.js or ReportModel.js
+
+
+
+
+To Update a Question Type:
+    -Update Model.js to accept new output
+    -
