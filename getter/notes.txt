@@ -6,3 +6,9 @@ San Juan:
 
 Vega Baja:
 18.4469° N, 66.3973° 
+
+Moscow/Coordinates
+55.7558° N, 37.6173° E
+
+Miami/Coordinates
+25.7617° N, 80.1918° W

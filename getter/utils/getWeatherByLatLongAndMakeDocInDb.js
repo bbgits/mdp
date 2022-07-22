@@ -7,8 +7,8 @@ import fetch from 'node-fetch';
  * @param {*} client [the MongoClient connection object]
  * @param {*} lat [latitude to search weather '87.6298']
  * @param {*} lon  [longitude to search weather '41.8781']
- * @param {*} targetDB 
- * @param {*} targetCollection 
+ * @param {*} targetDB [database name to store j(b)son doc]
+ * @param {*} targetCollection [collection name to store in]
  */
 async function getWeatherByLatLongAndMakeDocInDb(client, lat, lon, targetDB, targetCollection) { //DEFINE FUNCTION
     const latitutde = lat;

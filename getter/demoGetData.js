@@ -1,4 +1,7 @@
 import fetch from 'node-fetch';
+import fs from 'fs';
+
+
 console.log('imports sucessful...')
 
 const getData = async (some_url) => {
