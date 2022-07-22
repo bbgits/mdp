@@ -1,0 +1,8 @@
+chicagl lat-long: 
+41.8781° N, 87.6298° W
+
+San Juan:
+18.4655° N, 66.1057° W
+
+Vega Baja:
+18.4469° N, 66.3973° 

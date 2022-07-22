@@ -120,17 +120,17 @@ const reportSchema = new mongoose.Schema({
     },
     reportLgDiv3Data3: {
         type: String,
-        required: [true, "LgDiv1Data Name is Required :("],
+        required: [false, "LgDiv1Data Name is Required :("],
         unique: false,
     },
     reportLgDiv3Data4: {
         type: String,
-        required: [true, "LgDiv1Data Name is Required :("],
+        required: [false, "LgDiv1Data Name is Required :("],
         unique: false,
     },
     reportLgDiv3Data5: {
         type: String,
-        required: [true, "LgDiv1Data Name is Required :("],
+        required: [false, "LgDiv1Data Name is Required :("],
         unique: false,
     },
 
