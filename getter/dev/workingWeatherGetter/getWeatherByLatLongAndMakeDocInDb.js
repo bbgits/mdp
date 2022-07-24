@@ -20,7 +20,7 @@ async function getWeatherByLatLongAndMakeDocInDb(client, lat, lon, targetDB, tar
 
 
 
-    const response = await fetch('https://api.openweathermap.org/data/3.0/onecall?lat=25.76178&lon=80.1918&exclude={part}&appid=9a4e349ddb3d06c7b89fab8c2146c72b&units=imperial');
+    const response = await fetch(fetch_url);
 
     const data = await response.json();
 
@@ -39,7 +39,7 @@ async function main() {
     try {
         await client.connect();
 
-        await getWeatherByLatLongAndMakeDocInDb(client, 25.76178, 80.1918, "data", "weather");
+        await getWeatherByLatLongAndMakeDocInDb(client, 32.76178, 52.1918, "data", "weather");
 
 
     } catch (e) {
