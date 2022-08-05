@@ -4,53 +4,53 @@ const bcrypt = require("bcrypt");
 const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
-        required: [true, "First Name is Required"],
-        unique: true,
+        required: [false, "First Name is Required"],
+        unique: false,
     },
     lastName: {
         type: String,
-        required: [true, "Last Name is Required"],
+        required: [false, "Last Name is Required"],
     },
 
     email: {
         type: String,
-        required: [true, "Email is Required"],
-        unique: true,
+        required: [false, "Email is Required"],
+        unique: false,
     },
     password: {
         type: String,
-        required: [true, "Password is Required"],
+        required: [false, "Password is Required"],
     },
     paymentName: {
         type: String,
-        required: [true, "paymentName is Required"],
+        required: [false, "paymentName is Required"],
     }, paymentNumber: {
         type: String,
-        required: [true, "paymentNumber is Required"],
+        required: [false, "paymentNumber is Required"],
     }, paymentExpire: {
         type: String,
-        required: [true, "paymentExpire is Required"],
+        required: [false, "paymentExpire is Required"],
     }, paymentCode: {
         type: String,
-        required: [true, "paymentCode is Required"],
+        required: [false, "paymentCode is Required"],
     }, paymentAddress1: {
         type: String,
-        required: [true, "paymentAddress1 is Required"],
+        required: [false, "paymentAddress1 is Required"],
     }, paymentAddress2: {
         type: String,
-        required: [true, "paymentAddress2 is Required"],
+        required: [false, "paymentAddress2 is Required"],
     }, paymentCity: {
         type: String,
-        required: [true, "paymentCity is Required"],
+        required: [false, "paymentCity is Required"],
     }, paymentState: {
         type: String,
-        required: [true, "paymentState is Required"],
+        required: [false, "paymentState is Required"],
     }, paymentZip: {
         type: String,
-        required: [true, "paymentZip is Required"],
+        required: [false, "paymentZip is Required"],
     }, paymentType: {
         type: String,
-        required: [true, "paymentType is Required"],
+        required: [false, "paymentType is Required"],
     }
 
 });

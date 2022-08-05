@@ -4,6 +4,7 @@ import { MongoClient } from 'mongodb'; // IMORT MONGO
 import pullConfigDoc from './utils/pullConfigDoc.js';
 import getWeatherByZipAndMakeDocInDb from './utils/getWeatherByZipAndMakeDocInMongo.js';
 import getTwitterByUsernameAndMakeDocInMongo from './utils/getTwitterByUsernameAndMakeDocInMongo.js';
+import scrapeInstaByUsernameAndMakeDocInMongo from './utils/scrapeInstaByUsernameAndMakeDocInMongo.js';
 
 
 async function main() {
@@ -41,6 +42,9 @@ async function main() {
         console.log("\n \n \n INSTA USERS:")
         console.log(instaUsersArray);
         // Insta FOR LOOP:
+        for (const instaUser of instaUsersArray) {
+            await scrapeInstaByUsernameAndMakeDocInMongo(instaUser, Client, "data", "instagram4");
+        }
 
 
 

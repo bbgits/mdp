@@ -4,6 +4,65 @@
     box-sizing: border-box;
 }
 
+
+#taglineDelivered {
+    color: #fed8dc;
+    font-size: 1em;
+    line-height: 1em;
+    text-align: left;
+    max-width: 450px;
+}
+
+#headerTitleBoxDiv {
+    color: white;
+    font-size: 3em;
+    line-height: 1.2em;
+    text-align: left;
+    max-width: 450px;
+
+}
+
+#headerSubTitleBoxDiv {
+    color: white;
+    font-size: 1.5em;
+    line-height: 1.2em;
+    text-align: left;
+    max-width: 450px;
+
+}
+
+#stripeButtonDiv {
+    display: none;
+    padding: 10px;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
+}
+
+#stripeMonthlyButton {
+    width: 120px;
+    outline-color: #D81E5B;
+    outline-style: solid;
+    outline-width: 2px;
+    background-color: white;
+    color: #D81E5B;
+    margin: 10px;
+
+
+}
+
+#stripeAnnualButton {
+    width: 120px;
+    outline-color: #D81E5B;
+    outline-style: solid;
+    outline-width: 2px;
+    background-color: white;
+    color: #D81E5B;
+    margin: 10px;
+
+}
+
+
 body {
     height: 100vh;
     width: 100vw;
@@ -16,7 +75,6 @@ body {
     background-image: radial-gradient(circle, rgba(16, 161, 229, .5), rgba(45, 200, 135, .5)), url(" .\\assets\\background-office-by-Bali-Demiri.jpg");
     background-size: cover;
     background-position: center;
-
 }
 
 ul {
@@ -158,7 +216,8 @@ span a {
 
 .submitButton {
     width: 40%;
-    margin: 3px;
+    margin: 10px;
+    padding: 5px;
     background-color: rgb(255, 255, 255);
     outline-color: rgb(32, 213, 197);
     ;
@@ -166,7 +225,10 @@ span a {
     outline-style: solid;
     font-weight: 500;
     outline-width: 3px;
+    font-size: 18px;
 }
+
+
 
 
 #step1div {
@@ -233,6 +295,32 @@ span a {
     display: none
 }
 
+
+#pdfPreviewHolderDiv {
+    alignment: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+#pdfPreviewDiv {
+    width: 280px;
+    height: 340px;
+    padding-bottom: 20%;
+    background-color: white;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: gray;
+}
+
+.pdfPreviewKey {
+    color: black;
+    padding-left: 3px;
+    font-size: 14px;
+
+}
+
+
+
 #formFooterDiv {
     max-width: 300px;
     display: flex;
@@ -252,6 +340,16 @@ span a {
 
 #mainContainer {
     display: flex;
+    align-items: center;
+    max-width: 450px;
+}
 
-    align-items: center
+
+#footerBoxDiv {
+    color: rgb(255, 0, 0);
+    font-size: 1.1em;
+    line-height: 1.1em;
+    text-align: center;
+    max-width: 450px;
+
 }

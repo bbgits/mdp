@@ -4,21 +4,21 @@ const bcrypt = require("bcrypt");
 const reportSchema = new mongoose.Schema({
     reportName: {
         type: String,
-        required: [true, "Report Name is Required :("],
+        required: [false, "Report Name is Required :("],
         unique: false,
     },
     reportType: {
         type: String,
-        required: [true, "Report Type is Required :("],
+        required: [false, "Report Type is Required :("],
     },
     email: {
         type: String,
-        required: [true, "Report must have associated email"],
+        required: [false, "Report must have associated email"],
         unique: false,
     },
     reportZip: {
         type: String,
-        required: [true, "ReportZip is Required :("],
+        required: [false, "ReportZip is Required :("],
         unique: false,
     },
     reportQuote1Sports: {
@@ -45,7 +45,7 @@ const reportSchema = new mongoose.Schema({
     },
     reportLgDiv1Type: {
         type: String,
-        required: [true, "LgDiv1Type Name is Required :("],
+        required: [false, "LgDiv1Type Name is Required :("],
         unique: false,
     },
     reportLgDiv1Data1: {
@@ -75,7 +75,7 @@ const reportSchema = new mongoose.Schema({
     },
     reportLgDiv2Type: {
         type: String,
-        required: [true, "LgDiv2Type Name is Required :("],
+        required: [false, "LgDiv2Type Name is Required :("],
         unique: false,
     },
     reportLgDiv2Data1: {
