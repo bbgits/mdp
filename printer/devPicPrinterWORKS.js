@@ -27,12 +27,17 @@ hbs.registerHelper('dateFormat', function (value, format) {
 
         const browser = await puppeteer.launch(); // Create Pupeteer Browser Object
         const page = await browser.newPage(); // Create New Page on the Browser Object called 'page'
-        const content = await compile('basic-report', data); // Use Handlebars to render content ** FUNC FROM ABOVE **
+        const content = await compile('div-header', data); // Use Handlebars to render content ** FUNC FROM ABOVE **
+        console.log(content);
         await page.setContent(content); // assign content to 'page'
-        await page.pdf({ //set options for 'page':
-            path: 'my-div-pdf.pdf', // output file name
-            format: 'letter', // output file dimensions
-            printBackground: true // usually set to True
+        await page.screenshot({ //set options for 'page':
+            path: 'my-pdf-pic2.png', // output file name
+            width: '816in', // output file dimensions
+            height: "240in",
+            printBackground: true,
+
+
+            // usually set to True
         });
         await browser.close(); //close browser object
         process.exit(); //exit the process
