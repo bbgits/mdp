@@ -1,5 +1,10 @@
 {
   "dependencies": {
-    "material-ui": "^0.20.2"
+    "fs-extra": "^10.1.0",
+    "handlebars": "^4.7.7",
+    "material-ui": "^0.20.2",
+    "moment": "^2.29.4",
+    "path": "^0.12.7",
+    "puppeteer": "^16.1.0"
   }
 }

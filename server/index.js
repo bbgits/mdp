@@ -32,7 +32,7 @@ app.listen(4000, (err) => {
 });
 
 
-// Creat get to connect with register
+// Create get to connect with register
 app.get("/", (req, res) => {
     const filePath = path.resolve(process.env.STATIC_DIR + "../public/index.html");
     res.sendFile(filePath);
@@ -118,6 +118,10 @@ app.use(
         credentials: true,
     })
 );
+
+
+
+
 console.log("sucessfully connected to port 3000...")
 
 app.use(cookieParser());

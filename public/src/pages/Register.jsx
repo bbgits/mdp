@@ -43,7 +43,8 @@ function Register() {
             document.getElementById("step4div").style.display = "none"
             document.getElementById("step5div").style.display = "none"
             document.getElementById("step6div").style.display = "none"
-            document.getElementById("stripeButtonDiv").style.display = "none"
+            document.getElementById("finalPrevButton").style.display = "none"
+            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
         } else if (stepValue.stepValue === 2) {
             document.getElementById("headerMainDiv").style.display = "none"
             document.getElementById("step1div").style.display = "none"
@@ -52,7 +53,8 @@ function Register() {
             document.getElementById("step4div").style.display = "none"
             document.getElementById("step5div").style.display = "none"
             document.getElementById("step6div").style.display = "none"
-            document.getElementById("stripeButtonDiv").style.display = "none"
+            document.getElementById("finalPrevButton").style.display = "none"
+            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
         } else if (stepValue.stepValue === 3) {
             document.getElementById("headerMainDiv").style.display = "none"
             document.getElementById("step1div").style.display = "none"
@@ -61,7 +63,8 @@ function Register() {
             document.getElementById("step4div").style.display = "none"
             document.getElementById("step5div").style.display = "none"
             document.getElementById("step6div").style.display = "none"
-            document.getElementById("stripeButtonDiv").style.display = "none"
+            document.getElementById("finalPrevButton").style.display = "none"
+            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
         } else if (stepValue.stepValue === 4) {
             document.getElementById("headerMainDiv").style.display = "none"
             document.getElementById("step1div").style.display = "none"
@@ -70,7 +73,8 @@ function Register() {
             document.getElementById("step4div").style.display = "flex"
             document.getElementById("step5div").style.display = "none"
             document.getElementById("step6div").style.display = "none"
-            document.getElementById("stripeButtonDiv").style.display = "none"
+            document.getElementById("finalPrevButton").style.display = "none"
+            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
         } else if (stepValue.stepValue === 5) {
             document.getElementById("headerMainDiv").style.display = "none"
             document.getElementById("step1div").style.display = "none"
@@ -79,7 +83,8 @@ function Register() {
             document.getElementById("step4div").style.display = "none"
             document.getElementById("step5div").style.display = "flex"
             document.getElementById("step6div").style.display = "none"
-            document.getElementById("stripeButtonDiv").style.display = "none"
+            document.getElementById("finalPrevButton").style.display = "none"
+            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
         } else if (stepValue.stepValue === 6) {
             document.getElementById("headerMainDiv").style.display = "none"
             document.getElementById("step1div").style.display = "none"
@@ -88,7 +93,8 @@ function Register() {
             document.getElementById("step4div").style.display = "none"
             document.getElementById("step5div").style.display = "none"
             document.getElementById("step6div").style.display = "flex"
-            document.getElementById("stripeButtonDiv").style.display = "flex"
+            document.getElementById("finalPrevButton").style.display = "flex"
+            document.getElementById("stripeCheckoutButtonsDiv").style.display = "flex"
         }
     };
 
@@ -104,7 +110,8 @@ function Register() {
             document.getElementById("step4div").style.display = "none"
             document.getElementById("step5div").style.display = "none"
             document.getElementById("step6div").style.display = "none"
-            document.getElementById("stripeButtonDiv").style.display = "none"
+            document.getElementById("finalPrevButton").style.display = "none"
+            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
         } else if (stepValue.stepValue === 2) {
             document.getElementById("headerMainDiv").style.display = "none"
             document.getElementById("step1div").style.display = "none"
@@ -113,7 +120,8 @@ function Register() {
             document.getElementById("step4div").style.display = "none"
             document.getElementById("step5div").style.display = "none"
             document.getElementById("step6div").style.display = "none"
-            document.getElementById("stripeButtonDiv").style.display = "none"
+            document.getElementById("finalPrevButton").style.display = "none"
+            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
         } else if (stepValue.stepValue === 3) {
             document.getElementById("headerMainDiv").style.display = "none"
             document.getElementById("step1div").style.display = "none"
@@ -122,7 +130,8 @@ function Register() {
             document.getElementById("step4div").style.display = "none"
             document.getElementById("step5div").style.display = "none"
             document.getElementById("step6div").style.display = "none"
-            document.getElementById("stripeButtonDiv").style.display = "none"
+            document.getElementById("finalPrevButton").style.display = "none"
+            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
         } else if (stepValue.stepValue === 4) {
             document.getElementById("headerMainDiv").style.display = "none"
             document.getElementById("step1div").style.display = "none"
@@ -131,7 +140,8 @@ function Register() {
             document.getElementById("step4div").style.display = "flex"
             document.getElementById("step5div").style.display = "none"
             document.getElementById("step6div").style.display = "none"
-            document.getElementById("stripeButtonDiv").style.display = "none"
+            document.getElementById("finalPrevButton").style.display = "none"
+            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
         } else if (stepValue.stepValue === 5) {
             document.getElementById("headerMainDiv").style.display = "none"
             document.getElementById("step1div").style.display = "none"
@@ -140,7 +150,8 @@ function Register() {
             document.getElementById("step4div").style.display = "none"
             document.getElementById("step5div").style.display = "flex"
             document.getElementById("step6div").style.display = "none"
-            document.getElementById("stripeButtonDiv").style.display = "none"
+            document.getElementById("finalPrevButton").style.display = "none"
+            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
         } else if (stepValue.stepValue === 6) {
             document.getElementById("headerMainDiv").style.display = "none"
             document.getElementById("step1div").style.display = "none"
@@ -149,7 +160,8 @@ function Register() {
             document.getElementById("step4div").style.display = "none"
             document.getElementById("step5div").style.display = "none"
             document.getElementById("step6div").style.display = "flex"
-            document.getElementById("stripeButtonDiv").style.display = "flex"
+            document.getElementById("finalPrevButton").style.display = "flex"
+            document.getElementById("stripeCheckoutButtonsDiv").style.display = "flex"
         }
     };
 
@@ -175,35 +187,36 @@ function Register() {
     const handleSubmit = async (event) => { // LOGIC ON SUBMIT...
         event.preventDefault()
         try {
-            const { data } = await axios.post(  // POST THE "data" 
+            const { mongoData } = await axios.post(  // POST THE "data" 
                 "http://localhost:4000/register",
                 {
                     ...userValues, ...reportValues,
                 },
-                { withCredentials: true }
-            );
-            if (data) {
-                if (data.errors) {
-                    const { firstName, lastName, email, password, paymentName, paymentNumber, paymentExpire, paymentCode, paymentAddress1, paymentAddress2, paymentCity, paymentZip, paymentState, paymentPromo, reportName, reportType } = data.errors;
+                { withCredentials: true });
+
+            document.getElementById("headerMainDiv").style.display = "none"
+            document.getElementById("step1div").style.display = "none"
+            document.getElementById("step2div").style.display = "none"
+            document.getElementById("step3div").style.display = "none"
+            document.getElementById("step4div").style.display = "none"
+            document.getElementById("step5div").style.display = "none"
+            document.getElementById("step6div").style.display = "flex"
+            document.getElementById("finalPrevButton").style.display = "flex"
+            document.getElementById("stripeCheckoutButtonsDiv").style.display = "flex"
+
+            if (mongoData) {
+                if (mongoData.errors) {
+                    const { firstName, lastName, email, password, stripeID, paymentPromo, reportName, reportType } = mongoData.errors;
                     if (firstName) generateError(firstName);
                     else if (lastName) generateError(lastName);
                     else if (email) generateError(email); // 2 - ERROR MESSAGE for each variable
                     else if (password) generateError(password);
-                    else if (paymentName) generateError(paymentName);
-                    else if (paymentNumber) generateError(paymentNumber);
-                    else if (paymentExpire) generateError(paymentExpire);
-                    else if (paymentCode) generateError(paymentCode);
-                    else if (paymentAddress1) generateError(paymentAddress1);
-                    else if (paymentAddress2) generateError(paymentAddress2);
-                    else if (paymentCity) generateError(paymentCity);
-                    else if (paymentState) generateError(paymentState);
-                    else if (paymentZip) generateError(paymentZip);
                     else if (paymentPromo) generateError(paymentPromo);
                     else if (reportName) generateError(reportName);
                     else if (reportType) generateError(reportType);
                     return;
                 } else {
-                    navigate("/");
+
                 }
             }
         } catch (ex) {
@@ -226,46 +239,16 @@ function Register() {
 
                 <div className="container" id="mainContainer">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     <form onSubmit={(e) => handleSubmit(e)}>
 
                         {/* *****************************************************************************************************************************      STEP 1    ************************************** ************************************************************************************************ */}
                         <div className="formStepHolder" id="step1div">
-                            <h2>Step 1: Info</h2>
+                            <div id="stepperBoxDiv">
+                                <img src={require('../assets/formProgressBar1.png')}></img>
+
+                            </div>
+                            <h2>Let's Get Started!</h2>
+
                             <div>
                                 <label htmlFor="firstName">First Name</label>
                                 <input
@@ -317,7 +300,11 @@ function Register() {
                         </div >
                         {/* *****************************************************************************************************************************      STEP 2    ************************************** ************************************************************************************************ */}
                         <div className="formStepHolder" id="step2div">
-                            <h2>Step 2a: Report Setup</h2>
+                            <div id="stepperBoxDiv">
+                                <img src={require('../assets/formProgressBar2.png')}></img>
+
+                            </div>
+                            <h2>Set info for Heading:</h2>
                             <div>
                                 <label htmlFor="reportName">Report Name:</label>
                                 <input
@@ -429,8 +416,11 @@ function Register() {
                             </div></div>
                         {/* ******************************************************************************************     ***********************************      STEP 3    ************************************** ************************************************************************************************ */}
                         <div className="formStepHolder" id="step3div">
+                            <div id="stepperBoxDiv">
+                                <img src={require('../assets/formProgressBar3.png')}></img>
 
-                            <h2>Step 3: Report Big Div A</h2>
+                            </div>
+                            <h2>First custom block:</h2>
 
                             <div>
                                 <label for="reportLgDiv1Type">Select Large Div Type:</label>
@@ -602,7 +592,11 @@ function Register() {
 
 
                         <div className="formStepHolder" id="step4div">
-                            <h2>Step 2c: Report Big Div B</h2>
+                            <div id="stepperBoxDiv">
+                                <img src={require('../assets/formProgressBar4.png')}></img>
+
+                            </div>
+                            <h2>Second custom block:</h2>
                             <div>
                                 <label for="reportLgDiv2Type">Select Large Div Type:</label>
                                 <select className="dropdownSelector" name="reportLgDiv2Type" id="reportLgDiv2Type" onChange=
@@ -775,7 +769,11 @@ function Register() {
 
 
                         <div className="formStepHolder" id="step5div">
-                            <h2>Step 5: Report Big Div C</h2>
+                            <div id="stepperBoxDiv">
+                                <img src={require('../assets/formProgressBar5.png')}></img>
+
+                            </div>
+                            <h2>Third custom block:</h2>
                             <div>
                                 <label for="reportLgDiv3Type">Select Large Div Type:</label>
                                 <select className="dropdownSelector" name="reportLgDiv3Type" id="reportLgDiv3Type" onChange=
@@ -939,7 +937,13 @@ function Register() {
                             <div className="buttonHolderDiv">
 
                                 <button className="prevButton" onClick={handlePrev}>&#9668; Prev</button>
-                                <button className="nextButton" onClick={handleNext}>Next &#9658;</button> </div></div>
+                                <button className="nextButton" onClick={handleSubmit}>Next &#9658;</button>
+                                <div class="buttonHolderDiv">
+                                    {/* <button type="submit" className="submitButton">Monthly: $4.99</button>
+                                    <button type="submit" className="submitButton">Annually: $39.99</button> */}
+                                </div></div></div>
+
+
 
 
 
@@ -948,7 +952,11 @@ function Register() {
 
 
                         <div className="formStepHolder" id="step6div">
-                            <h2>Step 6: Confirm and Pay</h2>
+                            <div id="stepperBoxDiv">
+                                <img src={require('../assets/formProgressBar6.png')}></img>
+
+                            </div>
+                            <h2>Almost there!</h2>
                             <div id="pdfPreviewHolderDiv">
                                 <h4>Look good?</h4>
 
@@ -986,37 +994,50 @@ function Register() {
                             </div>
                             <div id="buttonSpacer"></div>
 
-                            {/* These buttons submit the main form:
-                            
-                            <div class="buttonHolderDiv">
+                            {/* These buttons submit the main form: */}
+
+                            {/* <div class="buttonHolderDiv">
                                 <button type="submit" className="submitButton">Monthly: $4.99</button>
                                 <button type="submit" className="submitButton">Annually: $39.99</button>
                             </div> */}
 
-                            <div class="buttonHolderDiv">
-                                <button className="prevButton" onClick={handlePrev} >&#9668; Prev</button>
-                            </div>
+
 
                         </div>
+
+                        {/* STRIPE DIV (with toggle display) */}
+                        <div id="stripeCheckoutButtonsDiv">
+                            {/* BUTTON TO TRIGGER STRIPE MONTHLY PLAN */}
+                            <form action="http://localhost:4242/create-monthly-checkout-session" method="POST">
+                                <input type="hidden" id="monthlyPrice" name="priceId" />
+                                <button id="stripeMonthlyButton">Monthly:<br></br>$4.99</button>
+                            </form>
+
+
+                            {/* BUTTON TO TRIGGER STRIPE MONTHLY PLAN */}
+                            <form action="http://localhost:4242/create-annual-checkout-session" method="POST">
+                                <input type="hidden" id="annualPrice" name="priceId" />
+                                <button id="stripeAnnualButton">Annual:<br></br>49.99</button>
+                            </form>
+                        </div>
+
+                        {/* LOGO HERE */}
                         <div id="formFooterDiv"><img src="http://www.b2results.com/wp-includes/images/mydailypdf/main-logo-white.png" alt="logo" id="formFooterLogo"></img></div>
+
+                        {/* PREVIOUS BUTTON */}
+                        <div class="buttonHolderDiv">
+                            <button className="prevButton" id="finalPrevButton" onClick={handlePrev} >&#9668; Prev</button>
+                        </div>
 
                     </form >
 
                     <ToastContainer />
+                    <div id="stripeButtonDiv">
 
+                    </div>
                 </div >
-                <div id="stripeButtonDiv">
-                    <form action="http://localhost:4242/create-monthly-checkout-session" method="POST">
-                        <input type="hidden" id="monthlyPrice" name="priceId" />
-                        <button id="stripeMonthlyButton">Monthly:<br></br>$4.99</button>
-                    </form>
 
-                    <form action="http://localhost:4242/create-annual-checkout-session" method="POST">
-                        <input type="hidden" id="annualPrice" name="priceId" />
-                        <button id="stripeAnnualButton">Annual:<br></br>49.99</button>
-                    </form>
-                </div>
-            </Content>
+            </Content >
 
             <Footer>
                 <div id="footerBoxDiv">
@@ -1028,7 +1049,7 @@ function Register() {
                 </div>
 
             </Footer>
-        </Layout>
+        </Layout >
 
     );
 }
