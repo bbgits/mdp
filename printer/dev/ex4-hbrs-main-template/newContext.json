@@ -1,0 +1,87 @@
+{
+    "divs": [
+        {
+            "type": "header",
+            "data": {
+                "header_title_report_name": "Brian's Morning Report",
+                "header_title_day": "friday",
+                "header_title_date": "jul-07 2022",
+                "header_weather_sunrise_time": "6:00AM",
+                "header_weather_sunset_time": "7:36PM",
+                "header_weather_temp_high": "97 F",
+                "header_weather_temp_low": "70 F",
+                "header_weather_string": "slightly cloudy, chance of rain",
+                "header_quote_string": "Whether you think you can, or you think you can't, you're right!",
+                "header_quote_author": "Unknown Author"
+            }
+        },
+        {
+            "type": "twitter",
+            "data": {
+                "t01": "Here's some data for you!",
+                "t02": "Here's some more!",
+                "t03": "",
+                "t04": "",
+                "t05": "",
+                "more": {
+                    "d01": 47,
+                    "02": "",
+                    "03": "",
+                    "04": "",
+                    "05": ""
+                }
+            }
+        },
+        {
+            "type": "insta",
+            "data": {
+                "i01": "Here's some INSTA data for you!",
+                "i02": "Here's some more!",
+                "t03": "",
+                "t04": "",
+                "t05": "",
+                "more": {
+                    "d01": 47,
+                    "02": "",
+                    "03": "",
+                    "04": "",
+                    "05": ""
+                }
+            }
+        },
+        {
+            "type": "twitter",
+            "data": {
+                "t01": "Here's some data for you!",
+                "t02": "Here's some more!",
+                "t03": "",
+                "t04": "",
+                "t05": "",
+                "more": {
+                    "d01": 47,
+                    "02": "",
+                    "03": "",
+                    "04": "",
+                    "05": ""
+                }
+            }
+        },
+        {
+            "type": "twitter",
+            "data": {
+                "t01": "Here's some data for you!",
+                "t02": "Here's some more!",
+                "t03": "",
+                "t04": "",
+                "t05": "",
+                "more": {
+                    "d01": 47,
+                    "02": "",
+                    "03": "",
+                    "04": "",
+                    "05": ""
+                }
+            }
+        }
+    ]
+}
