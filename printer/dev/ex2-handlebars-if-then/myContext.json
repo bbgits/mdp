@@ -1,0 +1,27 @@
+{
+    "divs": [
+        {
+            "title": "My First Blog Post",
+            "author": {
+                "id": 47,
+                "name": "Yehuda Katz"
+            },
+            "body": "My first post. Wheeeee!"
+        },
+        {
+            "title": "My Second Blog Post!!!!",
+            "author": {
+                "id": 48,
+                "name": "Brian Burns"
+            },
+            "body": "My second post. Still Fun!!!!"
+        },
+        {
+            "title": "Im a ghost until 'name' value added...",
+            "author": {
+                "id": 48
+            },
+            "body": "My second post. Still Fun!!!!"
+        }
+    ]
+}

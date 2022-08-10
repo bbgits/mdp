@@ -1,0 +1,32 @@
+<ul class="example">
+    {{!-- FOR EACH DIV... --}}
+    {{#each divs}}
+
+    <div class="entry">
+
+        {{!-- IF THERE IS AN AUTHOR NAME... --}}
+        {{#ifCond author.name '==' 'Brian Burns'}}
+        <p>------------------------</p>
+        <h1>{{title}}</h1>
+        <h2>By {{author.name}}</h2>
+        <div class="body">
+            {{body}}
+        </div>
+        <p>------------------------</p>
+        {{/ifCond}}
+
+        {{!-- IF AUTHOR IS NOT NAMED 'Brian Burns' --}}
+        {{#ifCond author.name '!=' 'Brian Burns'}}
+        <p>------------------------</p>
+        <p>{{title}}</p>
+        <p>By {{author.name}}</p>
+
+        <div class="body">
+            {{body}}
+        </div>
+        <p>------------------------</p>
+        {{/ifCond}}
+    </div>
+
+    {{/each}}
+</ul>

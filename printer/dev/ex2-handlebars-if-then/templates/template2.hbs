@@ -1,0 +1,19 @@
+<ul class="example">
+    {{!-- FOR EACH DIV... --}}
+    {{#each divs}}
+
+
+    <div class="entry">
+        {{!-- IF THERE IS AN AUTHOR NAME... --}}
+        {{#if author.name}}
+        <h1>{{title}}</h1>
+        <h2>By {{author.name}}</h2>
+
+        <div class="body">
+            {{body}}
+        </div>
+        {{/if}}
+    </div>
+
+    {{/each}}
+</ul>
