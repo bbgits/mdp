@@ -1,0 +1,779 @@
+<head>
+
+    <style type="text/css">
+        /*  
+        *********************************************
+        Start Styling for Universal Elements  
+        *********************************************        
+        */
+        body {
+            background-color: rgba(255, 255, 255, 0.459);
+        }
+
+        h1 {
+            padding: 0;
+            margin: 0;
+            font-family: Poppins;
+        }
+
+        p {
+            padding: 0;
+            margin: 0;
+            font-family: Poppins;
+            font-weight: 300;
+        }
+
+        span {
+            padding: 0;
+            margin: 0;
+            font-family: Poppins;
+            font-weight: 300;
+        }
+
+        #main-print-pg-div {
+            background-color: rgb(255, 255, 255);
+            outline-style: solid;
+            outline-width: 0px;
+            outline-color: rgb(255, 255, 255);
+            width: 800px;
+            height: 1000px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            margin-top: 25px;
+            margin-left: 1px
+        }
+
+
+        /*  
+        *********************************************
+        Start Styling for Div-Type = HEADER
+        *********************************************        
+        */
+
+        #header-main-div {
+            outline-style: solid;
+            outline-width: 0px;
+            outline-color: rgb(255, 255, 255);
+            width: 800px;
+            height: 192px;
+            background-color: rgb(255, 255, 255);
+            margin-top: -15px;
+            margin-left: -40px;
+            padding-bottom: 20px
+        }
+
+        #header-top-title-div {
+            outline-style: solid;
+            outline-width: 0px;
+            outline-color: rgb(255, 255, 255);
+            width: 800px;
+            height: 60px;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            color: rgb(0, 0, 0);
+            font-family: "Poppins";
+            font-size: 20px;
+            text-align: center;
+
+        }
+
+
+        #header-report-title-span {
+
+            font-weight: 700;
+
+        }
+
+        #header-report-title-div {
+
+            font-weight: 700;
+
+        }
+
+        #header-report-date-div {
+
+            font-weight: 400;
+
+        }
+
+        #header-lg-row-div {
+            outline-style: solid;
+            outline-width: 0px;
+            outline-color: rgb(255, 255, 255);
+            width: 800px;
+            height: 152px;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            justify-items: center;
+            flex-direction: row;
+            color: rgb(0, 0, 0);
+            font-family: "Poppins";
+            font-size: 14px;
+            text-align: center;
+
+        }
+
+
+        .weather-badge {
+            outline-style: solid;
+            outline-width: 0px;
+            outline-color: rgb(255, 255, 255);
+            background-color: white;
+            width: 160px;
+            height: 40px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-left: 25px;
+
+        }
+
+        .weather-badge-icon {
+            outline-style: solid;
+            outline-width: 0px;
+            outline-color: rgb(255, 255, 255);
+            width: 40px;
+            height: 40px;
+            display: contain;
+
+        }
+
+        .weather-badge-labels-box {
+            outline-style: solid;
+            outline-width: 0px;
+            outline-color: rgb(0, 0, 0);
+            width: 60;
+            height: 40;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .weather-badge-label-text {
+            outline-style: solid;
+            outline-width: 0px;
+            outline-color: rgb(255, 255, 255);
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            height: 15px;
+            display: flex;
+            font-size: 12px;
+            font-weight: 600;
+            align-items: center;
+            justify-content: left;
+        }
+
+        .weather-badge-img {
+            width: 100%
+        }
+
+        .weather-badge-value-text {
+            outline-style: solid;
+            outline-width: 0px;
+            outline-color: rgb(255, 255, 255);
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            height: 25px;
+            display: flex;
+            font-size: 14px;
+            align-items: center;
+            justify-content: left;
+        }
+
+        .weather-string-div {
+            outline-style: solid;
+            outline-width: 0px;
+            outline-color: rgb(255, 255, 255);
+            background-color: rgb(255, 255, 255);
+            width: 160px;
+            height: 40px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 600;
+            font-style: italic;
+            color: darkslategray;
+            line-height: 13px;
+        }
+
+        .quote-holder {
+            background-color: rgb(255, 255, 255);
+            height: 152px;
+            width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+
+        }
+
+        .quote-title {
+            font-family: "Poppins";
+            font-weight: 400;
+            color: gray;
+            font-size: 18px;
+
+        }
+
+        .quote-text {
+            font-family: "Poppins";
+            font-weight: 600;
+            color: rgb(0, 0, 0);
+            font-size: 16px;
+        }
+
+        .quote-author {
+            font-family: "Poppins";
+            font-weight: 400;
+            color: rgb(0, 0, 0);
+            font-size: 14px;
+
+        }
+
+
+
+
+
+        /*  
+        *********************************************
+        Start Styling for Div-Type = TWITTER or INSTA
+        *********************************************        
+        */
+
+        #twitter-main-div {
+            width: 800px;
+            height: 240px;
+            background-color: rgb(255, 255, 255);
+            margin-left: -40px;
+            padding-bottom: 20px
+        }
+
+        .main-title {
+            font-family: "Poppins";
+            color: #535353;
+            font-weight: 500;
+            font-size: 20px;
+            text-align: left;
+            margin-top: 5px;
+            margin-left: 15px
+        }
+
+        .main-table {
+            border-collapse: collapse;
+            border-radius: 15px;
+            margin-top: 5px;
+            margin-left: 20px;
+            font-size: 0.9em;
+            font-family: poppins;
+            font-weight: 300;
+            width: 755px;
+            box-shadow: 4px 4px 12px 2px rgba(0, 0, 0, 0.15);
+            align-self: center;
+            justify-self: center
+        }
+
+        .main-table thead tr {
+            background-color: #bdbdbd;
+            color: #000000;
+            text-align: left;
+        }
+
+        .main-table th,
+        .main-table td {
+            padding: 4px 4px;
+        }
+
+        .main-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .main-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .main-table th:first-of-type {
+            border-top-left-radius: 10px;
+            padding-left: 13px;
+        }
+
+        .main-table th:last-of-type {
+            border-top-right-radius: 10px;
+        }
+
+        .main-table tr:last-of-type td:first-of-type {
+            border-bottom-left-radius: 10px;
+        }
+
+        .main-table tr:last-of-type td:last-of-type {
+            border-bottom-right-radius: 10px;
+        }
+
+        #author-string {
+            font-family: "Poppins";
+            font-weight: 600;
+            font-size: 12px;
+            text-align: center;
+            text-justify: center;
+            align-self: center;
+            justify-self: center;
+            justify-content: center;
+            justify-items: center;
+            line-height: 12px;
+            margin-top: 8px
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*  
+        *********************************************
+        Start Styling for Div-Type = INSTA
+        *********************************************        
+        */
+
+        #insta-main-div {
+            width: 800px;
+            height: 240px;
+            background-color: rgba(236, 132, 245, 0.5);
+            margin-left: -40px;
+            padding-bottom: 20px
+        }
+
+
+        /*  
+        *********************************************
+        Start Styling for Div-Type = NEWS
+        *********************************************        
+        */
+
+        .news-main-div {
+            background-color: rgb(255, 255, 255);
+            width: 800px;
+            max-height: 240px;
+            margin: 0px;
+            margin-top: -25px;
+            padding: 0px
+        }
+
+        .news-title {
+            font-family: "Poppins";
+            color: #585858;
+            font-weight: 400;
+            font-size: 18px;
+            text-align: left;
+            margin-top: 0px;
+            margin-left: 0px;
+        }
+
+        .news-content {
+            columns: 3;
+            font-family: "Poppins";
+            font-size: 12px;
+            font-weight: 300;
+            line-height: 13px;
+            padding-top: 0px;
+            margin-bottom: 10px;
+            margin-top: 5px;
+            margin-left: 20px;
+            margin-right: 20px;
+            padding-left: 15px;
+            padding-right: 15px;
+            max-height: 220px;
+            text-align: justify;
+            border: solid;
+            border-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            box-shadow: 4px 4px 12px 2px rgba(0, 0, 0, 0.15);
+
+        }
+    </style>
+
+</head>
+
+
+
+
+
+
+
+
+
+
+<html>
+{{!--
+******************************************************************
+******************************************************************
+START HTML DOC
+******************************************************************
+******************************************************************
+--}}
+
+<body>
+
+    <div id="main-print-pg-div">
+        <ul class="example">
+            {{!-- FOR EACH DIV... --}}
+            {{#each divs}}
+            {{!-- if TYPE is "header"--}}
+            {{#ifCond type '==' 'header'}}
+            <div id="header-main-div">
+                <div id="header-top-title-div">
+
+                    {{!-- Report Title and Date --}}
+                    <span id="header-report-title-span">
+                        <div id="header-report-title-div">{{data.header_title_report_name}}</div>
+                        <div id="header-report-date-div">{{data.header_title_day}}
+                            {{data.header_title_date}}</div>
+                    </span>
+
+
+                    {{!-- Sunrise Badge --}}
+                    <span>
+                        <div class="weather-badge">
+
+                            <div class="weather-badge-icon">
+                                <img class="weather-badge-img"
+                                    src="http://www.b2results.com/wp-includes/images/mydailypdf/lg-sun-icon.png"></img>
+                            </div>
+
+                            <div class="weather-badge-labels-box">
+                                <div class="weather-badge-label-text">rise</div>
+                                <div class="weather-badge-value-text">6:15am</div>
+                            </div>
+
+                            <div class="weather-badge-labels-box">
+                                <div class="weather-badge-label-text">set</div>
+                                <div class="weather-badge-value-text">8:02pm</div>
+                            </div>
+                        </div>
+                    </span>
+
+                    {{!-- Weather Temp Badge --}}
+                    <span>
+                        <div class="weather-badge">
+
+                            <div class="weather-badge-icon">
+                                <img class="weather-badge-img"
+                                    src="http://www.b2results.com/wp-includes/images/mydailypdf/temperature-icon.png"></img>
+                            </div>
+
+                            <div class="weather-badge-labels-box">
+                                <div class="weather-badge-label-text">low</div>
+                                <div class="weather-badge-value-text">-17 F</div>
+                            </div>
+
+                            <div class="weather-badge-labels-box">
+                                <div class="weather-badge-label-text">hi</div>
+                                <div class="weather-badge-value-text">105 F</div>
+                            </div>
+                        </div>
+                    </span>
+
+                    {{!-- Weather String Textbox --}}
+                    <span>
+                        <div class="weather-string-div">
+                            slightly cloudy with chance of rain in the afternoon
+                        </div>
+
+                    </span>
+
+
+
+                </div>
+                <div class="quote-holder">
+                    <div class="quote-title">Daily Motivational Quote:</div>
+                    <div class="quote-text">Whether you think you can or you think you can't, you're right.</div>
+                    <div class="quote-author">Henry Ford</div>
+                </div>
+            </div>
+            {{/ifCond}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {{!-- if TYPE is "twitter"... --}}
+            {{#ifCond type '==' 'twitter'}}
+            <div id="twitter-main-div">
+
+                <div class="main-title">Twitter Public Metrics and Change Over Time</div>
+
+                <table class="main-table">
+                    <thead>
+                        <tr>
+                            <th id="author-string" ,
+                                style="background-color:rgb(170, 170, 170); text-align:left; font-weight:700">username
+                            </th>
+                            <th id="author-string">followers</th>
+                            <th id="author-string" , style="background-color:lightgray">1-day</th>
+                            <th id="author-string" , style="background-color:lightgray">7-day</th>
+                            <th id="author-string" , style="background-color:lightgray">30-day</th>
+                            <th id="author-string">following</th>
+                            <th id="author-string" , style="background-color:lightgray">1-day</th>
+                            <th id="author-string" , style="background-color:lightgray">7-day</th>
+                            <th id="author-string" , style="background-color:lightgray">30-day</th>
+                            <th id="author-string">posts</th>
+                            <th id="author-string" , style="background-color:lightgray">1-day</th>
+                            <th id="author-string" , style="background-color:lightgray">7-day</th>
+                            <th id="author-string" , style="background-color:lightgray">30-day</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{data.usr1.username}}</td>
+                            <td>{{data.usr1.followers}}</td>
+                            <td>{{data.usr1.followers_1day_change}}</td>
+                            <td>{{data.usr1.followers_7day_change}}</td>
+                            <td>{{data.usr1.followers_30day_change}}</td>
+                            <td>{{data.usr1.following}}</td>
+                            <td>{{data.usr1.following_1day_change}}</td>
+                            <td>{{data.usr1.following_7day_change}}</td>
+                            <td>{{data.usr1.following_30day_change}}</td>
+                            <td>{{data.usr1.posts}}</td>
+                            <td>{{data.usr1.posts_1day_change}}</td>
+                            <td>{{data.usr1.posts_7day_change}}</td>
+                            <td>{{data.usr1.posts_30day_change}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{data.usr2.username}}</td>
+                            <td>{{data.usr2.followers}}</td>
+                            <td>{{data.usr2.followers_1day_change}}</td>
+                            <td>{{data.usr2.followers_7day_change}}</td>
+                            <td>{{data.usr2.followers_30day_change}}</td>
+                            <td>{{data.usr2.following}}</td>
+                            <td>{{data.usr2.following_1day_change}}</td>
+                            <td>{{data.usr2.following_7day_change}}</td>
+                            <td>{{data.usr2.following_30day_change}}</td>
+                            <td>{{data.usr2.posts}}</td>
+                            <td>{{data.usr2.posts_1day_change}}</td>
+                            <td>{{data.usr2.posts_7day_change}}</td>
+                            <td>{{data.usr2.posts_30day_change}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{data.usr3.username}}</td>
+                            <td>{{data.usr3.followers}}</td>
+                            <td>{{data.usr3.followers_1day_change}}</td>
+                            <td>{{data.usr3.followers_7day_change}}</td>
+                            <td>{{data.usr3.followers_30day_change}}</td>
+                            <td>{{data.usr3.following}}</td>
+                            <td>{{data.usr3.following_1day_change}}</td>
+                            <td>{{data.usr3.following_7day_change}}</td>
+                            <td>{{data.usr3.following_30day_change}}</td>
+                            <td>{{data.usr3.posts}}</td>
+                            <td>{{data.usr3.posts_1day_change}}</td>
+                            <td>{{data.usr3.posts_7day_change}}</td>
+                            <td>{{data.usr3.posts_30day_change}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{data.usr4.username}}</td>
+                            <td>{{data.usr4.followers}}</td>
+                            <td>{{data.usr4.followers_1day_change}}</td>
+                            <td>{{data.usr4.followers_7day_change}}</td>
+                            <td>{{data.usr4.followers_30day_change}}</td>
+                            <td>{{data.usr4.following}}</td>
+                            <td>{{data.usr4.following_1day_change}}</td>
+                            <td>{{data.usr4.following_7day_change}}</td>
+                            <td>{{data.usr4.following_30day_change}}</td>
+                            <td>{{data.usr4.posts}}</td>
+                            <td>{{data.usr4.posts_1day_change}}</td>
+                            <td>{{data.usr4.posts_7day_change}}</td>
+                            <td>{{data.usr4.posts_30day_change}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{data.usr5.username}}</td>
+                            <td>{{data.usr5.followers}}</td>
+                            <td>{{data.usr5.followers_1day_change}}</td>
+                            <td>{{data.usr5.followers_7day_change}}</td>
+                            <td>{{data.usr5.followers_30day_change}}</td>
+                            <td>{{data.usr5.following}}</td>
+                            <td>{{data.usr5.following_1day_change}}</td>
+                            <td>{{data.usr5.following_7day_change}}</td>
+                            <td>{{data.usr5.following_30day_change}}</td>
+                            <td>{{data.usr5.posts}}</td>
+                            <td>{{data.usr5.posts_1day_change}}</td>
+                            <td>{{data.usr5.posts_7day_change}}</td>
+                            <td>{{data.usr5.posts_30day_change}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            {{/ifCond}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {{!-- if TYPE is "insta"... --}}
+            {{#ifCond type '==' 'insta'}}
+            <div id="twitter-main-div">
+
+                <div class="main-title">Instagram Public Metrics and Change Over Time</div>
+
+                <table class="main-table">
+                    <thead>
+                        <tr>
+                            <th id="author-string" ,
+                                style="background-color:rgb(170, 170, 170); text-align:left; font-weight:700">username
+                            </th>
+                            <th id="author-string">followers</th>
+                            <th id="author-string" , style="background-color:lightgray">1-day</th>
+                            <th id="author-string" , style="background-color:lightgray">7-day</th>
+                            <th id="author-string" , style="background-color:lightgray">30-day</th>
+                            <th id="author-string">following</th>
+                            <th id="author-string" , style="background-color:lightgray">1-day</th>
+                            <th id="author-string" , style="background-color:lightgray">7-day</th>
+                            <th id="author-string" , style="background-color:lightgray">30-day</th>
+                            <th id="author-string">posts</th>
+                            <th id="author-string" , style="background-color:lightgray">1-day</th>
+                            <th id="author-string" , style="background-color:lightgray">7-day</th>
+                            <th id="author-string" , style="background-color:lightgray">30-day</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{data.usr1.username}}</td>
+                            <td>{{data.usr1.followers}}</td>
+                            <td>{{data.usr1.followers_1day_change}}</td>
+                            <td>{{data.usr1.followers_7day_change}}</td>
+                            <td>{{data.usr1.followers_30day_change}}</td>
+                            <td>{{data.usr1.following}}</td>
+                            <td>{{data.usr1.following_1day_change}}</td>
+                            <td>{{data.usr1.following_7day_change}}</td>
+                            <td>{{data.usr1.following_30day_change}}</td>
+                            <td>{{data.usr1.posts}}</td>
+                            <td>{{data.usr1.posts_1day_change}}</td>
+                            <td>{{data.usr1.posts_7day_change}}</td>
+                            <td>{{data.usr1.posts_30day_change}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{data.usr2.username}}</td>
+                            <td>{{data.usr2.followers}}</td>
+                            <td>{{data.usr2.followers_1day_change}}</td>
+                            <td>{{data.usr2.followers_7day_change}}</td>
+                            <td>{{data.usr2.followers_30day_change}}</td>
+                            <td>{{data.usr2.following}}</td>
+                            <td>{{data.usr2.following_1day_change}}</td>
+                            <td>{{data.usr2.following_7day_change}}</td>
+                            <td>{{data.usr2.following_30day_change}}</td>
+                            <td>{{data.usr2.posts}}</td>
+                            <td>{{data.usr2.posts_1day_change}}</td>
+                            <td>{{data.usr2.posts_7day_change}}</td>
+                            <td>{{data.usr2.posts_30day_change}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{data.usr3.username}}</td>
+                            <td>{{data.usr3.followers}}</td>
+                            <td>{{data.usr3.followers_1day_change}}</td>
+                            <td>{{data.usr3.followers_7day_change}}</td>
+                            <td>{{data.usr3.followers_30day_change}}</td>
+                            <td>{{data.usr3.following}}</td>
+                            <td>{{data.usr3.following_1day_change}}</td>
+                            <td>{{data.usr3.following_7day_change}}</td>
+                            <td>{{data.usr3.following_30day_change}}</td>
+                            <td>{{data.usr3.posts}}</td>
+                            <td>{{data.usr3.posts_1day_change}}</td>
+                            <td>{{data.usr3.posts_7day_change}}</td>
+                            <td>{{data.usr3.posts_30day_change}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{data.usr4.username}}</td>
+                            <td>{{data.usr4.followers}}</td>
+                            <td>{{data.usr4.followers_1day_change}}</td>
+                            <td>{{data.usr4.followers_7day_change}}</td>
+                            <td>{{data.usr4.followers_30day_change}}</td>
+                            <td>{{data.usr4.following}}</td>
+                            <td>{{data.usr4.following_1day_change}}</td>
+                            <td>{{data.usr4.following_7day_change}}</td>
+                            <td>{{data.usr4.following_30day_change}}</td>
+                            <td>{{data.usr4.posts}}</td>
+                            <td>{{data.usr4.posts_1day_change}}</td>
+                            <td>{{data.usr4.posts_7day_change}}</td>
+                            <td>{{data.usr4.posts_30day_change}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{data.usr5.username}}</td>
+                            <td>{{data.usr5.followers}}</td>
+                            <td>{{data.usr5.followers_1day_change}}</td>
+                            <td>{{data.usr5.followers_7day_change}}</td>
+                            <td>{{data.usr5.followers_30day_change}}</td>
+                            <td>{{data.usr5.following}}</td>
+                            <td>{{data.usr5.following_1day_change}}</td>
+                            <td>{{data.usr5.following_7day_change}}</td>
+                            <td>{{data.usr5.following_30day_change}}</td>
+                            <td>{{data.usr5.posts}}</td>
+                            <td>{{data.usr5.posts_1day_change}}</td>
+                            <td>{{data.usr5.posts_7day_change}}</td>
+                            <td>{{data.usr5.posts_30day_change}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            {{/ifCond}}
+
+            {{#ifCond type '==' 'news'}}
+            <div id="twitter-main-div">
+
+                <div class="main-title">Top News Items for 'politics'</div>
+
+
+                <div class="main-news-div">
+                    <div class="news-content">AUTHOR: {{data.newsAuthor}}<br></br>{{data.newsStory}}
+                    </div>
+                </div>
+            </div>
+            {{/ifCond}}
+
+
+            {{/each}}
+        </ul>
+    </div>
+</body>
+
+</html>
