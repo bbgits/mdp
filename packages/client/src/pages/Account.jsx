@@ -8,7 +8,7 @@ import pullUserData from '../utils/pullUserData';
 
 
 
-export default function Cards() {
+export default function Account() {
     const navigate = useNavigate();
     const [cookies, setCookie, removeCookie] = useCookies([]);
     useEffect(() => {
