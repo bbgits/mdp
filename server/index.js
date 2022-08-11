@@ -1,3 +1,10 @@
+/* 
+
+Main Server for App, listens on 4000, connects to:
+> react app (3000), database (mongo cloud), payments (stripe)
+
+*/
+
 // import express for server
 const express = require("express");
 
@@ -13,7 +20,7 @@ const authRoutes = require("./routes/authRoutes");
 // import cookieParser to help manage cookies
 const cookieParser = require("cookie-parser");
 
-// import environment variables and throw error if fails
+// import environment variables + error if fail
 const env = require("dotenv").config("./.env");
 if (env.error) {
     throw new Error(`Unable to load the .env file from ${envFilePath}. Please copy .env.example to ${envFilePath}`);
@@ -30,7 +37,6 @@ app.listen(4000, (err) => {
         console.log("sucessfully created server, listening at port 4000...");
     }
 });
-
 
 // Create get to connect with register
 app.get("/", (req, res) => {
@@ -84,15 +90,11 @@ if (stripe.error) {
     console.log("sucessfully connected to stripe...")
 }
 
-// The price ID passed from the client
+// The price ID passed from the client ---> not used currently
 //   const {priceId} = req.body;
 
 // the price ID passed from env
 const priceId = '{{PRICE_ID}}';
-
-
-
-
 
 // establish connection to mongoose atlas cloud db
 const dbUser = (process.env.DB_USER);
@@ -109,7 +111,6 @@ mongoose
         console.log(err.message);
     });
 
-
 // link the server to the react app on local 3000
 app.use(
     cors({
@@ -119,11 +120,7 @@ app.use(
     })
 );
 
-
-
-
 console.log("sucessfully connected to port 3000...")
-
 app.use(cookieParser());
 app.use(express.json());
 app.use("/", authRoutes);

@@ -63,9 +63,6 @@ export default function Cards() {
         Client.close();
     }
 
-
-
-
     return (
         <>
             <div className="private">

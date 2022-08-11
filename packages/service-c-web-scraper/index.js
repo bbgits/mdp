@@ -1,3 +1,12 @@
+/* 
+
+This script retrievs data from the web:
+> imports main search config from mongo (lists of all search terms/usernames/weather zip codes
+> goes to internet via API or Selenium webscraper and retrieves data
+> saves that data to main DB
+
+*/
+
 //IMPORT TOOLS
 import fetch, { Headers } from 'node-fetch';
 import { MongoClient } from 'mongodb'; // IMORT MONGO
@@ -7,9 +16,13 @@ import getTwitterByUsernameAndMakeDocInMongo from './utils/getTwitterByUsernameA
 import scrapeInstaByUsernameAndMakeDocInMongo from './utils/scrapeInstaByUsernameAndMakeDocInMongo.js';
 
 
+const envFilePath = path.resolve(__dirname, './.env');
+const env = require("dotenv").config({ path: envFilePath });
+
+
 async function main() {
     // Declare database variables
-    const uri = "mongodb+srv://admin01:monc0dedUP@my-daily-pdf.ddfuw.mongodb.net/?retryWrites=true&w=majority";
+    const uri = "mongodb+srv://" + process.env.MONGO_USER + ":" + process.env.MONGO_PASS + "@my-daily-pdf.ddfuw.mongodb.net/?retryWrites=true&w=majority";
     const Client = new MongoClient(uri);
 
     //FUNCTION BODY

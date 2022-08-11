@@ -1,23 +1,29 @@
+/* 
+
+This script: 
+> creates a stripe server for handling payments 
+> creates a stripe instance for connecting to account
+> defines params for two checkout page endpoints (stripe owned/managed)
+> [ WILL BE ] run once per day
+
+*/
+
+//import and create express server
 const express = require("express");
 const app = express();
-const path = require('path');
 
-// Copy the .env.example in the root into a .env file in this folder
+//setup env path + error if fail
+const path = require('path');
 const envFilePath = path.resolve(__dirname, './.env');
 const env = require("dotenv").config({ path: envFilePath });
 if (env.error) {
     throw new Error(`Unable to load the .env file from ${envFilePath}. Please copy .env.example to ${envFilePath}`);
 }
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
-    apiVersion: '2020-08-27',
-    appInfo: { // For sample support and debugging, not required for production:
-        name: "stripe-samples/checkout-single-subscription",
-        version: "0.0.1",
-        url: "https://github.com/stripe-samples/checkout-single-subscription"
-    }
-});
+//Create a stripe instance by passing SECRET_KEY
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
+//Set parapmeters for the server
 app.use(express.static(process.env.STATIC_DIR));
 app.use(express.urlencoded());
 app.use(
@@ -32,6 +38,7 @@ app.use(
     })
 );
 
+// Set route for static directory
 app.get("/", (req, res) => {
     const filePath = path.resolve(process.env.STATIC_DIR + "/index.html");
     res.sendFile(filePath);
@@ -44,16 +51,11 @@ app.get("/checkout-session", async (req, res) => {
     res.send(session);
 });
 
-// Create new Checkout Sessions for each Price Button
-// Other optional params include:
-// [billing_address_collection] - to display billing address details on the page
-// [customer] - if you have an existing Stripe Customer ID
-// [customer_email] - lets you prefill the email input in the form
-// [automatic_tax] - to automatically calculate sales tax, VAT and GST in the checkout page
-// For full details see https://stripe.com/docs/api/checkout/sessions/create
+
+// CREATE CHECKOUT SESSION: Monthly Payment
 app.post("/create-monthly-checkout-session", async (req, res) => {
     const domainURL = process.env.DOMAIN;
-    const { priceId } = "price_1LT5IHBTlONlrDpCbIs33WUz";
+    const { priceId } = "price_1LT5IHBTlONlrDpCbIs33WUz"; //price codes from Stripe Acct
 
 
     try {
@@ -84,14 +86,10 @@ app.post("/create-monthly-checkout-session", async (req, res) => {
     }
 });
 
-
-
-
-
+// CREATE CHECKOUT SESSION: Annual Payment
 app.post("/create-annual-checkout-session", async (req, res) => {
     const domainURL = process.env.DOMAIN;
     const { priceId } = "price_1LT5IHBTlONlrDpCTcuUZysR";
-
 
     try {
         const session = await stripe.checkout.sessions.create({
@@ -99,9 +97,7 @@ app.post("/create-annual-checkout-session", async (req, res) => {
             line_items: [
                 {
                     price: "price_1LT5IHBTlONlrDpCTcuUZysR",
-
                     quantity: 1,
-
                 },
             ],
             // ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
@@ -109,8 +105,8 @@ app.post("/create-annual-checkout-session", async (req, res) => {
             cancel_url: `${domainURL}/canceled.html`,
             // automatic_tax: { enabled: true }
         });
-
         return res.redirect(303, session.url);
+
     } catch (e) {
         res.status(400);
         return res.send({
@@ -129,6 +125,7 @@ app.get("/config", (req, res) => {
     });
 });
 
+// Define route for customer customer portal
 app.post('/customer-portal', async (req, res) => {
     // For demonstration purposes, we're using the Checkout session to retrieve the customer ID.
     // Typically this is stored alongside the authenticated user in your database.

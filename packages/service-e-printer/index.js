@@ -1,3 +1,12 @@
+/* 
+
+This script makes PDFs: 
+-imports myPrintable.json (an array of objects, each describing a div on the final pdf)
+-defines a Logic Helper for use with Handlebars (no native logic in Hbrs)
+-passes that Context & Logic Helper through ../templates/myTemplate.hbrs (a Hbrs template)
+-saves output from Hbrs template as PDF
+
+*/
 
 ////// IMPORT TOOLS
 const puppeteer = require('puppeteer');
@@ -6,7 +15,7 @@ const hbs = require('handlebars');
 const path = require('path');
 const moment = require('moment');
 console.log('imports sucessful');
-var context = require("./myContext.json"); //// Set the context
+var context = require("./myPrintable.json"); //// Set the context
 
 
 ////// DEFINE COMPILE FUNCTION
