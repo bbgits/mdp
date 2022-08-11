@@ -18,69 +18,169 @@
         {
             "type": "twitter",
             "data": {
-                "t01": "Here's some data for you!",
-                "t02": "Here's some more!",
-                "t03": "",
-                "t04": "",
-                "t05": "",
-                "more": {
-                    "d01": 47,
-                    "02": "",
-                    "03": "",
-                    "04": "",
-                    "05": ""
+                "usr1": {
+                    "username": "user1Usernm",
+                    "followers": 50,
+                    "followers_1day_change": 2,
+                    "followers_7day_change": 3,
+                    "followers_30day_change": 10,
+                    "following": 50,
+                    "following_1day_change": 2,
+                    "following_7day_change": 3,
+                    "following_30day_change": 10,
+                    "posts": 50,
+                    "posts_1day_change": 2,
+                    "posts_7day_change": 3,
+                    "posts_30day_change": 10
+                },
+                "usr2": {
+                    "username": "user2Usernm",
+                    "followers": 50,
+                    "followers_1day_change": 2,
+                    "followers_7day_change": 3,
+                    "followers_30day_change": 10,
+                    "following": 50,
+                    "following_1day_change": 2,
+                    "following_7day_change": 3,
+                    "following_30day_change": 10,
+                    "posts": 50,
+                    "posts_1day_change": 2,
+                    "posts_7day_change": 3,
+                    "posts_30day_change": 10
+                },
+                "usr3": {
+                    "username": "user3Usernm",
+                    "followers": 50,
+                    "followers_1day_change": 2,
+                    "followers_7day_change": 3,
+                    "followers_30day_change": 10,
+                    "following": 50,
+                    "following_1day_change": 2,
+                    "following_7day_change": 3,
+                    "following_30day_change": 10,
+                    "posts": 50,
+                    "posts_1day_change": 2,
+                    "posts_7day_change": 3,
+                    "posts_30day_change": 10
+                },
+                "usr4": {
+                    "username": "user4Usernm",
+                    "followers": 50,
+                    "followers_1day_change": 2,
+                    "followers_7day_change": 3,
+                    "followers_30day_change": 10,
+                    "following": 50,
+                    "following_1day_change": 2,
+                    "following_7day_change": 3,
+                    "following_30day_change": 10,
+                    "posts": 50,
+                    "posts_1day_change": 2,
+                    "posts_7day_change": 3,
+                    "posts_30day_change": 10
+                },
+                "usr5": {
+                    "username": "user5Usernm",
+                    "followers": 50,
+                    "followers_1day_change": 2,
+                    "followers_7day_change": 3,
+                    "followers_30day_change": 10,
+                    "following": 50,
+                    "following_1day_change": 2,
+                    "following_7day_change": 3,
+                    "following_30day_change": 10,
+                    "posts": 50,
+                    "posts_1day_change": 2,
+                    "posts_7day_change": 3,
+                    "posts_30day_change": 10
                 }
             }
         },
         {
             "type": "insta",
             "data": {
-                "i01": "Here's some INSTA data for you!",
-                "i02": "Here's some more!",
-                "t03": "",
-                "t04": "",
-                "t05": "",
-                "more": {
-                    "d01": 47,
-                    "02": "",
-                    "03": "",
-                    "04": "",
-                    "05": ""
+                "usr1": {
+                    "username": "user1Usernm",
+                    "followers": 50,
+                    "followers_1day_change": 2,
+                    "followers_7day_change": 3,
+                    "followers_30day_change": 10,
+                    "following": 50,
+                    "following_1day_change": 2,
+                    "following_7day_change": 3,
+                    "following_30day_change": 10,
+                    "posts": 50,
+                    "posts_1day_change": 2,
+                    "posts_7day_change": 3,
+                    "posts_30day_change": 10
+                },
+                "usr2": {
+                    "username": "user2Usernm",
+                    "followers": 50,
+                    "followers_1day_change": 2,
+                    "followers_7day_change": 3,
+                    "followers_30day_change": 10,
+                    "following": 50,
+                    "following_1day_change": 2,
+                    "following_7day_change": 3,
+                    "following_30day_change": 10,
+                    "posts": 50,
+                    "posts_1day_change": 2,
+                    "posts_7day_change": 3,
+                    "posts_30day_change": 10
+                },
+                "usr3": {
+                    "username": "user3Usernm",
+                    "followers": 50,
+                    "followers_1day_change": 2,
+                    "followers_7day_change": 3,
+                    "followers_30day_change": 10,
+                    "following": 50,
+                    "following_1day_change": 2,
+                    "following_7day_change": 3,
+                    "following_30day_change": 10,
+                    "posts": 50,
+                    "posts_1day_change": 2,
+                    "posts_7day_change": 3,
+                    "posts_30day_change": 10
+                },
+                "usr4": {
+                    "username": "user4Usernm",
+                    "followers": 50,
+                    "followers_1day_change": 2,
+                    "followers_7day_change": 3,
+                    "followers_30day_change": 10,
+                    "following": 50,
+                    "following_1day_change": 2,
+                    "following_7day_change": 3,
+                    "following_30day_change": 10,
+                    "posts": 50,
+                    "posts_1day_change": 2,
+                    "posts_7day_change": 3,
+                    "posts_30day_change": 10
+                },
+                "usr5": {
+                    "username": "user5Usernm",
+                    "followers": 50,
+                    "followers_1day_change": 2,
+                    "followers_7day_change": 3,
+                    "followers_30day_change": 10,
+                    "following": 50,
+                    "following_1day_change": 2,
+                    "following_7day_change": 3,
+                    "following_30day_change": 10,
+                    "posts": 50,
+                    "posts_1day_change": 2,
+                    "posts_7day_change": 3,
+                    "posts_30day_change": 10
                 }
             }
         },
         {
-            "type": "twitter",
+            "type": "news",
             "data": {
-                "t01": "Here's some data for you!",
-                "t02": "Here's some more!",
-                "t03": "",
-                "t04": "",
-                "t05": "",
-                "more": {
-                    "d01": 47,
-                    "02": "",
-                    "03": "",
-                    "04": "",
-                    "05": ""
-                }
-            }
-        },
-        {
-            "type": "twitter",
-            "data": {
-                "t01": "Here's some data for you!",
-                "t02": "Here's some more!",
-                "t03": "",
-                "t04": "",
-                "t05": "",
-                "more": {
-                    "d01": 47,
-                    "02": "",
-                    "03": "",
-                    "04": "",
-                    "05": ""
-                }
+                "newsTitle": "Top News Stories Related to 'politics'",
+                "newsAuthor": "Jack London",
+                "newsStory": "FORMER JAPANESE PRIME MINISTER SHOT. TOKYO, July 8 (Reuters) - Japanese former prime minister Shinzo Abe was taken to hospital on Friday after being shot from behind by what appeared to be a man with a shotgun while delivering a speech in the western city of Nara, public broadcaster NHK said.Abe, 67, appeared to be in a state of cardiac arrest, the network said and Kyodo news agency. Shots were heard and a white puff of smoke was seen as Abe made a campaign stump speech outside a train station, NHK said. An NHK reporter on the scene said they could hear two consecutive bangs during Abe's speech.The chief cabinet secretary will brief media at 0400 GMT. Abe served two terms as prime minister to become Japan's longest-serving premier before stepping down in 2020 citing ill health. But he has remained a dominant presence over the ruling Liberal Democratic party (LDP) party, controlling one of its major factions."
             }
         }
     ]
