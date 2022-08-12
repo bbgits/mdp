@@ -1,3 +1,10 @@
+/* 
+
+Primary React Onboarding Form with Stripe Connection
+
+*/
+
+
 import React, { useState, useEffect } from "react"
 import { Layout, Button } from 'antd'
 import { api } from '../utils/api';
@@ -19,6 +26,7 @@ const Step1 = (props) => {
                 type="firstName"
                 name="firstName"
                 placeholder="Martin"
+                defaultValue={userValues.firstName || ""}
                 onChange={(e) =>
                     setUserValues({ ...userValues, [e.target.name]: e.target.value }) // 3. Link input to SetUserValues
                 }
@@ -517,37 +525,25 @@ const Step4 = (props) => {
 
 };
 
-const Step5 = (props) => {
-
+const LgBlockForm = (props) => {
+    // can make this value twitter | insta | news
+    const [type, setType] = useState("Twitter")
+    console.log(type)
     const { reportValues, setReportValues } = props;
+
     return <div className="formStepHolder">
         <div id="stepperBoxDiv">
             <img src={require('../assets/formProgressBar5.png')}></img>
 
         </div>
-        <h2>Third custom block:</h2>
+        <h2>{props.title}</h2>
         <div>
-            <label htmlFor="reportLgDiv3Type">Select Large Div Type:</label>
-            <select className="dropdownSelector" name="reportLgDiv3Type" id="reportLgDiv3Type" onChange=
+            <label htmlFor={`${props.prefix}Type`}>Select Large Div Type:</label>
+            <select className="dropdownSelector" name={`${props.prefix}Type`}
+                id={`${props.prefix}Type`} onChange=
                 {(e) => {
                     setReportValues({ ...reportValues, [e.target.name]: e.target.value })
-                    console.log(e.target.value)
-                    if (e.target.value === "Twitter") {
-                        document.getElementById("LgDiv3Sub1Twitter").style.display = "flex"
-                        document.getElementById("LgDiv3Sub2Insta").style.display = "none"
-                        document.getElementById("LgDiv3Sub3News").style.display = "none"
-
-                    } else if (e.target.value === "Insta") {
-                        document.getElementById("LgDiv3Sub1Twitter").style.display = "none"
-                        document.getElementById("LgDiv3Sub2Insta").style.display = "flex"
-                        document.getElementById("LgDiv3Sub3News").style.display = "none"
-
-                    } else if (e.target.value === "News") {
-                        document.getElementById("LgDiv3Sub1Twitter").style.display = "none"
-                        document.getElementById("LgDiv3Sub2Insta").style.display = "none"
-                        document.getElementById("LgDiv3Sub3News").style.display = "flex"
-                    }
-
+                    setType(e.target.value)
                 }}>
                 <option value="Twitter">Twitter Summaries</option>
                 <option value="Insta">Insta Summaries</option>
@@ -557,140 +553,140 @@ const Step5 = (props) => {
         {/***********************************   Option 5A   ************************************** ******************************************************************************************/}
 
 
-        <div id="LgDiv3Sub1Twitter">
+        {type === 'Twitter' && <div id="LgDiv3Sub1Twitter">
             <h5>TWITTER: Enter up to 5 twitter handles below.  Do not include the @ symbol!  </h5>
-            <label htmlFor="reportLgDiv3Data1">Username 1:</label>
+            <label htmlFor={`${props.prefix}Data1`}>Username 1:</label>
             <input
-                type="reportLgDiv3Data1"
+                type={`${props.prefix}Data1`}
                 placeholder="BurnsUSA"
-                name="reportLgDiv3Data1"
+                name={`${props.prefix}Data1`}
                 onChange={(e) =>
                     setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                 }
             />
-            <label htmlFor="reportLgDiv3Data2">Username 2:</label>
+            <label htmlFor={`${props.prefix}Data2`}>Username 2:</label>
             <input
-                type="reportLgDiv3Data2"
+                type={`${props.prefix}Data2`}
                 placeholder="BurnsUSA2"
-                name="reportLgDiv3Data2"
+                name={`${props.prefix}Data2`}
                 onChange={(e) =>
                     setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                 }
             />
-            <label htmlFor="reportLgDiv3Data3">Username 3:</label>
+            <label htmlFor={`${props.prefix}Data3`}>Username 3:</label>
             <input
-                type="reportLgDiv3Data3"
+                type={`${props.prefix}Data3`}
                 placeholder="BurnsUSA3"
-                name="reportLgDiv3Data3"
+                name={`${props.prefix}Data3`}
                 onChange={(e) =>
                     setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                 }
             />
-            <label htmlFor="reportLgDiv3Data4">Username 4:</label>
+            <label htmlFor={`${props.prefix}Data4`}>Username 4:</label>
             <input
-                type="reportLgDiv3Data4"
+                type={`${props.prefix}Data4`}
                 placeholder="BurnsUSA4"
-                name="reportLgDiv3Data4"
+                name={`${props.prefix}Data4`}
                 onChange={(e) =>
                     setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                 }
             />
-            <label htmlFor="reportLgDiv3Data5">Username 5:</label>
+            <label htmlFor={`${props.prefix}Data5`}>Username 5:</label>
             <input
-                type="reportLgDiv3Data5"
+                type={`${props.prefix}Data5`}
                 placeholder="BurnsUSA5"
-                name="reportLgDiv3Data5"
+                name={`${props.prefix}Data5`}
                 onChange={(e) =>
                     setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                 }
             />
         </div>
+        }
         {/***********************************   Option 5B   ************************************** ******************************************************************************************/}
-        <div id="LgDiv3Sub2Insta">
+        {type === 'Insta' && <div>
             <h5>INSTAGRAM: Enter up to 5 instagram handles below.  Do not include the @ symbol!  </h5>
-            <label htmlFor="reportLgDiv3Data1">Username 1:</label>
+            <label htmlFor={`${props.prefix}Data1`}>Username 1:</label>
             <input
-                type="reportLgDiv3Data1"
+                type={`${props.prefix}Data1`}
                 placeholder="BurnsUSA"
-                name="reportLgDiv3Data1"
+                name={`${props.prefix}Data1`}
                 onChange={(e) =>
                     setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                 }
             />
-            <label htmlFor="reportLgDiv3Data2">Username 2:</label>
+            <label htmlFor={`${props.prefix}Data2`}>Username 2:</label>
             <input
-                type="reportLgDiv3Data2"
+                type={`${props.prefix}Data2`}
                 placeholder="BurnsUSA2"
-                name="reportLgDiv3Data2"
+                name={`${props.prefix}Data2`}
                 onChange={(e) =>
                     setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                 }
             />
-            <label htmlFor="reportLgDiv3Data3">Username 3:</label>
+            <label htmlFor={`${props.prefix}Data3`}>Username 3:</label>
             <input
-                type="reportLgDiv3Data3"
+                type={`${props.prefix}Data3`}
                 placeholder="BurnsUSA3"
-                name="reportLgDiv3Data3"
+                name={`${props.prefix}Data3`}
                 onChange={(e) =>
                     setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                 }
             />
-            <label htmlFor="reportLgDiv3Data4">Username 4:</label>
+            <label htmlFor={`${props.prefix}Data4`}>Username 4:</label>
             <input
-                type="reportLgDiv3Data4"
+                type={`${props.prefix}Data4`}
                 placeholder="BurnsUSA4"
-                name="reportLgDiv3Data4"
+                name={`${props.prefix}Data4`}
                 onChange={(e) =>
                     setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                 }
             />
-            <label htmlFor="reportLgDiv3Data5">Username 5:</label>
+            <label htmlFor={`${props.prefix}Data5`}>Username 5:</label>
             <input
-                type="reportLgDiv3Data5"
+                type={`${props.prefix}Data5`}
                 placeholder="BurnsUSA5"
-                name="reportLgDiv3Data5"
+                name={`${props.prefix}Data5`}
                 onChange={(e) =>
                     setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                 }
             />
-        </div>
+        </div>}
         {/***********************************   Option 5C   ************************************** ******************************************************************************************/}
-        <div id="LgDiv3Sub3News">
+        {type === 'News' && <div>
             <h4>NEWS: Enter three search terms below.  Each news tile returns one complete news story based on the search phrases you enter below. The terms should start with the most specific, and end with the most broad.  They do not need to be related, but you will get more consistent results if they are. If you want a fairly consistent return, we recommend providing three "nested" areas of interest.  For Example: "chicago alderman", "chicago politics", and "american politics" might be a good search and so might "College Hockey", "Hockey", "Sports".  Ultimately its Up to you!  </h4>
-            <label htmlFor="reportLgDiv3Data1">Narrowest Search Term:</label>
+            <label htmlFor={`${props.prefix}Data1`}>Narrowest Search Term:</label>
             <input
-                type="reportLgDiv3Data1"
+                type={`${props.prefix}Data1`}
                 placeholder="ex: Chicago Restaurant Openings"
-                name="reportLgDiv3Data1"
+                name={`${props.prefix}Data1`}
                 onChange={(e) =>
                     setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                 }
             />
-            <label htmlFor="reportLgDiv3Data2">More General Search Term:</label>
+            <label htmlFor={`${props.prefix}Data2`}>More General Search Term:</label>
             <input
-                type="reportLgDiv3Data2"
+                type={`${props.prefix}Data2`}
                 placeholder="ex: Restaurants"
-                name="reportLgDiv3Data2"
+                name={`${props.prefix}Data2`}
                 onChange={(e) =>
                     setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                 }
             />
-            <label htmlFor="reportLgDiv3Data3">Most General Search Term</label>
+            <label htmlFor={`${props.prefix}Data3`}>Most General Search Term</label>
             <input
-                type="reportLgDiv3Data3"
+                type={`${props.prefix}Data3`}
                 placeholder="ex: Business"
-                name="reportLgDiv3Data3"
+                name={`${props.prefix}Data3`}
                 onChange={(e) =>
                     setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                 }
             />
-        </div>
+        </div>}
         <div className="buttonSpacer"></div>
         {/* LOGO HERE */}
         <div id="formFooterDiv"><img src="http://www.b2results.com/wp-includes/images/mydailypdf/main-logo-white.png" alt="logo" id="formFooterLogo"></img>
         </div>
     </div>
-
 
 }
 
@@ -804,18 +800,14 @@ export default function App() {
         setFormStep(formStep - 1)
     }
 
-
-
-
-    console.log('current form', formStep)
-
     return <Content>
         <form onSubmit={(e) => handleSubmit(e)}>
             {formStep === 1 && <Step1 userValues={userValues} setUserValues={setUserValues} />}
             {formStep === 2 && <Step2 reportValues={reportValues} setReportValues={setReportValues} />}
-            {formStep === 3 && <Step3 reportValues={reportValues} setReportValues={setReportValues} />}
-            {formStep === 4 && <Step4 reportValues={reportValues} setReportValues={setReportValues} />}
-            {formStep === 5 && <Step5 reportValues={reportValues} setReportValues={setReportValues} />}
+
+            {formStep === 3 && <LgBlockForm prefix='reportLargeDiv1' title="First Large Block:" reportValues={reportValues} setReportValues={setReportValues} />}
+            {formStep === 4 && <LgBlockForm prefix='reportLargeDiv2' title="Second Large Block:" reportValues={reportValues} setReportValues={setReportValues} />}
+            {formStep === 5 && <LgBlockForm prefix='reportLargeDiv3' title="Third Large Block:" reportValues={reportValues} setReportValues={setReportValues} />}
             {formStep === 6 && <Step6 userValues={userValues} setUserValues={setUserValues} reportValues={reportValues} setReportValues={setReportValues} />}
 
             {formStep !== 1 && <Button onClick={setPrevStep}>previous</Button>}
