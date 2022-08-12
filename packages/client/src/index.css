@@ -154,7 +154,11 @@ span a {
 }
 
 .formStepHolder {
-    width: 350px;
+    width: 450px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.644);
 }
 
 .dropdownSelector {

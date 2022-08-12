@@ -1,19 +1,17 @@
 /* 
 
-Main Server for App, listens on 4000, connects to:
-> react app (3000), database (mongo cloud), payments (stripe)
+Main landing page for new users
 
 */
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Layout } from 'antd';
-import { Menu } from 'antd';
 import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
-import { Button, Descriptions, PageHeader } from 'antd';
+import { Descriptions, PageHeader, Menu, Layout, Button } from 'antd';
 import { ToastContainer, toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
+import RegisterForm from '../components/RegisterForm';
+import { api } from '../utils/api';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -37,150 +35,153 @@ function Register() {
     const [reportValues, setReportValues] = useState({ reportName: "", reportType: "BASIC", reportZip: "", reportQuote1Sports: "Yes", reportQuote2Politics: "Yes", reportQuote3Art: "Yes", reportQuote4Love: "Yes", reportQuote5Business: true, reportLgDiv1Type: "twitterDiv", reportLgDiv1Data1: "", reportLgDiv1Data2: "", reportLgDiv1Data3: "", reportLgDiv1Data4: "", reportLgDiv1Data5: "", reportLgDiv2Type: "twitterDiv", reportLgDiv2Data1: "", reportLgDiv2Data2: "", reportLgDiv2Data3: "", reportLgDiv2Data4: "", reportLgDiv2Data5: "", reportLgDiv3Type: "twitterDiv", reportLgDiv3Data1: "", reportLgDiv3Data2: "", reportLgDiv3Data3: "", reportLgDiv3Data4: "", reportLgDiv3Data5: "" });
     const [stepValue, setStepValue] = useState({ stepValue: 1 });
 
-    const handleNext = async (event) => { // Next and Previous buttons doing a LOT of work, logic to show/hide each step.
-        event.preventDefault()
-        stepValue.stepValue = stepValue.stepValue + 1
-        console.log(stepValue.stepValue)
-        if (stepValue.stepValue === 1) {
-            document.getElementById("headerMainDiv").style.display = "flex"
-            document.getElementById("step1div").style.display = "flex"
-            document.getElementById("step2div").style.display = "none"
-            document.getElementById("step3div").style.display = "none"
-            document.getElementById("step4div").style.display = "none"
-            document.getElementById("step5div").style.display = "none"
-            document.getElementById("step6div").style.display = "none"
-            document.getElementById("finalPrevButton").style.display = "none"
-            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
-        } else if (stepValue.stepValue === 2) {
-            document.getElementById("headerMainDiv").style.display = "none"
-            document.getElementById("step1div").style.display = "none"
-            document.getElementById("step2div").style.display = "flex"
-            document.getElementById("step3div").style.display = "none"
-            document.getElementById("step4div").style.display = "none"
-            document.getElementById("step5div").style.display = "none"
-            document.getElementById("step6div").style.display = "none"
-            document.getElementById("finalPrevButton").style.display = "none"
-            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
-        } else if (stepValue.stepValue === 3) {
-            document.getElementById("headerMainDiv").style.display = "none"
-            document.getElementById("step1div").style.display = "none"
-            document.getElementById("step2div").style.display = "none"
-            document.getElementById("step3div").style.display = "flex"
-            document.getElementById("step4div").style.display = "none"
-            document.getElementById("step5div").style.display = "none"
-            document.getElementById("step6div").style.display = "none"
-            document.getElementById("finalPrevButton").style.display = "none"
-            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
-        } else if (stepValue.stepValue === 4) {
-            document.getElementById("headerMainDiv").style.display = "none"
-            document.getElementById("step1div").style.display = "none"
-            document.getElementById("step2div").style.display = "none"
-            document.getElementById("step3div").style.display = "none"
-            document.getElementById("step4div").style.display = "flex"
-            document.getElementById("step5div").style.display = "none"
-            document.getElementById("step6div").style.display = "none"
-            document.getElementById("finalPrevButton").style.display = "none"
-            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
-        } else if (stepValue.stepValue === 5) {
-            document.getElementById("headerMainDiv").style.display = "none"
-            document.getElementById("step1div").style.display = "none"
-            document.getElementById("step2div").style.display = "none"
-            document.getElementById("step3div").style.display = "none"
-            document.getElementById("step4div").style.display = "none"
-            document.getElementById("step5div").style.display = "flex"
-            document.getElementById("step6div").style.display = "none"
-            document.getElementById("finalPrevButton").style.display = "none"
-            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
-        } else if (stepValue.stepValue === 6) {
-            document.getElementById("headerMainDiv").style.display = "none"
-            document.getElementById("step1div").style.display = "none"
-            document.getElementById("step2div").style.display = "none"
-            document.getElementById("step3div").style.display = "none"
-            document.getElementById("step4div").style.display = "none"
-            document.getElementById("step5div").style.display = "none"
-            document.getElementById("step6div").style.display = "flex"
-            document.getElementById("finalPrevButton").style.display = "flex"
-            document.getElementById("stripeCheckoutButtonsDiv").style.display = "flex"
-        }
-    };
-
-    const handlePrev = async (event) => {
-        event.preventDefault()
-        stepValue.stepValue = stepValue.stepValue - 1
-        console.log(stepValue.stepValue)
-        if (stepValue.stepValue === 1) {
-            document.getElementById("headerMainDiv").style.display = "flex"
-            document.getElementById("step1div").style.display = "flex"
-            document.getElementById("step2div").style.display = "none"
-            document.getElementById("step3div").style.display = "none"
-            document.getElementById("step4div").style.display = "none"
-            document.getElementById("step5div").style.display = "none"
-            document.getElementById("step6div").style.display = "none"
-            document.getElementById("finalPrevButton").style.display = "none"
-            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
-        } else if (stepValue.stepValue === 2) {
-            document.getElementById("headerMainDiv").style.display = "none"
-            document.getElementById("step1div").style.display = "none"
-            document.getElementById("step2div").style.display = "flex"
-            document.getElementById("step3div").style.display = "none"
-            document.getElementById("step4div").style.display = "none"
-            document.getElementById("step5div").style.display = "none"
-            document.getElementById("step6div").style.display = "none"
-            document.getElementById("finalPrevButton").style.display = "none"
-            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
-        } else if (stepValue.stepValue === 3) {
-            document.getElementById("headerMainDiv").style.display = "none"
-            document.getElementById("step1div").style.display = "none"
-            document.getElementById("step2div").style.display = "none"
-            document.getElementById("step3div").style.display = "flex"
-            document.getElementById("step4div").style.display = "none"
-            document.getElementById("step5div").style.display = "none"
-            document.getElementById("step6div").style.display = "none"
-            document.getElementById("finalPrevButton").style.display = "none"
-            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
-        } else if (stepValue.stepValue === 4) {
-            document.getElementById("headerMainDiv").style.display = "none"
-            document.getElementById("step1div").style.display = "none"
-            document.getElementById("step2div").style.display = "none"
-            document.getElementById("step3div").style.display = "none"
-            document.getElementById("step4div").style.display = "flex"
-            document.getElementById("step5div").style.display = "none"
-            document.getElementById("step6div").style.display = "none"
-            document.getElementById("finalPrevButton").style.display = "none"
-            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
-        } else if (stepValue.stepValue === 5) {
-            document.getElementById("headerMainDiv").style.display = "none"
-            document.getElementById("step1div").style.display = "none"
-            document.getElementById("step2div").style.display = "none"
-            document.getElementById("step3div").style.display = "none"
-            document.getElementById("step4div").style.display = "none"
-            document.getElementById("step5div").style.display = "flex"
-            document.getElementById("step6div").style.display = "none"
-            document.getElementById("finalPrevButton").style.display = "none"
-            document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
-        } else if (stepValue.stepValue === 6) {
-            document.getElementById("headerMainDiv").style.display = "none"
-            document.getElementById("step1div").style.display = "none"
-            document.getElementById("step2div").style.display = "none"
-            document.getElementById("step3div").style.display = "none"
-            document.getElementById("step4div").style.display = "none"
-            document.getElementById("step5div").style.display = "none"
-            document.getElementById("step6div").style.display = "flex"
-            document.getElementById("finalPrevButton").style.display = "flex"
-            document.getElementById("stripeCheckoutButtonsDiv").style.display = "flex"
-        }
-    };
-
-    const handleStripe = async (event) => { console.log(event) }
 
 
-    const udpateQuote5ToggleValue = async (event) => {
-        if (reportValues.reportQuote5Business == true) {
-            reportValues.reportQuote5Business = false
-        } else if (reportValues.reportQuote5Business == false) {
-            reportValues.reportQuote5Business = true
-        }
-    }
+
+    // const handleNext = async (event) => { // Next and Previous buttons doing a LOT of work, logic to show/hide each step.
+    //     event.preventDefault()
+    //     stepValue.stepValue = stepValue.stepValue + 1
+    //     console.log(stepValue.stepValue)
+    //     if (stepValue.stepValue === 1) {
+    //         document.getElementById("headerMainDiv").style.display = "flex"
+    //         document.getElementById("step1div").style.display = "flex"
+    //         document.getElementById("step2div").style.display = "none"
+    //         document.getElementById("step3div").style.display = "none"
+    //         document.getElementById("step4div").style.display = "none"
+    //         document.getElementById("step5div").style.display = "none"
+    //         document.getElementById("step6div").style.display = "none"
+    //         document.getElementById("finalPrevButton").style.display = "none"
+    //         document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
+    //     } else if (stepValue.stepValue === 2) {
+    //         document.getElementById("headerMainDiv").style.display = "none"
+    //         document.getElementById("step1div").style.display = "none"
+    //         document.getElementById("step2div").style.display = "flex"
+    //         document.getElementById("step3div").style.display = "none"
+    //         document.getElementById("step4div").style.display = "none"
+    //         document.getElementById("step5div").style.display = "none"
+    //         document.getElementById("step6div").style.display = "none"
+    //         document.getElementById("finalPrevButton").style.display = "none"
+    //         document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
+    //     } else if (stepValue.stepValue === 3) {
+    //         document.getElementById("headerMainDiv").style.display = "none"
+    //         document.getElementById("step1div").style.display = "none"
+    //         document.getElementById("step2div").style.display = "none"
+    //         document.getElementById("step3div").style.display = "flex"
+    //         document.getElementById("step4div").style.display = "none"
+    //         document.getElementById("step5div").style.display = "none"
+    //         document.getElementById("step6div").style.display = "none"
+    //         document.getElementById("finalPrevButton").style.display = "none"
+    //         document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
+    //     } else if (stepValue.stepValue === 4) {
+    //         document.getElementById("headerMainDiv").style.display = "none"
+    //         document.getElementById("step1div").style.display = "none"
+    //         document.getElementById("step2div").style.display = "none"
+    //         document.getElementById("step3div").style.display = "none"
+    //         document.getElementById("step4div").style.display = "flex"
+    //         document.getElementById("step5div").style.display = "none"
+    //         document.getElementById("step6div").style.display = "none"
+    //         document.getElementById("finalPrevButton").style.display = "none"
+    //         document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
+    //     } else if (stepValue.stepValue === 5) {
+    //         document.getElementById("headerMainDiv").style.display = "none"
+    //         document.getElementById("step1div").style.display = "none"
+    //         document.getElementById("step2div").style.display = "none"
+    //         document.getElementById("step3div").style.display = "none"
+    //         document.getElementById("step4div").style.display = "none"
+    //         document.getElementById("step5div").style.display = "flex"
+    //         document.getElementById("step6div").style.display = "none"
+    //         document.getElementById("finalPrevButton").style.display = "none"
+    //         document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
+    //     } else if (stepValue.stepValue === 6) {
+    //         document.getElementById("headerMainDiv").style.display = "none"
+    //         document.getElementById("step1div").style.display = "none"
+    //         document.getElementById("step2div").style.display = "none"
+    //         document.getElementById("step3div").style.display = "none"
+    //         document.getElementById("step4div").style.display = "none"
+    //         document.getElementById("step5div").style.display = "none"
+    //         document.getElementById("step6div").style.display = "flex"
+    //         document.getElementById("finalPrevButton").style.display = "flex"
+    //         document.getElementById("stripeCheckoutButtonsDiv").style.display = "flex"
+    //     }
+    // };
+
+    // const handlePrev = async (event) => {
+    //     event.preventDefault()
+    //     stepValue.stepValue = stepValue.stepValue - 1
+    //     console.log(stepValue.stepValue)
+    //     if (stepValue.stepValue === 1) {
+    //         document.getElementById("headerMainDiv").style.display = "flex"
+    //         document.getElementById("step1div").style.display = "flex"
+    //         document.getElementById("step2div").style.display = "none"
+    //         document.getElementById("step3div").style.display = "none"
+    //         document.getElementById("step4div").style.display = "none"
+    //         document.getElementById("step5div").style.display = "none"
+    //         document.getElementById("step6div").style.display = "none"
+    //         document.getElementById("finalPrevButton").style.display = "none"
+    //         document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
+    //     } else if (stepValue.stepValue === 2) {
+    //         document.getElementById("headerMainDiv").style.display = "none"
+    //         document.getElementById("step1div").style.display = "none"
+    //         document.getElementById("step2div").style.display = "flex"
+    //         document.getElementById("step3div").style.display = "none"
+    //         document.getElementById("step4div").style.display = "none"
+    //         document.getElementById("step5div").style.display = "none"
+    //         document.getElementById("step6div").style.display = "none"
+    //         document.getElementById("finalPrevButton").style.display = "none"
+    //         document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
+    //     } else if (stepValue.stepValue === 3) {
+    //         document.getElementById("headerMainDiv").style.display = "none"
+    //         document.getElementById("step1div").style.display = "none"
+    //         document.getElementById("step2div").style.display = "none"
+    //         document.getElementById("step3div").style.display = "flex"
+    //         document.getElementById("step4div").style.display = "none"
+    //         document.getElementById("step5div").style.display = "none"
+    //         document.getElementById("step6div").style.display = "none"
+    //         document.getElementById("finalPrevButton").style.display = "none"
+    //         document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
+    //     } else if (stepValue.stepValue === 4) {
+    //         document.getElementById("headerMainDiv").style.display = "none"
+    //         document.getElementById("step1div").style.display = "none"
+    //         document.getElementById("step2div").style.display = "none"
+    //         document.getElementById("step3div").style.display = "none"
+    //         document.getElementById("step4div").style.display = "flex"
+    //         document.getElementById("step5div").style.display = "none"
+    //         document.getElementById("step6div").style.display = "none"
+    //         document.getElementById("finalPrevButton").style.display = "none"
+    //         document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
+    //     } else if (stepValue.stepValue === 5) {
+    //         document.getElementById("headerMainDiv").style.display = "none"
+    //         document.getElementById("step1div").style.display = "none"
+    //         document.getElementById("step2div").style.display = "none"
+    //         document.getElementById("step3div").style.display = "none"
+    //         document.getElementById("step4div").style.display = "none"
+    //         document.getElementById("step5div").style.display = "flex"
+    //         document.getElementById("step6div").style.display = "none"
+    //         document.getElementById("finalPrevButton").style.display = "none"
+    //         document.getElementById("stripeCheckoutButtonsDiv").style.display = "none"
+    //     } else if (stepValue.stepValue === 6) {
+    //         document.getElementById("headerMainDiv").style.display = "none"
+    //         document.getElementById("step1div").style.display = "none"
+    //         document.getElementById("step2div").style.display = "none"
+    //         document.getElementById("step3div").style.display = "none"
+    //         document.getElementById("step4div").style.display = "none"
+    //         document.getElementById("step5div").style.display = "none"
+    //         document.getElementById("step6div").style.display = "flex"
+    //         document.getElementById("finalPrevButton").style.display = "flex"
+    //         document.getElementById("stripeCheckoutButtonsDiv").style.display = "flex"
+    //     }
+    // };
+
+    // const handleStripe = async (event) => { console.log(event) }
+
+
+    // const udpateQuote5ToggleValue = async (event) => {
+    //     if (reportValues.reportQuote5Business == true) {
+    //         reportValues.reportQuote5Business = false
+    //     } else if (reportValues.reportQuote5Business == false) {
+    //         reportValues.reportQuote5Business = true
+    //     }
+    // }
 
 
 
@@ -193,12 +194,12 @@ function Register() {
     const handleSubmit = async (event) => { // LOGIC ON SUBMIT...
         event.preventDefault()
         try {
-            const { mongoData } = await axios.post(  // POST THE "data" 
-                "http://localhost:4000/register",
+            const { mongoData } = await api.post(  // POST THE "data" 
+                "/register",
                 {
                     ...userValues, ...reportValues,
                 },
-                { withCredentials: true });
+            );
 
             document.getElementById("headerMainDiv").style.display = "none"
             document.getElementById("step1div").style.display = "none"
@@ -241,6 +242,7 @@ function Register() {
                     </div></div>
             </Header>
             <Content>
+                <RegisterForm />
 
 
                 <div className="container" id="mainContainer">
@@ -248,7 +250,7 @@ function Register() {
                     <form onSubmit={(e) => handleSubmit(e)}>
 
                         {/* *****************************************************************************************************************************      STEP 1    ************************************** ************************************************************************************************ */}
-                        <div className="formStepHolder" id="step1div">
+                        {/* <div className="formStepHolder" id="step1div">
                             <div id="stepperBoxDiv">
                                 <img src={require('../assets/formProgressBar1.png')}></img>
 
@@ -303,9 +305,9 @@ function Register() {
                             <div className="buttonHolderDiv">
                                 <button className="nextButton" onClick={handleNext}>Next! &#9658;</button>
                             </div>
-                        </div >
+                        </div > */}
                         {/* *****************************************************************************************************************************      STEP 2    ************************************** ************************************************************************************************ */}
-                        <div className="formStepHolder" id="step2div">
+                        {/* <div className="formStepHolder" id="step2div">
                             <div id="stepperBoxDiv">
                                 <img src={require('../assets/formProgressBar2.png')}></img>
 
@@ -323,7 +325,7 @@ function Register() {
                                 />
                             </div>
                             <div>
-                                <label for="reportType">Select Report Type:</label>
+                                <label htmlFor="reportType">Select Report Type:</label>
                                 <select className="dropdownSelector" name="reportType" onChange={(e) =>
                                     setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                                 } id="reportType">
@@ -358,14 +360,14 @@ function Register() {
                                             }
                                             id="quote_sports"
                                             checked />
-                                        <label for="quote_sports" className="checkOptionLabel">Sports</label>
+                                        <label htmlFor="quote_sports" className="checkOptionLabel">Sports</label>
                                     </li>
                                     <li>
 
                                         <input type="checkbox" className="checkInputBox" name="reportQuote2Politics" onChange={(e) =>
                                             setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                                         } id="quote_politics" checked />
-                                        <label for="quote_politics" className="checkOptionLabel" >Politics</label>
+                                        <label htmlFor="quote_politics" className="checkOptionLabel" >Politics</label>
 
                                     </li>
                                     <li>
@@ -373,14 +375,14 @@ function Register() {
                                         <input type="checkbox" className="checkInputBox" name="reportQuote3Art" onChange={(e) =>
                                             setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                                         } id="quote_art" checked />
-                                        <label for="quote_art" className="checkOptionLabel" >Art</label>
+                                        <label htmlFor="quote_art" className="checkOptionLabel" >Art</label>
                                     </li>
                                     <li>
 
                                         <input type="checkbox" className="checkInputBox" name="reportQuote4Love" onChange={(e) =>
                                             setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                                         } id="quote_love" checked />
-                                        <label for="quote_love" className="checkOptionLabel" >Love</label>
+                                        <label htmlFor="quote_love" className="checkOptionLabel" >Love</label>
                                     </li>
 
                                     <li>
@@ -398,7 +400,7 @@ function Register() {
                                             setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                                         }
                                         } id="quote_business" />
-                                        <label for="quote_business" className="checkOptionLabel" >Business</label>
+                                        <label htmlFor="quote_business" className="checkOptionLabel" >Business</label>
                                     </li>
                                     <li>
 
@@ -421,7 +423,7 @@ function Register() {
 
                             </div></div>
                         {/* ******************************************************************************************     ***********************************      STEP 3    ************************************** ************************************************************************************************ */}
-                        <div className="formStepHolder" id="step3div">
+                        {/* <div className="formStepHolder" id="step3div">
                             <div id="stepperBoxDiv">
                                 <img src={require('../assets/formProgressBar3.png')}></img>
 
@@ -429,7 +431,7 @@ function Register() {
                             <h2>First custom block:</h2>
 
                             <div>
-                                <label for="reportLgDiv1Type">Select Large Div Type:</label>
+                                <label htmlFor="reportLgDiv1Type">Select Large Div Type:</label>
                                 <select className="dropdownSelector" name="reportLgDiv1Type" id="reportLgDiv1Type" onChange=
                                     {(e) => {
                                         setReportValues({ ...reportValues, [e.target.name]: e.target.value })
@@ -455,9 +457,9 @@ function Register() {
                                     <option value="Insta">Insta Summaries</option>
                                     <option value="News">News Items</option>
                                 </select>
-                            </div>
-                            {/***********************************   Option 3A   ************************************** ******************************************************************************************/}
-                            <div id="LgDiv1Sub1Twitter">
+                            </div> */}
+                        {/***********************************   Option 3A   ************************************** ******************************************************************************************/}
+                        {/* <div id="LgDiv1Sub1Twitter">
                                 <h5>TWITTER: Enter up to 5 twitter handles below.  Do not include the @ symbol!  </h5>
                                 <label htmlFor="reportLgDiv1Data1">Username 1:</label>
                                 <input
@@ -504,9 +506,9 @@ function Register() {
                                         setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                                     }
                                 />
-                            </div>
-                            {/***********************************   Option 3B   ************************************** ******************************************************************************************/}
-                            <div id="LgDiv1Sub2Insta">
+                            </div> */}
+                        {/***********************************   Option 3B   ************************************** ******************************************************************************************/}
+                        {/* <div id="LgDiv1Sub2Insta">
                                 <h5>INSTAGRAM: Enter up to 5 instagram handles below.  Do not include the @ symbol!  </h5>
                                 <label htmlFor="reportLgDiv1Data1">Username 1:</label>
                                 <input
@@ -553,9 +555,9 @@ function Register() {
                                         setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                                     }
                                 />
-                            </div>
-                            {/***********************************   Option 3C   ************************************** ******************************************************************************************/}
-                            <div id="LgDiv1Sub3News">
+                            </div> */}
+                        {/***********************************   Option 3C   ************************************** ******************************************************************************************/}
+                        {/* <div id="LgDiv1Sub3News">
                                 <h4>NEWS: Enter three search terms below.  Each news tile returns one complete news story based on the search phrases you enter below. The terms should start with the most specific, and end with the most broad.  They do not need to be related, but you will get more consistent results if they are. If you want a fairly consistent return, we recommend providing three "nested" areas of interest.  For Example: "chicago alderman", "chicago politics", and "american politics" might be a good search and so might "College Hockey", "Hockey", "Sports".  Ultimately its Up to you!  </h4>
                                 <label htmlFor="reportLgDiv1Data1">Narrowest Search Term:</label>
                                 <input
@@ -588,7 +590,7 @@ function Register() {
                             <div className="buttonSpacer"></div>
                             <div className="buttonHolderDiv">
                                 <button className="prevButton" onClick={handlePrev}>&#9668; Prev</button>
-                                <button className="nextButton" onClick={handleNext}>Next &#9658;</button> </div></div>
+                                <button className="nextButton" onClick={handleNext}>Next &#9658;</button> </div></div> */}
 
 
 
@@ -597,14 +599,14 @@ function Register() {
 
 
 
-                        <div className="formStepHolder" id="step4div">
+                        {/* <div className="formStepHolder" id="step4div">
                             <div id="stepperBoxDiv">
                                 <img src={require('../assets/formProgressBar4.png')}></img>
 
                             </div>
                             <h2>Second custom block:</h2>
                             <div>
-                                <label for="reportLgDiv2Type">Select Large Div Type:</label>
+                                <label htmlFor="reportLgDiv2Type">Select Large Div Type:</label>
                                 <select className="dropdownSelector" name="reportLgDiv2Type" id="reportLgDiv2Type" onChange=
                                     {(e) => {
                                         setReportValues({ ...reportValues, [e.target.name]: e.target.value })
@@ -630,10 +632,10 @@ function Register() {
                                     <option value="instaDiv">Insta Summaries</option>
                                     <option value="newsDiv">News Items</option>
                                 </select>
-                            </div>
-                            {/***********************************   Option 4A   ************************************** ******************************************************************************************/}
+                            </div> */}
+                        {/***********************************   Option 4A   ************************************** ******************************************************************************************/}
 
-                            <div id="LgDiv2Sub1Twitter">
+                        {/* <div id="LgDiv2Sub1Twitter">
                                 <h5>TWITTER: Enter up to 5 twitter handles below.  Do not include the @ symbol!  </h5>
                                 <label htmlFor="reportLgDiv2Data1">Username 1:</label>
                                 <input
@@ -680,9 +682,9 @@ function Register() {
                                         setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                                     }
                                 />
-                            </div>
-                            {/***********************************   Option 4b   ************************************** ******************************************************************************************/}
-                            <div id="LgDiv2Sub2Insta">
+                            </div> */}
+                        {/***********************************   Option 4b   ************************************** ******************************************************************************************/}
+                        {/* <div id="LgDiv2Sub2Insta">
                                 <h5>INSTAGRAM: Enter up to 5 instagram handles below.  Do not include the @ symbol!  </h5>
                                 <label htmlFor="reportLgDiv2Data1">Username 1:</label>
                                 <input
@@ -729,9 +731,9 @@ function Register() {
                                         setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                                     }
                                 />
-                            </div>
-                            {/***********************************   Option 4C   ************************************** ******************************************************************************************/}
-                            <div id="LgDiv2Sub3News">
+                            </div> */}
+                        {/***********************************   Option 4C   ************************************** ******************************************************************************************/}
+                        {/* <div id="LgDiv2Sub3News">
                                 <h4>NEWS: Enter three search terms below.  Each news tile returns one complete news story based on the search phrases you enter below. The terms should start with the most specific, and end with the most broad.  They do not need to be related, but you will get more consistent results if they are. If you want a fairly consistent return, we recommend providing three "nested" areas of interest.  For Example: "chicago alderman", "chicago politics", and "american politics" might be a good search and so might "College Hockey", "Hockey", "Sports".  Ultimately its Up to you!  </h4>
                                 <label htmlFor="reportLgDiv1Data1">Narrowest Search Term:</label>
                                 <input
@@ -765,7 +767,7 @@ function Register() {
                             <div className="buttonHolderDiv">
                                 <button className="prevButton" onClick={handlePrev}> &#9668; Prev</button>
                                 <button className="nextButton" onClick={handleNext}>Next &#9658;</button> </div>
-                        </div>
+                        </div> */}
 
 
 
@@ -774,14 +776,14 @@ function Register() {
 
 
 
-                        <div className="formStepHolder" id="step5div">
+                        {/* <div className="formStepHolder" id="step5div">
                             <div id="stepperBoxDiv">
                                 <img src={require('../assets/formProgressBar5.png')}></img>
 
                             </div>
                             <h2>Third custom block:</h2>
                             <div>
-                                <label for="reportLgDiv3Type">Select Large Div Type:</label>
+                                <label htmlFor="reportLgDiv3Type">Select Large Div Type:</label>
                                 <select className="dropdownSelector" name="reportLgDiv3Type" id="reportLgDiv3Type" onChange=
                                     {(e) => {
                                         setReportValues({ ...reportValues, [e.target.name]: e.target.value })
@@ -807,11 +809,11 @@ function Register() {
                                     <option value="Insta">Insta Summaries</option>
                                     <option value="News">News Items</option>
                                 </select>
-                            </div>
-                            {/***********************************   Option 5A   ************************************** ******************************************************************************************/}
+                            </div> */}
+                        {/***********************************   Option 5A   ************************************** ******************************************************************************************/}
 
 
-                            <div id="LgDiv3Sub1Twitter">
+                        {/* <div id="LgDiv3Sub1Twitter">
                                 <h5>TWITTER: Enter up to 5 twitter handles below.  Do not include the @ symbol!  </h5>
                                 <label htmlFor="reportLgDiv3Data1">Username 1:</label>
                                 <input
@@ -858,9 +860,9 @@ function Register() {
                                         setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                                     }
                                 />
-                            </div>
-                            {/***********************************   Option 5B   ************************************** ******************************************************************************************/}
-                            <div id="LgDiv3Sub2Insta">
+                            </div> */}
+                        {/***********************************   Option 5B   ************************************** ******************************************************************************************/}
+                        {/* <div id="LgDiv3Sub2Insta">
                                 <h5>INSTAGRAM: Enter up to 5 instagram handles below.  Do not include the @ symbol!  </h5>
                                 <label htmlFor="reportLgDiv3Data1">Username 1:</label>
                                 <input
@@ -907,9 +909,9 @@ function Register() {
                                         setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                                     }
                                 />
-                            </div>
-                            {/***********************************   Option 5C   ************************************** ******************************************************************************************/}
-                            <div id="LgDiv3Sub3News">
+                            </div> */}
+                        {/***********************************   Option 5C   ************************************** ******************************************************************************************/}
+                        {/* <div id="LgDiv3Sub3News">
                                 <h4>NEWS: Enter three search terms below.  Each news tile returns one complete news story based on the search phrases you enter below. The terms should start with the most specific, and end with the most broad.  They do not need to be related, but you will get more consistent results if they are. If you want a fairly consistent return, we recommend providing three "nested" areas of interest.  For Example: "chicago alderman", "chicago politics", and "american politics" might be a good search and so might "College Hockey", "Hockey", "Sports".  Ultimately its Up to you!  </h4>
                                 <label htmlFor="reportLgDiv3Data1">Narrowest Search Term:</label>
                                 <input
@@ -944,11 +946,10 @@ function Register() {
 
                                 <button className="prevButton" onClick={handlePrev}>&#9668; Prev</button>
                                 <button className="nextButton" onClick={handleSubmit}>Next &#9658;</button>
-                                <div class="buttonHolderDiv">
+                                <div className="buttonHolderDiv">
                                     {/* <button type="submit" className="submitButton">Monthly: $4.99</button>
                                     <button type="submit" className="submitButton">Annually: $39.99</button> */}
-                                </div></div></div>
-
+                        {/* </div></div></div> */}
 
 
 
@@ -964,9 +965,9 @@ function Register() {
                             </div>
                             <h2>Almost there!</h2>
                             <div id="pdfPreviewHolderDiv">
-                                <h4>Look good?</h4>
+                                {/* <h4>Look good?</h4> */}
 
-                                <div id="pdfPreviewDiv">
+                                {/* <div id="pdfPreviewDiv">
                                     <div>
                                         <p className="pdfPreviewKey" styles="text-align: center"><b>{reportValues.reportName}</b></p></div>
                                     <p className="pdfPreviewKey"><b>Zip Code:</b> {reportValues.reportZip}</p>
@@ -988,15 +989,15 @@ function Register() {
                                 <p></p>
                             </div>
                             <div name="paymentCalcDiv">
-                                <label htmlFor="paymentPromo">Promo Code:</label>
-                                <input
+                                <label htmlFor="paymentPromo">Promo Code:</label> */}
+                                {/* <input
                                     type="paymentPromo"
                                     name="paymentPromo"
                                     placeholder="Martin"
                                     onChange={(e) =>
                                         setUserValues({ ...userValues, [e.target.name]: e.target.value }) // 3. Link input to SetUserValues
                                     }
-                                />
+                                /> */}
                             </div>
                             <div id="buttonSpacer"></div>
 
@@ -1031,9 +1032,9 @@ function Register() {
                         <div id="formFooterDiv"><img src="http://www.b2results.com/wp-includes/images/mydailypdf/main-logo-white.png" alt="logo" id="formFooterLogo"></img></div>
 
                         {/* PREVIOUS BUTTON */}
-                        <div class="buttonHolderDiv">
+                        {/* <div className="buttonHolderDiv">
                             <button className="prevButton" id="finalPrevButton" onClick={handlePrev} >&#9668; Prev</button>
-                        </div>
+                        </div> */}
 
                     </form >
 
@@ -1059,5 +1060,62 @@ function Register() {
 
     );
 }
+
+// const Step1 = (props) => {
+//     const { userValues, setUserValues } = props;
+//     return <div>
+//         <label htmlFor="email">Email:</label>
+//         <input
+//             type="email"
+//             name="email"
+//             placeholder="alex@aol.com"
+//             onChange={(e) =>
+//                 setUserValues({ ...userValues, [e.target.name]: e.target.value }) // 3. Link input to SetUserValues
+//             }
+//         />
+//     </div>
+
+// }
+
+// const Step2 = () => {
+//     return <div>
+//         <label htmlFor="email">Step 2 Label:</label>
+//         <input type="text" />
+//     </div>
+// }
+
+// const NewForm = () => {
+//     const [formStep, setFormStep] = useState(1)
+//     const setNextStep = () => {
+//         if (formStep === 4) {
+//             // do the magic
+//         } else {
+//             setFormStep(formStep + 1)
+//         }
+//     }
+
+//     const setPrevStep = () => {
+//         setFormStep(formStep - 1)
+//     }
+
+//     const userValues = 'todo';
+//     const setUserValues = () => {
+
+//     }
+//     const handleSubmit = () => {
+
+//     }
+//     console.log('current form', formStep)
+
+//     return <Content>
+//         <form onSubmit={(e) => handleSubmit(e)}>
+//             {formStep === 1 && <Step1 userValues={userValues} setUserValues={setUserValues} />}
+//             {formStep === 2 && <Step2 />}
+
+//             {formStep !== 1 && <Button onClick={setPrevStep}>previous</Button>}
+//             <Button onClick={setNextStep}>next</Button>
+//         </form>
+//     </Content>
+// }
 
 export default Register;

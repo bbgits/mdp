@@ -7,19 +7,10 @@ TBD
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import pullUserData from '../utils/pullUserData';
+import { api } from '../utils/api';
 
-console.log('env', process.env);
-const env = process.env
-// import environment variables + error if fail
-// const path = require('path');
-// const envFilePath = path.resolve(__dirname, './.env');
-// const env = require("dotenv").config("./.env");
-// if (env.error) {
-//     throw new Error(`Unable to load the .env file from ${envFilePath}. Please copy .env.example to ${envFilePath}`);
-// }
 
 
 
@@ -31,13 +22,7 @@ export default function Account() {
             if (!cookies.jwt) {
                 navigate("/login");
             } else {
-                const { data } = await axios.post(
-                    "http://localhost:4000",
-                    {},
-                    {
-                        withCredentials: true,
-                    }
-                );
+                const { data } = api.post();
                 if (!data.status) {
                     removeCookie("jwt");
                     navigate("/login");
