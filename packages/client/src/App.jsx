@@ -5,7 +5,6 @@ import Login from "./pages/Login";
 import Account from "./pages/Account";
 import "react-toastify/dist/ReactToastify.css";
 
-
 export default function App() {
   return (
     <BrowserRouter>

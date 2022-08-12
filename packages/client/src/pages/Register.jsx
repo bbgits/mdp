@@ -1,11 +1,9 @@
-/* 
-
-Main landing page for new users. Registration form:
--steps handled by components/RegisterForm
--submits user data to DB/users and report data to DB/reports
--last page confirms settings and links to stripe paymens
-
-*/
+/**
+ *  Main landing page for new users. Registration form:
+ * - steps handled by components/RegisterForm
+ * - submits user data to DB/users and report data to DB/reports
+ * - last page confirms settings and links to stripe paymens
+ */
 
 import React, { useState, useEffect } from "react";
 import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
@@ -26,7 +24,6 @@ function Register() {
 
     // todo: add dropdown component
 
-
     // if the cookies match, and you are a user
     // navigate to the home 
     const navigate = useNavigate();
@@ -35,7 +32,6 @@ function Register() {
             navigate("/");
         }
     }, [cookies, navigate]);
-
 
     // user data will be sent to db/users
     const [userValues, setUserValues] = useState({ firstName: "", lastName: "", email: "", password: "", paymentName: "", paymentNumber: "", paymentExpire: "", paymentCode: "", paymentAddress1: "", paymentAddress2: "", paymentCity: "", paymentState: "", paymentZip: "", paymentPromo: "" }); // 1 - DEFINE variables
@@ -47,49 +43,6 @@ function Register() {
         toast.error(error, {
             position: "bottom-right",
         });
-
-    // Previous SUBMIT solution, saving for later
-    // const handleSubmit = async (event) => { // LOGIC ON SUBMIT...
-    //     event.preventDefault()
-    //     try {
-    //         const { mongoData } = await api.post(  // POST THE "data" 
-    //             "/register",
-    //             {
-    //                 ...userValues, ...reportValues,
-    //             },
-    //         );
-
-    //         document.getElementById("headerMainDiv").style.display = "none"
-    //         document.getElementById("step1div").style.display = "none"
-    //         document.getElementById("step2div").style.display = "none"
-    //         document.getElementById("step3div").style.display = "none"
-    //         document.getElementById("step4div").style.display = "none"
-    //         document.getElementById("step5div").style.display = "none"
-    //         document.getElementById("step6div").style.display = "flex"
-    //         document.getElementById("finalPrevButton").style.display = "flex"
-    //         document.getElementById("stripeCheckoutButtonsDiv").style.display = "flex"
-
-    //         if (mongoData) {
-    //             if (mongoData.errors) {
-    //                 const { firstName, lastName, email, password, stripeID, paymentPromo, reportName, reportType } = mongoData.errors;
-    //                 if (firstName) generateError(firstName);
-    //                 else if (lastName) generateError(lastName);
-    //                 else if (email) generateError(email); // 2 - ERROR MESSAGE for each variable
-    //                 else if (password) generateError(password);
-    //                 else if (paymentPromo) generateError(paymentPromo);
-    //                 else if (reportName) generateError(reportName);
-    //                 else if (reportType) generateError(reportType);
-    //                 return;
-    //             } else {
-
-    //             }
-    //         }
-    //     } catch (ex) {
-    //         console.log(ex);
-    //     }
-    // };
-
-
 
     return (
         <Layout>

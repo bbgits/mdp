@@ -1,8 +1,6 @@
-/* 
-
-TBD
-
-*/
+/**
+ * See the Account info
+ */
 
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,9 +8,6 @@ import { useCookies } from "react-cookie";
 import { toast, ToastContainer } from "react-toastify";
 import pullUserData from '../utils/pullUserData';
 import { api } from '../utils/api';
-
-
-
 
 export default function Account() {
     const navigate = useNavigate();
@@ -39,27 +34,6 @@ export default function Account() {
         removeCookie("jwt");
         navigate("/login");
     };
-
-
-    // //FUNCTION BODY TO PULL USER DATA
-    // try {
-    //     // Connect to database
-    //     Client.connect().then();
-    //     console.log("myCLient Connected...");
-
-    //     // Load User Doc From DB
-    //     var userData = pullUserData(Client, "Abe").then();
-    //     console.log("\n \n \n CURRENT USER DATA:").then();
-    //     console.log(userData).then();
-
-
-
-
-    // } catch (e) {
-    //     console.error(e);
-    // } finally {
-    //     Client.close();
-    // }
 
     return (
         <>

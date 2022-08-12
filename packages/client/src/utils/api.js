@@ -1,6 +1,9 @@
 import axios from "axios";
 import { API_URL } from "../config";
 
+/**
+ * Primary API utility to access the server
+ */
 export const api = {
     post: async (path = '/', variables = {}) => {
         try {
