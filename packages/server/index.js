@@ -22,6 +22,9 @@ const cookieParser = require("cookie-parser");
 
 // import environment variables + error if fail
 const env = require("dotenv").config("./.env");
+
+const path = require('path');
+const envFilePath = path.resolve(__dirname, './.env');
 if (env.error) {
     throw new Error(`Unable to load the .env file from ${envFilePath}. Please copy .env.example to ${envFilePath}`);
 }

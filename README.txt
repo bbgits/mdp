@@ -4,7 +4,6 @@
 > users define their report - each is unique!
 
 
-
 1. React App ('packages/client') [DEMO MODE]
 
 REGISTER: single-page, multi-step signup form
@@ -38,7 +37,7 @@ REPORT-TO-PRINTABLE
     >after data is gathered for day...
     >for each client, each report...
     >use report settings/input to lookup updated data from Mongo
-    >save as standardized Printable.json
+    >save as Printable.json that can be looped by Handlebars
 
 PRINTER
     >accepts Printable.json, passes through Handlebars
@@ -46,7 +45,7 @@ PRINTER
 
 SENDER
     >gathers PDFs for each client 
-    >sends in email
+    >sends as email attachment
     >resets PRINT/SEND cycle
 
 TIMER

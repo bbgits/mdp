@@ -1,6 +1,9 @@
-/**
- * describe the file here.
- */
+/* 
+
+Main Server for App, listens on 4000, connects to:
+> react app (3000), database (mongo cloud), payments (stripe)
+
+*/
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
