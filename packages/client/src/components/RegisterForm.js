@@ -740,23 +740,6 @@ const Step6 = (props) => {
         </div>
         <div id="buttonSpacer"></div>
 
-        <div id="stripeCheckoutButtonsDiv">
-            {/* BUTTON TO TRIGGER STRIPE MONTHLY PLAN */}
-            <form action="http://localhost:4242/create-monthly-checkout-session" method="POST">
-                <input type="hidden" id="monthlyPrice" name="priceId" />
-                <button id="stripeMonthlyButton">Monthly:<br></br>$4.99</button>
-            </form>
-
-
-            {/* BUTTON TO TRIGGER STRIPE MONTHLY PLAN */}
-            <form action="http://localhost:4242/create-annual-checkout-session" method="POST">
-                <input type="hidden" id="annualPrice" name="priceId" />
-                <button id="stripeAnnualButton">Annual:<br></br>49.99</button>
-            </form>
-        </div>
-
-
-
     </div>
 
 }
@@ -810,6 +793,7 @@ export default function App() {
     const setNextStep = () => {
         if (formStep === 5) {
             setFormStep(formStep + 1)
+            handleSubmit()
             // do the magic
         } else {
             setFormStep(formStep + 1)
@@ -835,8 +819,18 @@ export default function App() {
             {formStep === 6 && <Step6 userValues={userValues} setUserValues={setUserValues} reportValues={reportValues} setReportValues={setReportValues} />}
 
             {formStep !== 1 && <Button onClick={setPrevStep}>previous</Button>}
+            {/* NEED TO ADD 'or 6' TO NEXT LINE */}
             {formStep !== 5 && <Button onClick={setNextStep}>next</Button>}
-            {formStep == 5 && <Button onClick={handleSubmit}>PREVIEW</Button>}
+            {formStep == 5 && <Button onClick={setNextStep}>PREVIEW</Button>}
+            {formStep == 6 && <form action="http://localhost:4242/create-monthly-checkout-session" method="POST">
+                <input type="hidden" id="monthlyPrice" name="priceId" />
+                <button id="stripeMonthlyButton">Monthly:<br></br>$4.99</button>
+            </form>}
+            {formStep == 6 && <form action="http://localhost:4242/create-annual-checkout-session" method="POST">
+                <input type="hidden" id="annualPrice" name="priceId" />
+                <button id="stripeAnnualButton">Annual:<br></br>49.99</button>
+            </form>}
+
 
 
         </form>
