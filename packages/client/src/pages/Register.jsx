@@ -15,24 +15,23 @@ import { ToastContainer, toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
 
+const { Header, Footer, Sider, Content } = Layout;
+
 function Register() {
 
     const [cookies] = useCookies(["cookie-name"]);
 
-    const { Header, Footer, Sider, Content } = Layout;
+    // todo: add dropdown component
 
-    /*Dropdown Menu*/
-
-    /*End Dropdown Menu*/
-
-
-
+    // if the cookies match, and you are a user
+    // navigate to the home 
     const navigate = useNavigate();
     useEffect(() => {
         if (cookies.jwt) {
             navigate("/");
         }
     }, [cookies, navigate]);
+
 
     const [userValues, setUserValues] = useState({ firstName: "", lastName: "", email: "", password: "", paymentName: "", paymentNumber: "", paymentExpire: "", paymentCode: "", paymentAddress1: "", paymentAddress2: "", paymentCity: "", paymentState: "", paymentZip: "", paymentPromo: "" }); // 1 - DEFINE variables
     const [reportValues, setReportValues] = useState({ reportName: "", reportType: "BASIC", reportZip: "", reportQuote1Sports: "Yes", reportQuote2Politics: "Yes", reportQuote3Art: "Yes", reportQuote4Love: "Yes", reportQuote5Business: true, reportLgDiv1Type: "twitterDiv", reportLgDiv1Data1: "", reportLgDiv1Data2: "", reportLgDiv1Data3: "", reportLgDiv1Data4: "", reportLgDiv1Data5: "", reportLgDiv2Type: "twitterDiv", reportLgDiv2Data1: "", reportLgDiv2Data2: "", reportLgDiv2Data3: "", reportLgDiv2Data4: "", reportLgDiv2Data5: "", reportLgDiv3Type: "twitterDiv", reportLgDiv3Data1: "", reportLgDiv3Data2: "", reportLgDiv3Data3: "", reportLgDiv3Data4: "", reportLgDiv3Data5: "" });

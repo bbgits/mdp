@@ -9,16 +9,17 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-import { MongoClient } from 'mongodb'; // IMORT MONGO
 import pullUserData from '../utils/pullUserData';
 
+console.log('env', process.env);
+const env = process.env
 // import environment variables + error if fail
-const path = require('path');
-const envFilePath = path.resolve(__dirname, './.env');
-const env = require("dotenv").config("./.env");
-if (env.error) {
-    throw new Error(`Unable to load the .env file from ${envFilePath}. Please copy .env.example to ${envFilePath}`);
-}
+// const path = require('path');
+// const envFilePath = path.resolve(__dirname, './.env');
+// const env = require("dotenv").config("./.env");
+// if (env.error) {
+//     throw new Error(`Unable to load the .env file from ${envFilePath}. Please copy .env.example to ${envFilePath}`);
+// }
 
 
 
@@ -54,28 +55,26 @@ export default function Account() {
         navigate("/login");
     };
 
-    const uri = "mongodb+srv://admin01:r4e3w2q1!Q@my-daily-pdf.ddfuw.mongodb.net/?retryWrites=true&w=majority";
-    const Client = new MongoClient(uri);
 
-    //FUNCTION BODY TO PULL USER DATA
-    try {
-        // Connect to database
-        Client.connect().then();
-        console.log("myCLient Connected...");
+    // //FUNCTION BODY TO PULL USER DATA
+    // try {
+    //     // Connect to database
+    //     Client.connect().then();
+    //     console.log("myCLient Connected...");
 
-        // Load User Doc From DB
-        var userData = pullUserData(Client, "Abe").then();
-        console.log("\n \n \n CURRENT USER DATA:").then();
-        console.log(userData).then();
+    //     // Load User Doc From DB
+    //     var userData = pullUserData(Client, "Abe").then();
+    //     console.log("\n \n \n CURRENT USER DATA:").then();
+    //     console.log(userData).then();
 
 
 
 
-    } catch (e) {
-        console.error(e);
-    } finally {
-        Client.close();
-    }
+    // } catch (e) {
+    //     console.error(e);
+    // } finally {
+    //     Client.close();
+    // }
 
     return (
         <>

@@ -1,6 +1,3 @@
-import { MongoClient } from 'mongodb'; // IMORT MONGO
-
-
 
 export default async function pullUserData(client, firstName) {
 

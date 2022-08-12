@@ -1,45 +1,53 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+## My Daily PDF
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+> consumer-facing news and productivity tool
+> customized reports delivered via email 
+> users define their report - each is unique!
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
 
----
+1. React App ('packages/client') [DEMO MODE]
 
-## Edit a file
+REGISTER: single-page, multi-step signup form
+  > next/prev buttons handle hide/show of step divs
+  > next button on Step 5 submits to mongoDb
+   -->one bson to User collection,
+   -->one bson to Reports collection,
+   -->updates db:main/search/config.json
+  > Step 6 shows report preview and Stripe buttons
+  > (Stripe handles payment), returns to ACCOUNT pg
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+ACCOUNT: [work in progress]
+    > edit user details
+    > edit report details 
+    > add report
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+LOGIN:
+    > once account is created, can log in to accts pg
 
----
 
-## Create a file
+2. Express Server  - connects React/MongoDb/Stripe
 
-Next, you’ll add a new file to this repository.
+3. Services
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
+WEB-SCRAPER
+    >retrieves web data based on lists in search/config.json
+    >uses both APIs and Selenium
+    >stores data to Mongo
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+REPORT-TO-PRINTABLE
+    >after data is gathered for day...
+    >for each client, each report...
+    >use report settings/input to lookup updated data from Mongo
+    >save as Printable.json that can be looped by Handlebars
 
----
+PRINTER
+    >accepts Printable.json, passes through Handlebars
+    >output PDF
 
-## Clone a repository
+SENDER
+    >gathers PDFs for each client 
+    >sends as email attachment
+    >resets PRINT/SEND cycle
 
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
-
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
-
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+TIMER
+    >runs the scraper script once per day
