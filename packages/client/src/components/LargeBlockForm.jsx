@@ -10,7 +10,7 @@ export const LargeBlockForm = (props) => {
 
     return <div className="formStepHolder">
         <div id="stepperBoxDiv">
-            <img src={require('../assets/formProgressBar5.png')}></img>
+            <img src={require(`../assets/formProgressBar${props.stepImageNum}.png`)}></img>
 
         </div>
         <h2>{props.title}</h2>

@@ -88,15 +88,6 @@ const Step2 = (props) => {
             />
         </div>
         <div>
-            <label htmlFor="reportType">Select Report Type:</label>
-            <select className="dropdownSelector" name="reportType" onChange={(e) =>
-                setReportValues({ ...reportValues, [e.target.name]: e.target.value })
-            } id="reportType">
-                <option value="basic">Basic - $2.99/mo</option>
-                <option value="deluxe">Deluxe - $4.99/mo</option>
-            </select>
-        </div>
-        <div>
             <label htmlFor="reportZip">Zip Code:</label>
             <input
                 type="reportZip"
@@ -284,9 +275,9 @@ export default function App() {
             {formStep === 1 && <Step1 userValues={userValues} setUserValues={setUserValues} />}
             {formStep === 2 && <Step2 reportValues={reportValues} setReportValues={setReportValues} />}
 
-            {formStep === 3 && <LargeBlockForm prefix='reportLargeDiv1' title="First Large Block:" reportValues={reportValues} setReportValues={setReportValues} />}
-            {formStep === 4 && <LargeBlockForm prefix='reportLargeDiv2' title="Second Large Block:" reportValues={reportValues} setReportValues={setReportValues} />}
-            {formStep === 5 && <LargeBlockForm prefix='reportLargeDiv3' title="Third Large Block:" reportValues={reportValues} setReportValues={setReportValues} />}
+            {formStep === 3 && <LargeBlockForm prefix='reportLargeDiv1' title="First Large Block:" stepImageNum='3' reportValues={reportValues} setReportValues={setReportValues} />}
+            {formStep === 4 && <LargeBlockForm prefix='reportLargeDiv2' title="Second Large Block:" stepImageNum='4' reportValues={reportValues} setReportValues={setReportValues} />}
+            {formStep === 5 && <LargeBlockForm prefix='reportLargeDiv3' title="Third Large Block:" stepImageNum='5' reportValues={reportValues} setReportValues={setReportValues} />}
 
             {formStep === 6 && <Step6 userValues={userValues} setUserValues={setUserValues} reportValues={reportValues} setReportValues={setReportValues} />}
 
