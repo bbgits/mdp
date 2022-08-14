@@ -54,6 +54,7 @@ async function main() {
         const instaUsersArray = configs["allInstaUsers"];
         console.log("\n \n \n INSTA USERS:")
         console.log(instaUsersArray);
+
         // Insta FOR LOOP:
         for (const instaUser of instaUsersArray) {
             await scrapeInstaByUsernameAndMakeDocInMongo(instaUser, Client, "data", "instagram4");

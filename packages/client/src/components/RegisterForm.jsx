@@ -2,8 +2,8 @@
  * Primary React Onboarding Form with Stripe Connection
  */
 
-import React, { useState, useEffect } from "react"
-import { Layout, Button } from 'antd'
+import React, { useState, useEffect } from "react";
+import { Layout, Button } from 'antd';
 import { ToastContainer, toast } from "react-toastify";
 import { LargeBlockForm } from './LargeBlockForm';
 import { api } from '../utils/api';
@@ -36,6 +36,7 @@ const Step1 = (props) => {
                 type="lastName"
                 name="lastName"
                 placeholder="Eden"
+                defaultValue={userValues.lastName || ""}
                 onChange={(e) =>
                     setUserValues({ ...userValues, [e.target.name]: e.target.value }) // 3. Link input to SetUserValues
                 }
@@ -161,6 +162,8 @@ const Step2 = (props) => {
     </div>
 }
 
+// Steps 3,4,5 controlled by LargeBlockForm.jsx
+
 const Step6 = (props) => {
     const { userValues, setUserValues, reportValues, setReportValues } = props;
     return <div className="formStepHolder">
@@ -221,24 +224,29 @@ export default function App() {
 
     const [userValues, setUserValues] = useState({ firstName: "", lastName: "", email: "", password: "", paymentName: "", paymentNumber: "", paymentExpire: "", paymentCode: "", paymentAddress1: "", paymentAddress2: "", paymentCity: "", paymentState: "", paymentZip: "", paymentPromo: "" }); // 1 - DEFINE variables
 
-    const [reportValues, setReportValues] = useState({ reportName: "", reportType: "BASIC", reportZip: "", reportQuote1Sports: "Yes", reportQuote2Politics: "Yes", reportQuote3Art: "Yes", reportQuote4Love: "Yes", reportQuote5Business: true, reportLgDiv1Type: "twitterDiv", reportLgDiv1Data1: "", reportLgDiv1Data2: "", reportLgDiv1Data3: "", reportLgDiv1Data4: "", reportLgDiv1Data5: "", reportLgDiv2Type: "twitterDiv", reportLgDiv2Data1: "", reportLgDiv2Data2: "", reportLgDiv2Data3: "", reportLgDiv2Data4: "", reportLgDiv2Data5: "", reportLgDiv3Type: "twitterDiv", reportLgDiv3Data1: "", reportLgDiv3Data2: "", reportLgDiv3Data3: "", reportLgDiv3Data4: "", reportLgDiv3Data5: "" });
+    const [reportValues, setReportValues] = useState({ reportName: "", reportType: "BASIC", reportZip: "", reportQuote1Sports: true, reportQuote2Politics: true, reportQuote3Art: true, reportQuote4Love: true, reportQuote5Business: true, reportLgDiv1Type: "twitterDiv", reportLgDiv1Data1: "", reportLgDiv1Data2: "", reportLgDiv1Data3: "", reportLgDiv1Data4: "", reportLgDiv1Data5: "", reportLgDiv2Type: "twitterDiv", reportLgDiv2Data1: "", reportLgDiv2Data2: "", reportLgDiv2Data3: "", reportLgDiv2Data4: "", reportLgDiv2Data5: "", reportLgDiv3Type: "twitterDiv", reportLgDiv3Data1: "", reportLgDiv3Data2: "", reportLgDiv3Data3: "", reportLgDiv3Data4: "", reportLgDiv3Data5: "" });
+
     const [stepValue, setStepValue] = useState({ stepValue: 1 });
+
+
 
     const handleSubmit = async (event) => { // LOGIC ON SUBMIT...
         event.preventDefault()
         try {
-            const { mongoData } = await api.post(  // POST THE "data" 
+            const result = await api.post(  // POST THE "data" 
                 "/register",
                 {
                     ...userValues, ...reportValues,
                 },
             );
 
+            console.log(result)
+
             setNextStep()
 
-            if (mongoData) {
-                if (mongoData.errors) {
-                    const { firstName, lastName, email, password, stripeID, paymentPromo, reportName, reportType } = mongoData.errors;
+            if (result) {
+                if (result.errors) {
+                    const { firstName, lastName, email, password, stripeID, paymentPromo, reportName, reportType } = result.errors;
                     if (firstName) generateError(firstName);
                     else if (lastName) generateError(lastName);
                     else if (email) generateError(email); // 2 - ERROR MESSAGE for each variable
@@ -284,7 +292,9 @@ export default function App() {
             {formStep !== 1 && <Button onClick={setPrevStep}>previous</Button>}
             {/* NEED TO ADD 'or 6' TO NEXT LINE */}
             {formStep !== 5 && <Button onClick={setNextStep}>next</Button>}
-            {formStep == 5 && <Button onClick={setNextStep}>PREVIEW</Button>}
+
+            {formStep == 5 && <Button type="submit" onClick={handleSubmit}>PREVIEW</Button>}
+
             {formStep == 6 && <form action="http://localhost:4242/create-monthly-checkout-session" method="POST">
                 <input type="hidden" id="monthlyPrice" name="priceId" />
                 <button id="stripeMonthlyButton">Monthly:<br></br>$4.99</button>
