@@ -50,7 +50,9 @@ function Register() {
                 <MyHeader />
             </Header>
             <Content>
-                <RegisterForm />
+                <div className="formStepHolder">
+                    <RegisterForm />
+                </div>
                 <ToastContainer />
             </Content >
             <Footer>

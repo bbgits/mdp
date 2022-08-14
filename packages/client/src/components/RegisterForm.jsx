@@ -12,14 +12,14 @@ const { Content } = Layout;
 
 const Step1 = (props) => {
     const { userValues, setUserValues } = props;
-    return <div className="formStepHolder">
+    return <div>
         <div id="stepperBoxDiv">
             <img src={require('../assets/formProgressBar1.png')}></img>
         </div>
         <h2>Let's Get Started!</h2>
 
-        <div>
-            <label htmlFor="firstName">First Name</label>
+        <div className="horizontalLabelDiv">
+            <label htmlFor="firstName" className="textInputLabel" for="right-label">First Name</label>
             <input
                 name="firstName"
                 type="firstName"
@@ -28,10 +28,11 @@ const Step1 = (props) => {
                 onChange={(e) =>
                     setUserValues({ ...userValues, [e.target.name]: e.target.value }) // 3. Link input to SetUserValues
                 }
+
             />
         </div>
-        <div>
-            <label htmlFor="lastName">Last Name</label>
+        <div className="horizontalLabelDiv">
+            <label htmlFor="lastName" className="textInputLabel" >Last Name</label>
             <input
                 name="lastName"
                 type="lastName"
@@ -42,8 +43,8 @@ const Step1 = (props) => {
                 }
             />
         </div>
-        <div>
-            <label htmlFor="email">Email:</label>
+        <div className="horizontalLabelDiv">
+            <label htmlFor="email" className="textInputLabel" >Email:</label>
             <input
                 name="email"
                 type="email"
@@ -54,8 +55,8 @@ const Step1 = (props) => {
                 }
             />
         </div>
-        <div>
-            <label htmlFor="password">Password:</label>
+        <div className="horizontalLabelDiv">
+            <label htmlFor="password" className="textInputLabel" >Password:</label>
             <input
                 name="password"
                 type="password"
@@ -67,6 +68,8 @@ const Step1 = (props) => {
                 }
             />
         </div>
+
+
         {/* LOGO HERE */}
         <div id="formFooterDiv"><img src="http://www.b2results.com/wp-includes/images/mydailypdf/main-logo-white.png" alt="logo" id="formFooterLogo"></img></div>
     </div >
@@ -74,14 +77,14 @@ const Step1 = (props) => {
 
 const Step2 = (props) => {
     const { reportValues, setReportValues } = props;
-    return <div className="formStepHolder">
+    return <div>
         <div id="stepperBoxDiv">
             <img src={require('../assets/formProgressBar2.png')}></img>
 
         </div>
         <h2>Set info for Heading:</h2>
-        <div>
-            <label htmlFor="reportName">Report Name:</label>
+        <div className="horizontalLabelDiv">
+            <label className="textInputLabel" htmlFor="reportName">Report Name:</label>
             <input
                 name="reportName"
                 type="reportName"
@@ -92,8 +95,8 @@ const Step2 = (props) => {
                 }
             />
         </div>
-        <div>
-            <label htmlFor="reportZip">Zip Code:</label>
+        <div className="horizontalLabelDiv">
+            <label className="textInputLabel" htmlFor="reportZip">Zip Code:</label>
             <input
                 name="reportZip"
                 type="reportZip"
@@ -189,7 +192,7 @@ const Step2 = (props) => {
 
 const Step6 = (props) => {
     const { userValues, setUserValues, reportValues, setReportValues } = props;
-    return <div className="formStepHolder">
+    return <div>
         <div id="stepperBoxDiv">
             <img src={require('../assets/formProgressBar6.png')}></img>
 
@@ -303,10 +306,14 @@ export default function App() {
 
     return <Content>
         <form onSubmit={(e) => handleSubmit(e)}>
+
+            {/* If state of formStep is 1, display Step1 */}
             {formStep === 1 && <Step1 userValues={userValues} setUserValues={setUserValues} />}
+
+            {/* If state of formStep is 2, display Step2 */}
             {formStep === 2 && <Step2 reportValues={reportValues} setReportValues={setReportValues} />}
 
-
+            {/* If state of formStep is 3, display Step3 */}
             {formStep === 3 && <LargeBlockForm
                 prefix='reportLgDiv1'
                 title="First Large Block:"
@@ -319,6 +326,8 @@ export default function App() {
                 defaultData4={reportValues.reportLgDiv1Data4}
                 defaultData5={reportValues.reportLgDiv1Data5}
                 setReportValues={setReportValues} />}
+
+            {/* If state of formStep is 4, display Step4 */}
             {formStep === 4 && <LargeBlockForm
                 prefix='reportLgDiv2'
                 title="Second Large Block:"
@@ -331,6 +340,8 @@ export default function App() {
                 defaultData4={reportValues.reportLgDiv2Data4}
                 defaultData5={reportValues.reportLgDiv2Data5}
                 setReportValues={setReportValues} />}
+
+            {/* If state of formStep is 5, display Step6 */}
             {formStep === 5 && <LargeBlockForm
                 prefix='reportLgDiv3'
                 title="Third Large Block:"
@@ -345,22 +356,65 @@ export default function App() {
                 setReportValues={setReportValues}
             />}
 
+            {/* If state of formStep is 6, display Step6 */}
             {formStep === 6 && <Step6 userValues={userValues} setUserValues={setUserValues} reportValues={reportValues} setReportValues={setReportValues} />}
 
-            {formStep !== 1 && <Button onClick={setPrevStep}>previous</Button>}
-            {/* NEED TO ADD 'or 6' TO NEXT LINE */}
-            {formStep !== 5 && <Button onClick={setNextStep}>next</Button>}
 
-            {formStep == 5 && <Button type="submit" onClick={handleSubmit}>PREVIEW</Button>}
+            {/* after inputs area, display appropriate buttons*/}
+            <div className="formButtonHolder">
 
-            {formStep == 6 && <form action="http://localhost:4242/create-monthly-checkout-session" method="POST">
-                <input type="hidden" id="monthlyPrice" name="priceId" />
-                <button id="stripeMonthlyButton">Monthly:<br></br>$4.99</button>
-            </form>}
-            {formStep == 6 && <form action="http://localhost:4242/create-annual-checkout-session" method="POST">
-                <input type="hidden" id="annualPrice" name="priceId" />
-                <button id="stripeAnnualButton">Annual:<br></br>49.99</button>
-            </form>}
+                {formStep == 1 && <div className="formButtonHolderInnerDiv">
+                    <Button className="nextButton" onClick={setNextStep}>next</Button>
+                </div>}
+
+                {formStep == 2 && <div className="formButtonHolderInnerDiv">
+                    <Button className="prevButton" onClick={setPrevStep}>previous</Button>
+                    <Button className="nextButton" onClick={setNextStep}>next</Button>
+                </div>
+                }
+
+                {formStep == 3 && <div className="formButtonHolderInnerDiv">
+                    <Button className="prevButton" onClick={setPrevStep}>previous</Button>
+                    <Button className="nextButton" onClick={setNextStep}>next</Button>
+                </div>
+                }
+
+                {formStep == 4 && <div className="formButtonHolderInnerDiv">
+                    <Button className="prevButton" onClick={setPrevStep}>previous</Button>
+                    <Button className="nextButton" onClick={setNextStep}>next</Button>
+                </div>
+                }
+
+                {formStep == 5 && <div className="formButtonHolderInnerDiv">
+                    <Button className="prevButton" onClick={setPrevStep}>previous</Button>
+                    <Button type="submit" className="previewSubmitButton" onClick={handleSubmit}>preview...</Button>
+                </div>
+                }
+
+                {formStep == 6 && <div className="formButtonHolderOuterDivCol">
+
+                    <h3>Save BIG with an Annual Subscription:</h3>
+
+                    <div className="formButtonHolderInnerDiv">
+                        <form action="http://localhost:4242/create-monthly-checkout-session" className="stripeFormDiv" method="POST">
+                            <input type="hidden" id="monthlyPrice" name="priceId" />
+                            <button id="stripeMonthlyButton">Monthly:<br></br>$4.99</button>
+                        </form>
+                        <form action="http://localhost:4242/create-annual-checkout-session" method="POST" className="stripeFormDiv">
+                            <input type="hidden" id="annualPrice" name="priceId" />
+                            <button id="stripeAnnualButton">Annual:<br></br>49.99</button>
+                        </form>
+                    </div>
+
+                    <p>Need to change something?</p>
+
+                    <div className="formButtonHolderInnerDiv">
+                        <Button className="prevButton" onClick={setPrevStep}>go back</Button>
+                    </div>
+
+                </div>
+                }
+            </div>
         </form>
     </Content>;
 }

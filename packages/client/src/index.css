@@ -42,28 +42,7 @@
     align-self: center;
 }
 
-#stripeMonthlyButton {
-    width: 120px;
-    outline-color: #D81E5B;
-    outline-style: solid;
-    outline-width: 2px;
-    background-color: white;
-    color: #D81E5B;
-    margin: 10px;
 
-
-}
-
-#stripeAnnualButton {
-    width: 120px;
-    outline-color: #D81E5B;
-    outline-style: solid;
-    outline-width: 2px;
-    background-color: white;
-    color: #D81E5B;
-    margin: 10px;
-
-}
 
 
 body {
@@ -123,6 +102,15 @@ input {
     font-size: 1.1rem;
 }
 
+.horizontalLabelDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+
+}
+
 button {
     background-color: rgb(32, 213, 197);
     color: white;
@@ -166,11 +154,14 @@ span a {
 
 .dropdownSelector {
 
-    width: fit-content;
+    width: 150px;
     padding: 0.5rem;
     border-radius: 0.3rem;
     border: 1px solid gray;
     font-size: 1.1rem;
+    display: inline-block;
+    text-align: center;
+
 
 }
 
@@ -179,8 +170,19 @@ span a {
     align-items: center;
 }
 
-.checkQuestionLabel {
-    display: flex;
+
+.textInputLabel {
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    width: 120px;
+    text-align: right;
+}
+
+.dropdownInputLabel {
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    width: 100px;
+    text-align: right;
 }
 
 
@@ -211,18 +213,36 @@ span a {
 }
 
 .prevButton {
-    width: 40%;
+    width: 33%;
     margin: 3px;
+    display: inline-block;
+    color: rgb(32, 213, 197);
+    background-color: white;
+    outline-style: solid;
+    outline-width: 2px;
+    outline: color(32, 213, 197);
 
 }
 
 .nextButton {
-    width: 40%;
+    width: 33%;
     margin: 3px;
+    display: inline-block;
 }
 
+.previewSubmitButton {
+    width: 33%;
+    margin: 3px;
+    display: inline-block;
+    color: #f7256b;
+    background-color: white;
+    outline-style: solid;
+    outline-width: 3px;
+    outline-color: #f7256b;
+    font-weight: 600;
+}
 
-.submitButton {
+/* .submitButton {
     width: 40%;
     margin: 10px;
     padding: 5px;
@@ -234,8 +254,38 @@ span a {
     font-weight: 500;
     outline-width: 3px;
     font-size: 18px;
+} */
+
+.stripeFormDiv {
+    width: 40%
 }
 
+#stripeMonthlyButton {
+    width: 80%;
+    margin: 3px;
+    display: inline-block;
+    color: #f7256b;
+    background-color: white;
+    outline-style: solid;
+    outline-width: 3px;
+    outline-color: #f7256b;
+    font-weight: 600;
+
+
+}
+
+#stripeAnnualButton {
+    width: 80%;
+    margin: 3px;
+    display: inline-block;
+    color: #f7256b;
+    background-color: white;
+    outline-style: solid;
+    outline-width: 3px;
+    outline-color: #f7256b;
+    font-weight: 600;
+
+}
 
 #finalPrevButton {
     display: none;
@@ -333,7 +383,36 @@ span a {
 
 }
 
+.buttonHolder6Main {
+    display: flex;
+    width: 250px;
+    padding: 0px;
+    margin: 0px;
 
+}
+
+.formButtonHolder {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.formButtonHolderInnerDiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+.formButtonHolderOuterDivCol {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
 
 #formFooterDiv {
     max-width: 300px;
@@ -341,6 +420,7 @@ span a {
     align-self: center;
     justify-self: center;
     background-color: rgb(56, 138, 110);
+    margin: 20px;
 }
 
 #formFooterLogo {
@@ -357,6 +437,7 @@ span a {
     flex-direction: column;
     align-items: center;
     max-width: 450px;
+
 }
 
 #stepperBoxDiv {
