@@ -21,8 +21,8 @@ const Step1 = (props) => {
         <div>
             <label htmlFor="firstName">First Name</label>
             <input
-                type="firstName"
                 name="firstName"
+                type="firstName"
                 placeholder="Martin"
                 defaultValue={userValues.firstName || ""}
                 onChange={(e) =>
@@ -33,8 +33,8 @@ const Step1 = (props) => {
         <div>
             <label htmlFor="lastName">Last Name</label>
             <input
-                type="lastName"
                 name="lastName"
+                type="lastName"
                 placeholder="Eden"
                 defaultValue={userValues.lastName || ""}
                 onChange={(e) =>
@@ -45,9 +45,10 @@ const Step1 = (props) => {
         <div>
             <label htmlFor="email">Email:</label>
             <input
-                type="email"
                 name="email"
+                type="email"
                 placeholder="alex@aol.com"
+                defaultValue={userValues.email || ""}
                 onChange={(e) =>
                     setUserValues({ ...userValues, [e.target.name]: e.target.value }) // 3. Link input to SetUserValues
                 }
@@ -56,9 +57,11 @@ const Step1 = (props) => {
         <div>
             <label htmlFor="password">Password:</label>
             <input
+                name="password"
                 type="password"
                 placeholder="a-$tr0nG-P@Ssw0RD"
-                name="password"
+                defaultValue={userValues.password || ""}
+
                 onChange={(e) =>
                     setUserValues({ ...userValues, [e.target.name]: e.target.value })
                 }
@@ -80,9 +83,10 @@ const Step2 = (props) => {
         <div>
             <label htmlFor="reportName">Report Name:</label>
             <input
+                name="reportName"
                 type="reportName"
                 placeholder="Alex's Daily Report"
-                name="reportName"
+                defaultValue={reportValues.reportName || ""}
                 onChange={(e) =>
                     setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                 }
@@ -91,9 +95,10 @@ const Step2 = (props) => {
         <div>
             <label htmlFor="reportZip">Zip Code:</label>
             <input
+                name="reportZip"
                 type="reportZip"
                 placeholder="Zip code used for Weather!"
-                name="reportZip"
+                defaultValue={reportValues.reportZip || ""}
                 onChange={(e) =>
                     setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                 }
@@ -102,14 +107,14 @@ const Step2 = (props) => {
         <br></br>
         <div className="checkboxDiv">
             <label className="checkQuestionLabel">What genres of motivational quotes do you want?</label>
-
             <ul>
-                <li>
 
+                <li>
                     <input
+                        name="reportQuote1Sports"
                         type="checkbox"
                         className="checkInputBox"
-                        name="reportQuote1Sports"
+                        defaultValue={reportValues.reportQuote1Sports || ""}
                         onChange={(e) =>
                             setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                         }
@@ -117,42 +122,60 @@ const Step2 = (props) => {
                         checked />
                     <label htmlFor="quote_sports" className="checkOptionLabel">Sports</label>
                 </li>
-                <li>
 
-                    <input type="checkbox" className="checkInputBox" name="reportQuote2Politics" onChange={(e) =>
-                        setReportValues({ ...reportValues, [e.target.name]: e.target.value })
-                    } id="quote_politics" checked />
+                <li>
+                    <input
+                        name="reportQuote2Politics"
+                        type="checkbox"
+                        className="checkInputBox"
+                        defaultValue={reportValues.reportQuote2Politics || ""}
+                        onChange={(e) =>
+                            setReportValues({ ...reportValues, [e.target.name]: e.target.value })
+                        } id="quote_politics" checked />
                     <label htmlFor="quote_politics" className="checkOptionLabel" >Politics</label>
 
                 </li>
-                <li>
 
-                    <input type="checkbox" className="checkInputBox" name="reportQuote3Art" onChange={(e) =>
-                        setReportValues({ ...reportValues, [e.target.name]: e.target.value })
-                    } id="quote_art" checked />
+                <li>
+                    <input
+                        name="reportQuote3Art"
+                        type="checkbox"
+                        className="checkInputBox"
+                        defaultValue={reportValues.reportQuote3Art || ""}
+                        onChange={(e) =>
+                            setReportValues({ ...reportValues, [e.target.name]: e.target.value })
+                        } id="quote_art" checked />
                     <label htmlFor="quote_art" className="checkOptionLabel" >Art</label>
                 </li>
                 <li>
-
-                    <input type="checkbox" className="checkInputBox" name="reportQuote4Love" onChange={(e) =>
-                        setReportValues({ ...reportValues, [e.target.name]: e.target.value })
-                    } id="quote_love" checked />
+                    <input
+                        name="reportQuote4Love"
+                        type="checkbox"
+                        className="checkInputBox"
+                        defaultValue={reportValues.reportQuote4Love || ""}
+                        onChange={(e) =>
+                            setReportValues({ ...reportValues, [e.target.name]: e.target.value })
+                        } id="quote_love" checked />
                     <label htmlFor="quote_love" className="checkOptionLabel" >Love</label>
                 </li>
 
                 <li>
-                    <input type="checkbox" className="checkInputBox" name="reportQuote5Business" onChange={(e) => {
-
-                        {
-                            if (e.target.value == true) {
-                                e.target.value = false
-                            } else if (e.target.value == false) {
-                                e.target.value = true
+                    <input
+                        name="reportQuote5Business"
+                        type="checkbox"
+                        className="checkInputBox"
+                        defaultValue={reportValues.reportQuote5Business || ""}
+                        onChange={(e) => {
+                            {
+                                if (e.target.value == true) {
+                                    e.target.value = false
+                                } else if (e.target.value == false) {
+                                    e.target.value = true
+                                }
                             }
+                            setReportValues({ ...reportValues, [e.target.name]: e.target.value })
                         }
-                        setReportValues({ ...reportValues, [e.target.name]: e.target.value })
-                    }
-                    } id="quote_business" />
+                        } id="quote_business" />
                     <label htmlFor="quote_business" className="checkOptionLabel" >Business</label>
                 </li>
             </ul>
@@ -199,9 +222,10 @@ const Step6 = (props) => {
         <div name="paymentCalcDiv">
             <label htmlFor="paymentPromo">Promo Code:</label>
             <input
-                type="paymentPromo"
                 name="paymentPromo"
+                type="paymentPromo"
                 placeholder="Martin"
+                defaultValue={reportValues.paymentPromo || ""}
                 onChange={(e) =>
                     setUserValues({ ...userValues, [e.target.name]: e.target.value }) // 3. Link input to SetUserValues
                 }
@@ -224,7 +248,7 @@ export default function App() {
 
     const [userValues, setUserValues] = useState({ firstName: "", lastName: "", email: "", password: "", paymentName: "", paymentNumber: "", paymentExpire: "", paymentCode: "", paymentAddress1: "", paymentAddress2: "", paymentCity: "", paymentState: "", paymentZip: "", paymentPromo: "" }); // 1 - DEFINE variables
 
-    const [reportValues, setReportValues] = useState({ reportName: "", reportType: "BASIC", reportZip: "", reportQuote1Sports: true, reportQuote2Politics: true, reportQuote3Art: true, reportQuote4Love: true, reportQuote5Business: true, reportLgDiv1Type: "twitterDiv", reportLgDiv1Data1: "", reportLgDiv1Data2: "", reportLgDiv1Data3: "", reportLgDiv1Data4: "", reportLgDiv1Data5: "", reportLgDiv2Type: "twitterDiv", reportLgDiv2Data1: "", reportLgDiv2Data2: "", reportLgDiv2Data3: "", reportLgDiv2Data4: "", reportLgDiv2Data5: "", reportLgDiv3Type: "twitterDiv", reportLgDiv3Data1: "", reportLgDiv3Data2: "", reportLgDiv3Data3: "", reportLgDiv3Data4: "", reportLgDiv3Data5: "" });
+    const [reportValues, setReportValues] = useState({ reportName: "", reportType: "BASIC", reportZip: "", reportQuote1Sports: true, reportQuote2Politics: true, reportQuote3Art: true, reportQuote4Love: true, reportQuote5Business: true, reportLgDiv1Type: "Twitter", reportLgDiv1Data1: "", reportLgDiv1Data2: "", reportLgDiv1Data3: "", reportLgDiv1Data4: "", reportLgDiv1Data5: "", reportLgDiv2Type: "Twitter", reportLgDiv2Data1: "", reportLgDiv2Data2: "", reportLgDiv2Data3: "", reportLgDiv2Data4: "", reportLgDiv2Data5: "", reportLgDiv3Type: "Twitter", reportLgDiv3Data1: "", reportLgDiv3Data2: "", reportLgDiv3Data3: "", reportLgDiv3Data4: "", reportLgDiv3Data5: "" });
 
     const [stepValue, setStepValue] = useState({ stepValue: 1 });
 
@@ -268,7 +292,6 @@ export default function App() {
         if (formStep === 5) {
             setFormStep(formStep + 1)
             handleSubmit()
-            // do the magic
         } else {
             setFormStep(formStep + 1)
         }
@@ -283,9 +306,44 @@ export default function App() {
             {formStep === 1 && <Step1 userValues={userValues} setUserValues={setUserValues} />}
             {formStep === 2 && <Step2 reportValues={reportValues} setReportValues={setReportValues} />}
 
-            {formStep === 3 && <LargeBlockForm prefix='reportLargeDiv1' title="First Large Block:" stepImageNum='3' reportValues={reportValues} setReportValues={setReportValues} />}
-            {formStep === 4 && <LargeBlockForm prefix='reportLargeDiv2' title="Second Large Block:" stepImageNum='4' reportValues={reportValues} setReportValues={setReportValues} />}
-            {formStep === 5 && <LargeBlockForm prefix='reportLargeDiv3' title="Third Large Block:" stepImageNum='5' reportValues={reportValues} setReportValues={setReportValues} />}
+
+            {formStep === 3 && <LargeBlockForm
+                prefix='reportLgDiv1'
+                title="First Large Block:"
+                stepImageNum='3'
+                reportValues={reportValues}
+                defaultType={reportValues.reportLgDiv1Type}
+                defaultData1={reportValues.reportLgDiv1Data1}
+                defaultData2={reportValues.reportLgDiv1Data2}
+                defaultData3={reportValues.reportLgDiv1Data3}
+                defaultData4={reportValues.reportLgDiv1Data4}
+                defaultData5={reportValues.reportLgDiv1Data5}
+                setReportValues={setReportValues} />}
+            {formStep === 4 && <LargeBlockForm
+                prefix='reportLgDiv2'
+                title="Second Large Block:"
+                stepImageNum='4'
+                reportValues={reportValues}
+                defaultType={reportValues.reportLgDiv2Type}
+                defaultData1={reportValues.reportLgDiv2Data1}
+                defaultData2={reportValues.reportLgDiv2Data2}
+                defaultData3={reportValues.reportLgDiv2Data3}
+                defaultData4={reportValues.reportLgDiv2Data4}
+                defaultData5={reportValues.reportLgDiv2Data5}
+                setReportValues={setReportValues} />}
+            {formStep === 5 && <LargeBlockForm
+                prefix='reportLgDiv3'
+                title="Third Large Block:"
+                stepImageNum='5'
+                reportValues={reportValues}
+                defaultType={reportValues.reportLgDiv3Type}
+                defaultData1={reportValues.reportLgDiv3Data1}
+                defaultData2={reportValues.reportLgDiv3Data2}
+                defaultData3={reportValues.reportLgDiv3Data3}
+                defaultData4={reportValues.reportLgDiv3Data4}
+                defaultData5={reportValues.reportLgDiv3Data5}
+                setReportValues={setReportValues}
+            />}
 
             {formStep === 6 && <Step6 userValues={userValues} setUserValues={setUserValues} reportValues={reportValues} setReportValues={setReportValues} />}
 
