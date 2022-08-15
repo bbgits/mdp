@@ -70,7 +70,7 @@ app.post("/create-monthly-checkout-session", async (req, res) => {
                 },
             ],
             // ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
-            success_url: `${domainURL}/success.html?session_id={CHECKOUT_SESSION_ID}`,
+            success_url: `http://localhost:3000`,
             cancel_url: `${domainURL}/canceled.html`,
             // automatic_tax: { enabled: true }
         });
@@ -101,7 +101,7 @@ app.post("/create-annual-checkout-session", async (req, res) => {
                 },
             ],
             // ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
-            success_url: `${domainURL}/success.html?session_id={CHECKOUT_SESSION_ID}`,
+            success_url: `http://localhost:3000`,
             cancel_url: `${domainURL}/canceled.html`,
             // automatic_tax: { enabled: true }
         });

@@ -38,8 +38,8 @@ export default function Account() {
     return (
         <>
             <div className="private">
-                <h1>Super Secret Page</h1>
-                <h2> User Profile Info: </h2>
+                <h1>Welcome!</h1>
+                <h2> This is your account page. </h2>
                 <p>...some data here</p>
                 <h2> Report Info: </h2>
                 <p> ... some data here </p>
