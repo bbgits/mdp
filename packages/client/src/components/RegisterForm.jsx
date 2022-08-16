@@ -255,8 +255,6 @@ export default function App() {
 
     const [stepValue, setStepValue] = useState({ stepValue: 1 });
 
-
-
     const handleSubmit = async (event) => { // LOGIC ON SUBMIT...
         event.preventDefault()
         try {

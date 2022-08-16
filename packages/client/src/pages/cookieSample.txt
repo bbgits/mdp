@@ -1,0 +1,254 @@
+[
+  {
+    "name": "Navigate",
+    "subHooks": [
+      {
+        "name": "InRouterContext",
+        "subHooks": [
+          {
+            "name": "Context",
+            "value": {
+              "location": "{hash: \"\", key: \"default\", pathname: \"/\", search: \"…}",
+              "navigationType": "POP"
+            },
+            "subHooks": [],
+            "hookSource": {
+              "lineNumber": 46186,
+              "functionName": "useInRouterContext",
+              "fileName": "http://localhost:3000/static/js/bundle.js",
+              "columnNumber": 59
+            }
+          }
+        ],
+        "hookSource": {
+          "lineNumber": 46248,
+          "columnNumber": 4,
+          "functionName": "useNavigate",
+          "fileName": "http://localhost:3000/static/js/bundle.js"
+        }
+      },
+      {
+        "name": "Context",
+        "value": {
+          "basename": "/",
+          "navigator": "{action: \"POP\", back: ƒ back() {}, block: ƒ block()…}",
+          "static": false
+        },
+        "subHooks": [],
+        "hookSource": {
+          "lineNumber": 46254,
+          "functionName": "useNavigate",
+          "fileName": "http://localhost:3000/static/js/bundle.js",
+          "columnNumber": 56
+        }
+      },
+      {
+        "name": "Context",
+        "value": {
+          "outlet": null,
+          "matches": "[{…}]"
+        },
+        "subHooks": [],
+        "hookSource": {
+          "lineNumber": 46257,
+          "functionName": "useNavigate",
+          "fileName": "http://localhost:3000/static/js/bundle.js",
+          "columnNumber": 56
+        }
+      },
+      {
+        "name": "Location",
+        "subHooks": [
+          {
+            "name": "InRouterContext",
+            "subHooks": [
+              {
+                "name": "Context",
+                "value": {
+                  "location": "{hash: \"\", key: \"default\", pathname: \"/\", search: \"…}",
+                  "navigationType": "POP"
+                },
+                "subHooks": [],
+                "hookSource": {
+                  "lineNumber": 46186,
+                  "functionName": "useInRouterContext",
+                  "fileName": "http://localhost:3000/static/js/bundle.js",
+                  "columnNumber": 59
+                }
+              }
+            ],
+            "hookSource": {
+              "lineNumber": 46201,
+              "columnNumber": 4,
+              "functionName": "useLocation",
+              "fileName": "http://localhost:3000/static/js/bundle.js"
+            }
+          },
+          {
+            "name": "Context",
+            "value": {
+              "location": "{hash: \"\", key: \"default\", pathname: \"/\", search: \"…}",
+              "navigationType": "POP"
+            },
+            "subHooks": [],
+            "hookSource": {
+              "lineNumber": 46204,
+              "functionName": "useLocation",
+              "fileName": "http://localhost:3000/static/js/bundle.js",
+              "columnNumber": 59
+            }
+          }
+        ],
+        "hookSource": {
+          "lineNumber": 46260,
+          "columnNumber": 7,
+          "functionName": "useNavigate",
+          "fileName": "http://localhost:3000/static/js/bundle.js"
+        }
+      },
+      {
+        "name": "Ref",
+        "value": true,
+        "subHooks": [],
+        "hookSource": {
+          "lineNumber": 46262,
+          "functionName": "useNavigate",
+          "fileName": "http://localhost:3000/static/js/bundle.js",
+          "columnNumber": 64
+        }
+      },
+      {
+        "name": "Effect",
+        "value": "ƒ () {}",
+        "subHooks": [],
+        "hookSource": {
+          "lineNumber": 46263,
+          "functionName": "useNavigate",
+          "fileName": "http://localhost:3000/static/js/bundle.js",
+          "columnNumber": 51
+        }
+      },
+      {
+        "name": "Callback",
+        "value": "ƒ () {}",
+        "subHooks": [],
+        "hookSource": {
+          "lineNumber": 46266,
+          "functionName": "useNavigate",
+          "fileName": "http://localhost:3000/static/js/bundle.js",
+          "columnNumber": 68
+        }
+      }
+    ],
+    "hookSource": {
+      "lineNumber": 2206,
+      "columnNumber": 81,
+      "functionName": "Account",
+      "fileName": "http://localhost:3000/static/js/bundle.js"
+    }
+  },
+  {
+    "name": "Cookies",
+    "subHooks": [
+      {
+        "name": "Context",
+        "value": {
+          "changeListeners": "[ƒ onChange() {}]",
+          "HAS_DOCUMENT_COOKIE": true,
+          "cookies": "{jwt: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI…}",
+          "_updateBrowserValues": "ƒ () {}",
+          "_emitChange": "ƒ () {}",
+          "get": "ƒ () {}",
+          "getAll": "ƒ () {}",
+          "set": "ƒ () {}",
+          "remove": "ƒ () {}",
+          "addChangeListener": "ƒ () {}",
+          "removeChangeListener": "ƒ () {}"
+        },
+        "subHooks": [],
+        "hookSource": {
+          "lineNumber": 18356,
+          "functionName": "useCookies",
+          "fileName": "http://localhost:3000/static/js/bundle.js",
+          "columnNumber": 66
+        }
+      },
+      {
+        "name": "State",
+        "value": {
+          "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZmEzZjk1OWViNDJkYjY4NDJiOTUyMiIsImlhdCI6MTY2MDU2NzQ0NSwiZXhwIjoxNjYwODI2NjQ1fQ.T4neG1YRaRkR5WtnMrMRIi1UhLn38Uijdlhc93leO6k"
+        },
+        "subHooks": [],
+        "hookSource": {
+          "lineNumber": 18364,
+          "functionName": "useCookies",
+          "fileName": "http://localhost:3000/static/js/bundle.js",
+          "columnNumber": 59
+        }
+      },
+      {
+        "name": "Ref",
+        "value": {
+          "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZmEzZjk1OWViNDJkYjY4NDJiOTUyMiIsImlhdCI6MTY2MDU2NzQ0NSwiZXhwIjoxNjYwODI2NjQ1fQ.T4neG1YRaRkR5WtnMrMRIi1UhLn38Uijdlhc93leO6k"
+        },
+        "subHooks": [],
+        "hookSource": {
+          "lineNumber": 18368,
+          "functionName": "useCookies",
+          "fileName": "http://localhost:3000/static/js/bundle.js",
+          "columnNumber": 73
+        }
+      },
+      {
+        "name": "LayoutEffect",
+        "value": "ƒ () {}",
+        "subHooks": [],
+        "hookSource": {
+          "lineNumber": 18371,
+          "functionName": "useCookies",
+          "fileName": "http://localhost:3000/static/js/bundle.js",
+          "columnNumber": 59
+        }
+      },
+      {
+        "name": "Memo",
+        "value": "ƒ bound () {}",
+        "subHooks": [],
+        "hookSource": {
+          "lineNumber": 18389,
+          "functionName": "useCookies",
+          "fileName": "http://localhost:3000/static/js/bundle.js",
+          "columnNumber": 65
+        }
+      },
+      {
+        "name": "Memo",
+        "value": "ƒ bound () {}",
+        "subHooks": [],
+        "hookSource": {
+          "lineNumber": 18392,
+          "functionName": "useCookies",
+          "fileName": "http://localhost:3000/static/js/bundle.js",
+          "columnNumber": 68
+        }
+      }
+    ],
+    "hookSource": {
+      "lineNumber": 2207,
+      "columnNumber": 102,
+      "functionName": "Account",
+      "fileName": "http://localhost:3000/static/js/bundle.js"
+    }
+  },
+  {
+    "name": "Effect",
+    "value": "ƒ () {}",
+    "subHooks": [],
+    "hookSource": {
+      "lineNumber": 2208,
+      "functionName": "Account",
+      "fileName": "http://localhost:3000/static/js/bundle.js",
+      "columnNumber": 51
+    }
+  }
+]
