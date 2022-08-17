@@ -2,7 +2,7 @@
  * Primary React Onboarding Form with Stripe Connection
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ScrollView, } from "react";
 import { Layout, Button } from 'antd';
 import { ToastContainer, toast } from "react-toastify";
 import { LargeBlockForm } from './LargeBlockForm';

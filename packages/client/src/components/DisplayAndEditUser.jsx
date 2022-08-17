@@ -19,10 +19,10 @@ export default function DisplayAndEditUser(props) {
     }
 
     return (
-        <div className="accountDisplayReport">
-            <p><b>first name: </b>{user.firstName}</p>
-            <p><b>last name: </b>{user.lastName}</p>
-            <p><b>email: </b>{user.email}</p>
+        <div className="displaySubDiv">
+            <p>first name: <b>{user.firstName}</b></p>
+            <p>last name: <b>{user.lastName}</b></p>
+            <p>email: <b>{user.email}</b></p>
         </div>
 
     );

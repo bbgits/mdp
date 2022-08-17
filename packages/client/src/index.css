@@ -59,7 +59,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: rgb(236, 236, 238);
-    overflow: hidden;
+    overflow: scroll;
     font-family: Poppins, Geneva, Tahoma, sans-serif;
     background-image: radial-gradient(circle, rgba(16, 161, 229, .5), rgba(45, 200, 135, .5)), url(" .\\assets\\background-office-by-Bali-Demiri.jpg");
     background-size: cover;
@@ -75,7 +75,7 @@ ul {
     padding: 1rem 3rem;
     padding-bottom: 2rem;
     border-radius: 0.5rem;
-    border-top: rgb(32, 213, 197) 0.5rem solid;
+    border-top: #20d5c5 0.5rem solid;
 }
 
 .logo-image {
@@ -140,7 +140,6 @@ span a {
 
 
 .private {
-    height: 90vh;
     width: 90vw;
     overflow-wrap: break-word;
     background-color: rgb(32, 213, 197);
@@ -149,9 +148,10 @@ span a {
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
-    font-size: 1.5rem;
+    font-size: 1rem;
     flex-direction: column;
     gap: 1rem;
+    min-height: 100%
 }
 
 .formStepHolder {
@@ -468,7 +468,7 @@ span a {
 
 }
 
-.accountDisplayReport {
+.displayReport {
     color: rgb(0, 0, 0);
     font-family: 'Roboto';
     text-align: left;
@@ -477,7 +477,7 @@ span a {
     background-color: rgba(255, 255, 255, 0);
     outline-style: dashed;
     outline-color: rgba(255, 0, 0, 0);
-    width: 30%;
+    width: 60%;
     padding: 5px;
 
     display: flex;
@@ -485,4 +485,23 @@ span a {
     justify-content: flex-start;
     align-items: left;
 
+}
+
+.displaySubDivTitle {
+    font-size: 16px;
+    color: #f7256b;
+    font-weight: 600;
+    text-transform: lowercase;
+}
+
+.displaySubDiv {
+    font-size: 14px;
+    color: #f7256b;
+    background-color: #ffffff;
+    padding: 5px;
+    text-align: center;
+    outline-style: dashed;
+    outline-width: 2px;
+    outline-color: #000000;
+    text-transform: lowercase;
 }

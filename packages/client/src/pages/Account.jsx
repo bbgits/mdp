@@ -60,6 +60,7 @@ export default function Account() {
                 <p> To make a change, please send email to support@mydailypdf.com</p>
                 <button onClick={logOut}>Log out</button>
             </div>
+
             <ToastContainer />
         </>
 
