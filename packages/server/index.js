@@ -77,6 +77,7 @@ app.post("/create-annual-checkout-session", async (req, res) => {
         return res.redirect(303, session.url);
     } catch (e) {
         res.status(400);
+        console.log("stripe session failed")
         return res.send({
             error: {
                 message: e.message,
@@ -111,6 +112,7 @@ mongoose
         console.log("sucessfully connected to mongo atlass db...");
     })
     .catch((err) => {
+        console.log("mongooose failed")
         console.log(err.message);
     });
 

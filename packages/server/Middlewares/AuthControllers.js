@@ -45,16 +45,13 @@ module.exports.register = async (req, res, next) => {
 
         //Send user data to "users" collection
         const user = await User.create({ firstName, lastName, email, password, stripeID });
-        console.log(user);
 
-        //Sent report data to "reports" collection
+
+        //Send report data to "reports" collection
         const report = await Report.create({ reportName, reportType, email, reportZip, reportQuote1Sports, reportQuote2Politics, reportQuote3Art, reportQuote4Love, reportQuote5Business, reportLgDiv1Type, reportLgDiv1Data1, reportLgDiv1Data2, reportLgDiv1Data3, reportLgDiv1Data4, reportLgDiv1Data5, reportLgDiv2Type, reportLgDiv2Data1, reportLgDiv2Data2, reportLgDiv2Data3, reportLgDiv2Data4, reportLgDiv2Data5, reportLgDiv3Type, reportLgDiv3Data1, reportLgDiv3Data2, reportLgDiv3Data3, reportLgDiv3Data4, reportLgDiv3Data5 });
-        console.log(report);
 
 
         const token = createToken(user._id);
-
-
 
         res.cookie("jwt", token, {
             withCrdentials: true,
@@ -62,9 +59,12 @@ module.exports.register = async (req, res, next) => {
             maxAge: maxAge * 1000,
         });
 
-        return res.sendStatus(201).json({ User: { user: user._id, created: true }, Report: { report: report._id, created: true } });
+        // res.status(201).json({ hello: "world" });
+
+        res.status(201).json({ User: { user: user._id, created: true }, Report: { report: report._id, created: true } });
 
     } catch (err) {
+        console.log("Auth Controler broke...")
         console.log(err);
         const errors = handleErrors(err);
         res.json({ errors, created: false });
