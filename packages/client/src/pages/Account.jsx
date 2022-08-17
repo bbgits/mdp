@@ -4,6 +4,8 @@ import { useCookies } from "react-cookie";
 import { toast, ToastContainer } from "react-toastify";
 import { api } from '../utils/api';
 import DisplayAndEditReport from '../components/DisplayAndEditReport';
+import DisplayAndEditUser from '../components/DisplayAndEditUser';
+
 // import fetch from 'node-fetch';
 
 export default function Account() {
@@ -11,10 +13,10 @@ export default function Account() {
     var newCookie = "testkey=a test value as single string"
     document.cookie = newCookie;
 
-    // var requestOptions = {
-    //     method: 'GET',
-    //     redirect: 'follow'
-    // };
+    //Get user._id and report._id using regex
+    let userIdValue = document.cookie.replace(/(?:(?:^|.*;\s*)userID\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    let reportIdValue = document.cookie.replace(/(?:(?:^|.*;\s*)reportID\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
 
     const navigate = useNavigate();
     const [cookies, setCookie, removeCookie] = useCookies([]);
@@ -48,14 +50,14 @@ export default function Account() {
     return (
         <>
             <div className="private">
-                <DisplayAndEditReport />
-                <h1>All Cookies</h1>
-                <p id="cookieJar">{allCookies}</p>
-                <h2>Welcome!</h2>
-                <h2> This is your account page. </h2>
-                <p>...some data here</p>
-                <h2> Report Info: </h2>
-                <p> ... some data here </p>
+                <h1>Welcome to Your Account Page</h1>
+                <h2>User Profile Info:</h2>
+                <DisplayAndEditUser myUserId={userIdValue} />
+                <h2>Report Details</h2>
+                <DisplayAndEditReport myReportId={reportIdValue} />
+                <p>PLEASE NOTE:</p>
+                <p> At this time we do not support user-made changes to reports.</p>
+                <p> To make a change, please send email to support@mydailypdf.com</p>
                 <button onClick={logOut}>Log out</button>
             </div>
             <ToastContainer />

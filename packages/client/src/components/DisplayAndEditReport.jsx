@@ -3,14 +3,18 @@ import React, { useState, useEffect } from "react";
 export default function DisplayAndEditReport(props) {
     const [report, setReport] = useState(null);
 
-    async function fetchReportData(id) {
-        const response = await fetch("http://localhost:4000/getOneReport/62fa3f959eb42db6842b9524");
+    var fetchString = "http://localhost:4000/getOneReport/" + props.myReportId;
+
+    console.log("fetchString: " + fetchString);
+
+    async function fetchReportData() {
+        const response = await fetch(fetchString);
         setReport(await response.json());
-    }
+    };
 
     useEffect(() => {
-        fetchReportData(props.id);
-    }, [props.id]);
+        fetchReportData();
+    }, [report]);
 
     if (!report) {
         return "loading...";
@@ -18,7 +22,6 @@ export default function DisplayAndEditReport(props) {
 
     return (
         <div className="accountDisplayReport">
-            <h2>Report Summary:</h2>
             <p><b>- - - Header Info - - -</b></p>
             <p><b>report name: </b>{report.reportName}</p>
             <p><b>email: </b>{report.email}</p>

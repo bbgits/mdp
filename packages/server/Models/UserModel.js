@@ -51,6 +51,10 @@ const userSchema = new mongoose.Schema({
     }, paymentType: {
         type: String,
         required: [false, "paymentType is Required"],
+    },
+    myToken: {
+        type: String,
+        required: [false, "token error"],
     }
 
 });

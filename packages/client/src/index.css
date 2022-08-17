@@ -469,20 +469,20 @@ span a {
 }
 
 .accountDisplayReport {
-    color: red;
+    color: rgb(0, 0, 0);
     font-family: 'Roboto';
-    text-align: center;
+    text-align: left;
     text-transform: lowercase;
 
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0);
     outline-style: dashed;
-    outline-color: red;
-    width: 80%;
-    padding: 15px;
+    outline-color: rgba(255, 0, 0, 0);
+    width: 30%;
+    padding: 5px;
 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: left;
 
 }
