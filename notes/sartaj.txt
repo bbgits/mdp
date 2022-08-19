@@ -1,0 +1,8 @@
+
+rename public/client
+rename stripe => service-stripe
+rename getter => service-web-scraper
+
+
+
+rename public => <i class="<i class="fas fa-zhihu    "></i> fa-circle-notch    "></i>

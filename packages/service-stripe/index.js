@@ -12,19 +12,24 @@ This script:
 const express = require("express");
 const app = express();
 
-//setup env path + error if fail
+// env setup
 const path = require('path');
-const envFilePath = path.resolve(__dirname, './.env');
-const env = require("dotenv").config({ path: envFilePath });
-if (env.error) {
-    throw new Error(`Unable to load the .env file from ${envFilePath}. Please copy .env.example to ${envFilePath}`);
-}
+const dotenv = require('dotenv');
+let env = dotenv.config({ path: '../../.env' });
+
+// env imports
+const STRIPE_SECRET_KEY = env.parsed.STRIPE_SECRET_KEY;
+const STATIC_DIR = env.parsed.STATIC_DIR;
+const DOMAIN = env.parsed.DOMAIN;
+const STRIPE_PUBLISHABLE_KEY = env.parsed.STRIPE_PUBLISHABLE_KEY;
+const BASIC_PRICE_ID = env.parsed.BASIC_PRICE_ID;
+const PRO_PRICE_ID = env.parsed.PRO_PRICE_ID;
 
 //Create a stripe instance by passing SECRET_KEY
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')(STRIPE_SECRET_KEY);
 
 //Set parapmeters for the server
-app.use(express.static(process.env.STATIC_DIR));
+app.use(express.static(STATIC_DIR));
 app.use(express.urlencoded());
 app.use(
     express.json({
@@ -38,9 +43,9 @@ app.use(
     })
 );
 
-// Set route for static directory
+// Set main file path from env STATIC_DIR
 app.get("/", (req, res) => {
-    const filePath = path.resolve(process.env.STATIC_DIR + "/index.html");
+    const filePath = path.resolve(STATIC_DIR + "/index.html");
     res.sendFile(filePath);
 });
 
@@ -51,12 +56,10 @@ app.get("/checkout-session", async (req, res) => {
     res.send(session);
 });
 
-
 // CREATE CHECKOUT SESSION: Monthly Payment
 app.post("/create-monthly-checkout-session", async (req, res) => {
-    const domainURL = process.env.DOMAIN;
+    const domainURL = DOMAIN;
     const { priceId } = "price_1LT5IHBTlONlrDpCbIs33WUz"; //price codes from Stripe Acct
-
 
     try {
         const session = await stripe.checkout.sessions.create({
@@ -88,7 +91,7 @@ app.post("/create-monthly-checkout-session", async (req, res) => {
 
 // CREATE CHECKOUT SESSION: Annual Payment
 app.post("/create-annual-checkout-session", async (req, res) => {
-    const domainURL = process.env.DOMAIN;
+    const domainURL = DOMAIN;
     const { priceId } = "price_1LT5IHBTlONlrDpCTcuUZysR";
 
     try {
@@ -119,9 +122,9 @@ app.post("/create-annual-checkout-session", async (req, res) => {
 
 app.get("/config", (req, res) => {
     res.send({
-        publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
-        basicPrice: process.env.BASIC_PRICE_ID,
-        proPrice: process.env.PRO_PRICE_ID,
+        publishableKey: STRIPE_PUBLISHABLE_KEY,
+        basicPrice: BASIC_PRICE_ID,
+        proPrice: PRO_PRICE_ID,
     });
 });
 
@@ -134,7 +137,7 @@ app.post('/customer-portal', async (req, res) => {
 
     // This is the url to which the customer will be redirected when they are done
     // managing their billing with the portal.
-    const returnUrl = process.env.DOMAIN;
+    const returnUrl = DOMAIN;
 
     const portalSession = await stripe.billingPortal.sessions.create({
         customer: checkoutSession.customer,
@@ -149,7 +152,7 @@ app.post("/webhook", async (req, res) => {
     let data;
     let eventType;
     // Check if webhook signing is configured.
-    if (process.env.STRIPE_WEBHOOK_SECRET) {
+    if (STRIPE_WEBHOOK_SECRET) {
         // Retrieve the event by verifying the signature using the raw body and secret.
         let event;
         let signature = req.headers["stripe-signature"];
@@ -158,7 +161,7 @@ app.post("/webhook", async (req, res) => {
             event = stripe.webhooks.constructEvent(
                 req.rawBody,
                 signature,
-                process.env.STRIPE_WEBHOOK_SECRET
+                STRIPE_WEBHOOK_SECRET
             );
         } catch (err) {
             console.log(`⚠️  Webhook signature verification failed.`);

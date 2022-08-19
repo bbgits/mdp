@@ -21,13 +21,20 @@ const authRoutes = require("./routes/authRoutes");
 const cookieParser = require("cookie-parser");
 
 // import environment variables + error if fail
-const env = require("dotenv").config("./.env");
+const env = require("dotenv").config({ path: "../../.env" });
+const envMongoUser = env.parsed.MONGO_USER;
+const envMongoPass = env.parsed.MONGO_PASS;
+const envStaticDir = env.parsed.STATIC_DIR;
+const envDomain = env.parsed.DOMAIN;
+const envStripeSecretKey = env.parsed.STRIPE_SECRET_KEY
 
-const path = require('path');
-const envFilePath = path.resolve(__dirname, './.env');
-if (env.error) {
-    throw new Error(`Unable to load the .env file from ${envFilePath}. Please copy .env.example to ${envFilePath}`);
-}
+// const path = require('path');
+// const envFilePath = path.resolve(__dirname, '../../.env');
+// if (env.error) {
+//     throw new Error(`Unable to load the .env file from ${envFilePath}. Please copy .env.example to ${envFilePath}`);
+// }
+
+
 
 // create express server app
 const app = express();
@@ -43,13 +50,13 @@ app.listen(4000, (err) => {
 
 // Create get to connect with register
 app.get("/", (req, res) => {
-    const filePath = path.resolve(process.env.STATIC_DIR + "../public/index.html");
+    const filePath = path.resolve(envStaticDir + "../public/index.html");
     res.sendFile(filePath);
 });
 
 //create endpoint for creating checkout session
 app.post("/create-annual-checkout-session", async (req, res) => {
-    const domainURL = process.env.DOMAIN;
+    const domainURL = envDomain;
     const { priceId } = req.body;
 
     // Create new Checkout Session for the order
@@ -87,7 +94,7 @@ app.post("/create-annual-checkout-session", async (req, res) => {
 });
 
 // establish connection to stripe server
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')(envStripeSecretKey);
 if (stripe.error) {
     throw new Error(`Unable to connect to Stripe`);
 } else {
@@ -101,8 +108,8 @@ if (stripe.error) {
 const priceId = '{{PRICE_ID}}';
 
 // establish connection to mongoose atlas cloud db
-const dbUser = (process.env.DB_USER);
-const dbPass = (process.env.DB_PASS)
+const dbUser = (envMongoUser);
+const dbPass = (envMongoPass)
 mongoose
     .connect("mongodb+srv://" + dbUser + ":" + dbPass + "@my-daily-pdf.ddfuw.mongodb.net/main?retryWrites=true&w=majority", {
         useNewUrlParser: true,

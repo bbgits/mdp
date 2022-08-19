@@ -61,7 +61,7 @@ body {
     background-color: rgb(236, 236, 238);
     overflow: scroll;
     font-family: Poppins, Geneva, Tahoma, sans-serif;
-    background-image: radial-gradient(circle, rgba(16, 161, 229, .5), rgba(45, 200, 135, .5)), url(" .\\assets\\background-office-by-Bali-Demiri.jpg");
+    background-image: radial-gradient(circle, rgba(16, 161, 229, .5), rgba(45, 200, 135, .5)), url(" ./assets/background-office-by-Bali-Demiri.jpg");
     background-size: cover;
     background-position: center;
 }

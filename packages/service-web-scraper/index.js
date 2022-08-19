@@ -14,15 +14,20 @@ import pullConfigDoc from './utils/pullConfigDoc.js';
 import getWeatherByZipAndMakeDocInDb from './utils/getWeatherByZipAndMakeDocInMongo.js';
 import getTwitterByUsernameAndMakeDocInMongo from './utils/getTwitterByUsernameAndMakeDocInMongo.js';
 import scrapeInstaByUsernameAndMakeDocInMongo from './utils/scrapeInstaByUsernameAndMakeDocInMongo.js';
+import dotenv from 'dotenv';
 
 
-const envFilePath = path.resolve(__dirname, './.env');
-const env = require("dotenv").config({ path: envFilePath });
+// set env path and get env variables
+let env = dotenv.config({ path: '../../.env' });
+const MONGO_USER = env.parsed.MONGO_USER
+const MONGO_PASS = env.parsed.MONGO_PASS
 
+console.log(MONGO_USER);
+console.log(MONGO_PASS);
 
 async function main() {
     // Declare database variables
-    const uri = "mongodb+srv://" + process.env.MONGO_USER + ":" + process.env.MONGO_PASS + "@my-daily-pdf.ddfuw.mongodb.net/?retryWrites=true&w=majority";
+    const uri = "mongodb+srv://" + MONGO_USER + ":" + MONGO_PASS + "@my-daily-pdf.ddfuw.mongodb.net/?retryWrites=true&w=majority";
     const Client = new MongoClient(uri);
 
     //FUNCTION BODY
