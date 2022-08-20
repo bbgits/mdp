@@ -1,8 +1,13 @@
+/**
+ This script accepts to, subj, textMsg, htmlMsg, and attach as inputs and sends a nicely formatted email. 
+ */
+
 import nodemailer from 'nodemailer'; // send emails
 import { google } from 'googleapis'; // google's email api
 import dotenv from 'dotenv';
 
 // get secrets from .env
+// executed from index.js .env path is not one level up
 const env = dotenv.config({ path: ".env" });
 const CLIENT_ID = env.parsed.CLIENT_ID;
 const CLIENT_SECRET = env.parsed.CLIENT_SECRET
@@ -17,8 +22,8 @@ const oAuth2Client = new google.auth.OAuth2(
 );
 oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
-// funciton so send email
-export default async function sendMail() {
+// function so send email
+export default async function sendMail(myRecipient, mySubject, myText, myHtml, myAttachments) {
     try {
 
         // get token
@@ -40,13 +45,13 @@ export default async function sendMail() {
         // set message details
         const mailOptions = {
             from: 'My Dialy PDF Mailer <brian.b@mydailypdf.com>',
-            to: 'brian.david.burns@gmail.com',
-            subject: "Hello from gmailAPI!!",
+            to: myRecipient,
+            subject: mySubject,
             // always include text version, will send as backup
-            text: "Here's the text version of the email.",
+            text: myText,
             // html version is tried first
-            html: "<h1> html version:</h1> <p>Here's the HTML version of the email.</p>",
-
+            html: myHtml,
+            attachments: myAttachments,
         };
 
         // send email and return result
