@@ -1,7 +1,0 @@
-BUG: "Can't set headers after response sent"
-DETAILS: 
-    -Server shuts down with error referencing "cannot set headers after response sent"
-    -After posting to database, server was shutting down.
-FIX:
-    -bug was caused by having "res.sendStatus" in some of the code instead of simply "res.Status"
-    -fixed by changing to "res.Status" 
