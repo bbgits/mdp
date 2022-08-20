@@ -15,13 +15,7 @@ export default async function getWeatherByZipAndMakeDocInMongo(aClient, aZip, ta
     const zipCursor = await aClient.db('main').collection('zipcodes').find({
         'zipCode': aZip
     })
-
-
-
     const zipResults = await zipCursor.toArray();
-
-
-
     const myLat = await zipResults[0]["lat"];
     const myLon = await zipResults[0]["lon"];
 
