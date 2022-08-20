@@ -13,8 +13,24 @@ PARTIAL FIX:
             "os": false
         },
     - possible solution: https://stackoverflow.com/questions/57161839/module-not-found-error-cant-resolve-fs-in
-FIX:
+FIX 1:
     - Sartaj helped me fix this initially...
     - 2nd time I fixed by editing server/index.js env variables
     - using previous code avoids error, but does not hit the right .env folder
+FIX FOR REACT:
+    - cannot use 'dotenv' package in react!
+    - env variable names MUST start with "REACT_APP_"
+    - use this syntax:
+    const API_URL = process.env.REACT_APP_SERVER_API_URL;
+
+GENERAL ENV SYNTAX USING DOTENV:
+import environment variables + error if fail
+const env = require("dotenv").config({ path: ".env" });
+const envMongoUser = env.parsed.MONGO_USER;
+const envMongoPass = env.parsed.MONGO_PASS;
+const envStaticDir = env.parsed.STATIC_DIR;
+const envDomain = env.parsed.DOMAIN;
+const envStripeSecretKey = env.parsed.STRIPE_SECRET_KEY
+
+
 

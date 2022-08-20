@@ -20,21 +20,13 @@ const authRoutes = require("./routes/authRoutes");
 // import cookieParser to help manage cookies
 const cookieParser = require("cookie-parser");
 
-// import environment variables + error if fail
-const env = require("dotenv").config({ path: "../../.env" });
+// import environment variables
+const env = require("dotenv").config({ path: ".env" });
 const envMongoUser = env.parsed.MONGO_USER;
 const envMongoPass = env.parsed.MONGO_PASS;
 const envStaticDir = env.parsed.STATIC_DIR;
 const envDomain = env.parsed.DOMAIN;
 const envStripeSecretKey = env.parsed.STRIPE_SECRET_KEY
-
-// const path = require('path');
-// const envFilePath = path.resolve(__dirname, '../../.env');
-// if (env.error) {
-//     throw new Error(`Unable to load the .env file from ${envFilePath}. Please copy .env.example to ${envFilePath}`);
-// }
-
-
 
 // create express server app
 const app = express();
@@ -54,18 +46,11 @@ app.get("/", (req, res) => {
     res.sendFile(filePath);
 });
 
-//create endpoint for creating checkout session
+//create endpoint for ANNUAL CHECKOUT SESSION
 app.post("/create-annual-checkout-session", async (req, res) => {
     const domainURL = envDomain;
     const { priceId } = req.body;
 
-    // Create new Checkout Session for the order
-    // Other optional params include:
-    // [billing_address_collection] - to display billing address details on the page
-    // [customer] - if you have an existing Stripe Customer ID
-    // [customer_email] - lets you prefill the email input in the form
-    // [automatic_tax] - to automatically calculate sales tax, VAT and GST in the checkout page
-    // For full details see https://stripe.com/docs/api/checkout/sessions/create
     try {
         const session = await stripe.checkout.sessions.create({
             mode: "subscription",

@@ -6,17 +6,16 @@
  */
 
 import React, { useState, useEffect } from "react";
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
-import { Descriptions, PageHeader, Menu, Layout, Button } from 'antd';
 import { ToastContainer, toast } from "react-toastify";
 import { useCookies } from "react-cookie";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MyHeader from '../components/MyHeader';
 import RegisterForm from '../components/RegisterForm';
-import MyFooter from '../components/MyFooter'
-import { api } from '../utils/api';
+import MyFooter from '../components/MyFooter';
+import { Layout } from 'antd';
 
-const { Header, Footer, Sider, Content } = Layout;
+
+const { Header, Footer, Content } = Layout;
 
 function Register() {
 

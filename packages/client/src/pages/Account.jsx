@@ -25,7 +25,7 @@ export default function Account() {
             if (!cookies.jwt) {
                 navigate("/login");
             } else {
-                const { data } = api.post();
+                const { data } = await api.post();
                 if (!data.status) {
                     removeCookie("jwt");
                     navigate("/login");

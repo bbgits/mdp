@@ -1,5 +1,6 @@
-export default function App() {
+import React from "react"
 
+export default function App() {
     return <div id="headerMainDiv">
         <div id="headerTitleBoxDiv">
             <span><b>your</b> internet</span><span id="taglineDelivered"><i>...delivered!</i></span>

@@ -15,7 +15,7 @@ const app = express();
 // env setup
 const path = require('path');
 const dotenv = require('dotenv');
-let env = dotenv.config({ path: '../../.env' });
+let env = dotenv.config({ path: '.env' });
 
 // env imports
 const STRIPE_SECRET_KEY = env.parsed.STRIPE_SECRET_KEY;

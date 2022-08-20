@@ -2,9 +2,9 @@
  * Primary React Onboarding Form with Stripe Connection
  */
 
-import React, { useState, useEffect, ScrollView, } from "react";
+import React, { useState } from "react";
 import { Layout, Button } from 'antd';
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { LargeBlockForm } from './LargeBlockForm';
 import { api } from '../utils/api';
 
@@ -170,9 +170,9 @@ const Step2 = (props) => {
                         defaultValue={reportValues.reportQuote5Business || ""}
                         onChange={(e) => {
                             {
-                                if (e.target.value == true) {
+                                if (e.target.value === true) {
                                     e.target.value = false
-                                } else if (e.target.value == false) {
+                                } else if (e.target.value === false) {
                                     e.target.value = true
                                 }
                             }
@@ -258,7 +258,7 @@ export default function App() {
     const handleSubmit = async (event) => { // LOGIC ON SUBMIT...
         event.preventDefault()
         try {
-            const result = await api.post(  // POST THE "data" 
+            const result = await api.post(  // POST data
                 "/register",
                 {
                     ...userValues, ...reportValues,
@@ -361,35 +361,35 @@ export default function App() {
             {/* after inputs area, display appropriate buttons*/}
             <div className="formButtonHolder">
 
-                {formStep == 1 && <div className="formButtonHolderInnerDiv">
+                {formStep === 1 && <div className="formButtonHolderInnerDiv">
                     <Button className="nextButton" onClick={setNextStep}>next</Button>
                 </div>}
 
-                {formStep == 2 && <div className="formButtonHolderInnerDiv">
+                {formStep === 2 && <div className="formButtonHolderInnerDiv">
                     <Button className="prevButton" onClick={setPrevStep}>previous</Button>
                     <Button className="nextButton" onClick={setNextStep}>next</Button>
                 </div>
                 }
 
-                {formStep == 3 && <div className="formButtonHolderInnerDiv">
+                {formStep === 3 && <div className="formButtonHolderInnerDiv">
                     <Button className="prevButton" onClick={setPrevStep}>previous</Button>
                     <Button className="nextButton" onClick={setNextStep}>next</Button>
                 </div>
                 }
 
-                {formStep == 4 && <div className="formButtonHolderInnerDiv">
+                {formStep === 4 && <div className="formButtonHolderInnerDiv">
                     <Button className="prevButton" onClick={setPrevStep}>previous</Button>
                     <Button className="nextButton" onClick={setNextStep}>next</Button>
                 </div>
                 }
 
-                {formStep == 5 && <div className="formButtonHolderInnerDiv">
+                {formStep === 5 && <div className="formButtonHolderInnerDiv">
                     <Button className="prevButton" onClick={setPrevStep}>previous</Button>
                     <Button type="submit" className="previewSubmitButton" onClick={handleSubmit}>preview...</Button>
                 </div>
                 }
 
-                {formStep == 6 && <div className="formButtonHolderOuterDivCol">
+                {formStep === 6 && <div className="formButtonHolderOuterDivCol">
 
                     <h3>Save BIG with an Annual Subscription:</h3>
 

@@ -27,7 +27,7 @@ const axios = require('axios');
 
 
 (async () => {
-    let data = {};
+    let data;
     async function status() {
         const url = "http://localhost:4000/getOneReport/62fa3f959eb42db6842b9524";
         const response = await axios.get(url);
