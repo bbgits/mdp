@@ -1,14 +1,16 @@
 {
-  "name": "service-e-sender",
+  "name": "service-mailer",
   "version": "1.0.0",
-  "description": "sends pdf via email",
-  "main": "sender.js",
+  "description": "reads db, attaches pdf, sends email",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Brian Burns",
   "license": "UNLICENSED",
   "dependencies": {
+    "dotenv": "^16.0.1",
+    "googleapis": "^107.0.0",
     "nodemailer": "^6.7.8"
   }
 }
