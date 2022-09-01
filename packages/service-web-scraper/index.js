@@ -18,7 +18,7 @@ import dotenv from 'dotenv';
 
 
 // set env path and get env variables
-let env = dotenv.config({ path: '../../.env' });
+let env = dotenv.config({ path: './.env' });
 const MONGO_USER = env.parsed.MONGO_USER
 const MONGO_PASS = env.parsed.MONGO_PASS
 
