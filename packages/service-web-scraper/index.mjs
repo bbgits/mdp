@@ -16,7 +16,7 @@ import getTwitterByUsernameAndMakeDocInMongo from './utils/getTwitterByUsernameA
 import scrapeInstaByUsernameAndMakeDocInMongo from './utils/scrapeInstaByUsernameAndMakeDocInMongo.js';
 import dotenv from 'dotenv';
 
-export default async function index2() {
+export default async function index() {
 
     // set env path and get env variables
     let env = dotenv.config({ path: './.env' });
@@ -63,7 +63,7 @@ export default async function index2() {
 
             // Insta FOR LOOP:
             for (const instaUser of instaUsersArray) {
-                await scrapeInstaByUsernameAndMakeDocInMongo(instaUser, Client, "data", "instagram4");
+                await scrapeInstaByUsernameAndMakeDocInMongo(instaUser, Client, "data", "instagram");
             }
 
 

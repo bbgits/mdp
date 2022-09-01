@@ -63,9 +63,6 @@ export default async function pullReportAndReturnPrintableJson(client, reportId)
     console.log(await myLgDiv1Obj)
 
 
-
-
-
     var repLgDiv1Type = results[0]["reportLgDiv1Type"];
     var repLgDiv1Data1 = results[0]["reportLgDiv1Data1"];
     var repLgDiv1Data2 = results[0]["reportLgDiv1Data2"];
@@ -115,9 +112,6 @@ async function main() {
         console.log("--- end of PullReportAndReturnPrintableJson try block---");
 
         // parseToPrintable(report);
-
-
-
     } catch (e) {
         console.error(e);
     } finally {

@@ -26,7 +26,7 @@ export default async function getTwitterByUsernameAndMakeDocInMongo(twiHandle, c
     await console.log("Twitter Func: Converting to JSON...")
     const doc = await response.json();
 
-    doc["data"]["snapshotDate"] = "07/23/2022";
+    doc["data"]["timestamp"] = Date.now();
 
     await console.log("Twitter Func: Inserting to DB...")
     const result = await client.db(targetDB).collection(targetCollection).insertOne(doc);

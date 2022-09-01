@@ -29,6 +29,8 @@ export default async function getWeatherByZipAndMakeDocInMongo(aClient, aZip, ta
 
     data["zipCode"] = aZip;
 
+    data["timestamp"] = Date.now();
+
     const result = await aClient.db(targetDB).collection(targetCollection).insertOne(data);
 
     console.log(`New Doc created with the following IDdatabases: ${result.insertedId}`);

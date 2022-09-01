@@ -24,13 +24,11 @@ export default async function scrapeInstaByUsernameAndMakeDocInMongo(instaHandle
         "instaFollowers": userFollowers,
         "instaFollowing": userFollowing,
         "instaPosts": userPosts,
-        "dataDate": Date.now()
+        "timestamp": Date.now()
     }
 
     const result = await client.db(targetDB).collection(targetCollection).insertOne(data);
 
     console.log(`    New Doc created with the following ID: ${result.insertedId}`);
-
-
 
 }
