@@ -1,9 +1,14 @@
 import { Builder, By } from "selenium-webdriver";
+// import Firefox from "selenium-webdriver/firefox";
 import { MongoClient } from 'mongodb';
 
 export default async function scrapeInstaByUsernameAndMakeDocInMongo(instaHandle, client, targetDB, targetCollection) {
     console.log("running insta scraper...")
-    let driver = await new Builder().forBrowser("firefox").build();
+    let driver = await new Builder()
+        .forBrowser("firefox")
+        .setFirefoxOptions("--headless")
+        .build()
+        ;
     var baseUrl = "http://www.picuki.com/profile/";
     var userName = instaHandle;
     var fullUrl = baseUrl + userName;
@@ -30,5 +35,7 @@ export default async function scrapeInstaByUsernameAndMakeDocInMongo(instaHandle
     const result = await client.db(targetDB).collection(targetCollection).insertOne(data);
 
     console.log(`    New Doc created with the following ID: ${result.insertedId}`);
+
+    driver.close();
 
 }

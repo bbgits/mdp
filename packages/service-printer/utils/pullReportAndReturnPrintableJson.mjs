@@ -49,7 +49,7 @@ export default async function pullReportAndReturnPrintableJson(client, reportId)
 
 
     /// CREATE LG DIV1 PRINTABLE OBJECT
-    /// Map LG DIV 1 to local variables
+    // Map LG DIV 1 to local variables
     var repLgDiv1Type = await results[0]['reportLgDiv1Type'];
     var repLgDiv1Data1 = await results[0]['reportLgDiv1Data1'];
     var repLgDiv1Data2 = await results[0]['reportLgDiv1Data2'];
@@ -62,22 +62,19 @@ export default async function pullReportAndReturnPrintableJson(client, reportId)
     console.log(await "***  MY LG DIV 1 OBJ:  ***")
     console.log(await myLgDiv1Obj)
 
-
-    var repLgDiv1Type = results[0]["reportLgDiv1Type"];
-    var repLgDiv1Data1 = results[0]["reportLgDiv1Data1"];
-    var repLgDiv1Data2 = results[0]["reportLgDiv1Data2"];
-    var repLgDiv1Data3 = results[0]["reportLgDiv1Data3"];
-    var repLgDiv1Data4 = results[0]["reportLgDiv1Data4"];
-    var repLgDiv1Data5 = results[0]["reportLgDiv1Data5"];
-
-
-
+    /// CREATE LG DIV1 PRINTABLE OBJECT
+    // Map LG DIV 1 to local variables
     var repLgDiv2Type = results[0]["reportLgDiv2Type"];
     var repLgDiv2Data1 = results[0]["reportLgDiv2Data1"];
     var repLgDiv2Data2 = results[0]["reportLgDiv2Data2"];
     var repLgDiv2Data3 = results[0]["reportLgDiv2Data3"];
     var repLgDiv2Data4 = results[0]["reportLgDiv2Data4"];
     var repLgDiv2Data5 = results[0]["reportLgDiv2Data5"];
+
+    // Pass variables to function that makes LG Div printable jsons
+    var myLgDiv2Obj = await makePrintableLgDivObj(client, repLgDiv2Type, repLgDiv2Data1, repLgDiv2Data2, repLgDiv2Data3, repLgDiv2Data4, repLgDiv2Data5);
+    console.log(await "***  MY LG DIV 1 OBJ:  ***")
+    console.log(await myLgDiv2Obj)
 
     var repLgDiv3Type = results[0]["reportLgDiv3Type"];
     var repLgDiv3Data1 = results[0]["reportLgDiv3Data1"];
