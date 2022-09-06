@@ -15,10 +15,6 @@ export default async function makePrintableHeaderObj(myClient, myZip) {
     var repDateMonth = todaysDateStringArray[1];
     var repDateDate = todaysDateStringArray[2];
     var repDateYear = todaysDateStringArray[3];
-    console.log("DAY: " + repDateDay);
-    console.log("MONTH: " + repDateMonth);
-    console.log("DATE: " + repDateDate);
-    console.log("YEAR: " + repDateYear);
 
     // GET WEATHER RESULTS
     const weatherCursor = await myClient.db('data').collection('weather').find({
@@ -32,7 +28,7 @@ export default async function makePrintableHeaderObj(myClient, myZip) {
     var sunriseHr = todaysSunrise.getHours();
     var sunriseMin = todaysSunrise.getMinutes();
     var repSunrise = sunriseHr + ":" + sunriseMin;
-    console.log("SUNRISE: " + repSunrise);
+
 
     // SUNSET
     var todaysSunset = new Date(weatherResults[0]["daily"][0]["sunset"] * 1000);
@@ -42,27 +38,25 @@ export default async function makePrintableHeaderObj(myClient, myZip) {
     }
     var sunsetMin = todaysSunset.getMinutes();
     var repSunset = sunsetHr + ":" + sunsetMin
-    console.log("SUNSET: " + repSunset)
+
 
     // HIGH TEMP
     var repHighTemperature = parseInt(weatherResults[0]["daily"][0]["temp"]["max"]);
-    console.log("HIGH TEMPERATURE: " + repHighTemperature);
+
 
     // LOW TEMP
     var repLowTemperature = parseInt(weatherResults[0]["daily"][0]["temp"]["min"]);
-    console.log("LOW TEMPERATURE: " + repLowTemperature);
+
 
     // WEATHER STRING
     var repWeatherString = weatherResults[0]["daily"][0]["weather"][0]["description"];
-    console.log("WEATHER DESCRIPTION: " + repWeatherString);
+
 
 
     // QUOTE
     var quoteObject = await getTheQuote();
     var repQuoteAuthor = await quoteObject["Author"];
     var repQuoteString = await quoteObject["Quote"]
-    console.log("QUOTE AUTHOR: " + await repQuoteAuthor)
-    console.log("QUOTE TEXT: " + await repQuoteString)
 
     // declare final header obj
     var headerObj = await {

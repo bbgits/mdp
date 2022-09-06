@@ -7,9 +7,6 @@ export default async function makePrintableInstaObj(myClient, Type, User1, User2
     var myUser4 = User4.toLowerCase();
     var myUser5 = User5.toLowerCase();
 
-    const users = await [myUser1, myUser2, myUser3, myUser4, myUser5]
-    console.log(await "myUser1 from MakePrintableInstaObj: " + myUser1)
-
     // create standardized insta object to add data to as we go
     var instaObject = await {
         "type": myType,
@@ -267,9 +264,6 @@ export default async function makePrintableInstaObj(myClient, Type, User1, User2
     var instaUser4_7DaysAgo = user4_Results[6];
     var instaUser4_30DaysAgo = user4_Results[29]; // to-do: update to 29 when there is enough docs
 
-    console.log("instaUser1_Today: ")
-    console.log(await instaUser1_Today);
-
     // save follower counts for today, 1-day, 7-day, and 30-day
     var instaUser4_FollowersToday = parseInt(instaUser4_Today["instaFollowers"]);
     var instaUser4_Followers1DayAgo = parseInt(instaUser4_1DayAgo["instaFollowers"]);
@@ -357,8 +351,6 @@ export default async function makePrintableInstaObj(myClient, Type, User1, User2
     instaObject['data']['usr5']['posts_30day_change'] = instaUser5_PostsToday - instaUser5_Posts30DaysAgo;
 
     return await instaObject;
-
-
 
 }
 

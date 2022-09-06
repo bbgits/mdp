@@ -7,9 +7,6 @@ export default async function makePrintableTwitterObj(myClient, Type, User1, Use
     var myUser4 = User4.toLowerCase();
     var myUser5 = User5.toLowerCase();
 
-    const users = await [myUser1, myUser2, myUser3, myUser4, myUser5]
-    console.log(await "myUser1 from MakePrintableTwitterObj: " + myUser1)
-
     // create standardized twitter object to add data to as we go
     var twiObject = await {
         "type": myType,
@@ -102,11 +99,7 @@ export default async function makePrintableTwitterObj(myClient, Type, User1, Use
             "data.username": myUser1
         })
         .sort({ "data.timestamp": -1 })
-
-
     var user1_Results = await Cursor1.toArray();
-
-
 
     // save arrays locally: today, 1-day, 7-day, and 30-day 
     var twiUser1_Today = await user1_Results[0];
@@ -167,8 +160,6 @@ export default async function makePrintableTwitterObj(myClient, Type, User1, Use
     var twiUser2_1DayAgo = await user2_Results[1];
     var twiUser2_7DaysAgo = await user2_Results[6];
     var twiUser2_30DaysAgo = await user2_Results[14]; // to-do: update to 29 when there is enough docs
-
-    console.log(await twiUser2_Today)
 
     // save follower counts for today, 1-day, 7-day, and 30-day
     var twiUser2_FollowersToday = await twiUser2_Today["data"]["public_metrics"]["followers_count"]
@@ -273,7 +264,6 @@ export default async function makePrintableTwitterObj(myClient, Type, User1, Use
     var user4_Results = await Cursor4.toArray();
     // save arrays locally: today, 1-day, 7-day, and 30-day 
 
-    console.log(user4_Results)
     var twiUser4_Today = await user4_Results[0];
     var twiUser4_1DayAgo = user4_Results[1];
     var twiUser4_7DaysAgo = user4_Results[6];
@@ -365,8 +355,6 @@ export default async function makePrintableTwitterObj(myClient, Type, User1, Use
     twiObject['data']['usr5']['posts_30day_change'] = twiUser5_PostsToday - twiUser5_Posts30DaysAgo;
 
     return await twiObject;
-
-
 
 }
 

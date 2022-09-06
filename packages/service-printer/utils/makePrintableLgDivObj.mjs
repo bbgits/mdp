@@ -13,13 +13,6 @@ import makePrintableNewsObj from './makePrintableNewsObj.mjs';
 
 
 export default async function makePrintableLgDivObj(myClient, myType, myData1, myData2, myData3, myData4, myData5) {
-    console.log("")
-    console.log("***********************************")
-    console.log("***** MAKING PRINTABLE LG DIV *****")
-    console.log("***********************************")
-    console.log("***** TYPE: " + myType)
-    console.log("***********************************")
-    console.log("")
 
     if (myType === "Twitter") {
         var lgDivObj = await makePrintableTwitterObj(myClient, myType, myData1, myData2, myData3, myData4, myData5);

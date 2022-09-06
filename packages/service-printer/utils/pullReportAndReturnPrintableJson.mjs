@@ -5,6 +5,7 @@ This script pulls the report doc from the database
 */
 
 //IMPORT TOOLS
+import fs from 'fs';
 import { MongoClient } from 'mongodb'; // IMORT MONGO
 import dotenv from 'dotenv';
 import makePrintableHeaderObj from './makePrintableHeaderObj.mjs';
@@ -27,14 +28,11 @@ export default async function pullReportAndReturnPrintableJson(client, reportId)
     // each section of the report will be an object in the "divs" list
     var myPrintable = { "divs": [], }
 
-    //Get report data 
+    //Get report data and save to local array
     const cursor = await client.db('main').collection('reports').find({
         'email': reportId
     });
-    // save to local report array
     const results = await cursor.toArray();
-    // console.log(results);
-
 
 
     /// CREATE HEADER OBJECT   
@@ -44,8 +42,7 @@ export default async function pullReportAndReturnPrintableJson(client, reportId)
     var repZipCode = await results[0]["reportZip"];
     // ToDo: make quote generation dynamic based on preferences
     var myHeaderObj = await makePrintableHeaderObj(client, repZipCode)
-    console.log("***  MY HEADER OBJ:  ***")
-    console.log(myHeaderObj)
+    myPrintable["divs"].push(myHeaderObj);
 
 
     /// CREATE LG DIV1 PRINTABLE OBJECT
@@ -56,38 +53,46 @@ export default async function pullReportAndReturnPrintableJson(client, reportId)
     var repLgDiv1Data3 = await results[0]['reportLgDiv1Data3'];
     var repLgDiv1Data4 = await results[0]['reportLgDiv1Data4'];
     var repLgDiv1Data5 = await results[0]['reportLgDiv1Data5'];
-
     // Pass variables to function that makes LG Div printable jsons
     var myLgDiv1Obj = await makePrintableLgDivObj(client, repLgDiv1Type, repLgDiv1Data1, repLgDiv1Data2, repLgDiv1Data3, repLgDiv1Data4, repLgDiv1Data5);
-    console.log(await "***  MY LG DIV 1 OBJ:  ***")
-    console.log(await myLgDiv1Obj)
+    myPrintable["divs"].push(myLgDiv1Obj);
 
-    /// CREATE LG DIV1 PRINTABLE OBJECT
-    // Map LG DIV 1 to local variables
+    /// CREATE LG DIV2 PRINTABLE OBJECT
+    // Map LG DIV 2 to local variables
     var repLgDiv2Type = results[0]["reportLgDiv2Type"];
     var repLgDiv2Data1 = results[0]["reportLgDiv2Data1"];
     var repLgDiv2Data2 = results[0]["reportLgDiv2Data2"];
     var repLgDiv2Data3 = results[0]["reportLgDiv2Data3"];
     var repLgDiv2Data4 = results[0]["reportLgDiv2Data4"];
     var repLgDiv2Data5 = results[0]["reportLgDiv2Data5"];
-
     // Pass variables to function that makes LG Div printable jsons
     var myLgDiv2Obj = await makePrintableLgDivObj(client, repLgDiv2Type, repLgDiv2Data1, repLgDiv2Data2, repLgDiv2Data3, repLgDiv2Data4, repLgDiv2Data5);
-    console.log(await "***  MY LG DIV 1 OBJ:  ***")
-    console.log(await myLgDiv2Obj)
+    myPrintable["divs"].push(myLgDiv2Obj);
 
+
+    /// CREATE LG DIV3 PRINTABLE OBJECT
+    // Map LG DIV 3 to local variables
     var repLgDiv3Type = results[0]["reportLgDiv3Type"];
     var repLgDiv3Data1 = results[0]["reportLgDiv3Data1"];
     var repLgDiv3Data2 = results[0]["reportLgDiv3Data2"];
     var repLgDiv3Data3 = results[0]["reportLgDiv3Data3"];
     var repLgDiv3Data4 = results[0]["reportLgDiv3Data4"];
     var repLgDiv3Data5 = results[0]["reportLgDiv3Data5"];
+    // Pass variables to function that makes LG Div printable jsons
+    var myLgDiv3Obj = await makePrintableLgDivObj(client, repLgDiv3Type, repLgDiv3Data1, repLgDiv3Data2, repLgDiv3Data3, repLgDiv3Data4, repLgDiv3Data5);
+    myPrintable["divs"].push(myLgDiv3Obj);
 
+    const jsonData = JSON.stringify(myPrintable);
 
-    var repTitleName = results[0]["reportName"];
-    var repTitleName = results[0]["reportName"];
-    var repTitleName = results[0]["reportName"];
+    fs.writeFile('newPrintable.json', jsonData, (err) => {
+        if (err) {
+            console.log("make printable failed...")
+            throw err;
+        }
+        console.log("JSON data is saved");
+    })
 
+    console.log(await myPrintable);
 };
 
 
@@ -105,6 +110,7 @@ async function main() {
         // Load Report File From DB
         // This is the starting point / recipe
         await pullReportAndReturnPrintableJson(Client, "Susan@Seconds.com");
+
 
         console.log("--- end of PullReportAndReturnPrintableJson try block---");
 

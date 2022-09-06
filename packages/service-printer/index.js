@@ -15,7 +15,7 @@ const hbs = require('handlebars');
 const path = require('path');
 const moment = require('moment');
 console.log('imports sucessful');
-var context = require("./myPrintable.json"); //// Set the context
+var context = require("./newPrintable.json"); //// Set the context
 
 
 ////// DEFINE COMPILE FUNCTION
@@ -66,7 +66,7 @@ hbs.registerHelper('ifCond', function (v1, operator, v2, options) {
         console.log(content);
         await page.setContent(content); // assign content to 'page'
         await page.pdf({ //set options for 'page':
-            path: 'myOutput.pdf', // output file name
+            path: 'newOutput.pdf', // output file name
             height: '11in', // output file dimensions
             width: '8.5in',
             printBackground: true // usually set to True
