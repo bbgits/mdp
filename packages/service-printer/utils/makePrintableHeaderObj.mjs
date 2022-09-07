@@ -9,8 +9,15 @@ export default async function makePrintableHeaderObj(myClient, myZip) {
 
     // DATE VARIABLES
     var todaysTimeStamp = new Date();
-    var todaysDateString = todaysTimeStamp.toDateString();
+    console.log("TIMESTAMP: " + todaysTimeStamp);
+    var dateTimeOffset = todaysTimeStamp.getTimezoneOffset();
+    console.log(await "OFFSET: " + dateTimeOffset)
+    var todaysDateString = todaysTimeStamp.toLocaleString('en-US', {
+        timeZone: 'America/Chicago',
+    });
+    console.log("LOCALE STRING: " + todaysDateString)
     var todaysDateStringArray = todaysDateString.split(" ");
+    var repDateDayLong = todaysTimeStamp.getDay();
     var repDateDay = todaysDateStringArray[0];
     var repDateMonth = todaysDateStringArray[1];
     var repDateDate = todaysDateStringArray[2];
@@ -29,7 +36,6 @@ export default async function makePrintableHeaderObj(myClient, myZip) {
     var sunriseMin = todaysSunrise.getMinutes();
     var repSunrise = sunriseHr + ":" + sunriseMin;
 
-
     // SUNSET
     var todaysSunset = new Date(weatherResults[0]["daily"][0]["sunset"] * 1000);
     var sunsetHr = parseInt(todaysSunset.getHours());
@@ -39,19 +45,14 @@ export default async function makePrintableHeaderObj(myClient, myZip) {
     var sunsetMin = todaysSunset.getMinutes();
     var repSunset = sunsetHr + ":" + sunsetMin
 
-
     // HIGH TEMP
     var repHighTemperature = parseInt(weatherResults[0]["daily"][0]["temp"]["max"]);
-
 
     // LOW TEMP
     var repLowTemperature = parseInt(weatherResults[0]["daily"][0]["temp"]["min"]);
 
-
     // WEATHER STRING
     var repWeatherString = weatherResults[0]["daily"][0]["weather"][0]["description"];
-
-
 
     // QUOTE
     var quoteObject = await getTheQuote();
@@ -62,7 +63,7 @@ export default async function makePrintableHeaderObj(myClient, myZip) {
     var headerObj = await {
         "type": "header",
         "data": {
-            "header_title_day": repDateDay,
+            "header_title_day": repDateDayLong,
             "header_title_month": repDateMonth,
             "header_title_date": repDateDate,
             "header_title_year": repDateYear,

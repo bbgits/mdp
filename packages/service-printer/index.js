@@ -63,7 +63,6 @@ hbs.registerHelper('ifCond', function (v1, operator, v2, options) {
         const browser = await puppeteer.launch(); // Create Pupeteer Browser Object
         const page = await browser.newPage(); // Create New Page on the Browser Object called 'page'
         const content = await compile('myTemplate', context); // Use Handlebars to render content ** FUNC FROM ABOVE **
-        console.log(content);
         await page.setContent(content); // assign content to 'page'
         await page.pdf({ //set options for 'page':
             path: 'newOutput.pdf', // output file name
@@ -75,6 +74,6 @@ hbs.registerHelper('ifCond', function (v1, operator, v2, options) {
         process.exit(); //exit the process
 
     } catch (e) {
-        console.log('our error', e);
+        console.log('Error from printer, index.js', e);
     }
 })();
