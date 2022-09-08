@@ -5,23 +5,47 @@ var someQuoteObj = {
 
 }
 
-export default async function makePrintableHeaderObj(myClient, myZip) {
+export default async function makePrintableHeaderObj(myClient, myZip, firstName, lastName, email) {
 
     // DATE VARIABLES
     var todaysTimeStamp = new Date();
-    console.log("TIMESTAMP: " + todaysTimeStamp);
-    var dateTimeOffset = todaysTimeStamp.getTimezoneOffset();
-    console.log(await "OFFSET: " + dateTimeOffset)
-    var todaysDateString = todaysTimeStamp.toLocaleString('en-US', {
-        timeZone: 'America/Chicago',
-    });
-    console.log("LOCALE STRING: " + todaysDateString)
-    var todaysDateStringArray = todaysDateString.split(" ");
-    var repDateDayLong = todaysTimeStamp.getDay();
-    var repDateDay = todaysDateStringArray[0];
-    var repDateMonth = todaysDateStringArray[1];
-    var repDateDate = todaysDateStringArray[2];
-    var repDateYear = todaysDateStringArray[3];
+    var zero = "0";
+    var zipCode = myZip;
+    console.log("zipCode from makePrintableHeader...:" + zipCode)
+
+    // Get String for day name
+    var todaysDayNumber = (todaysTimeStamp.getDay());
+    var todaysDayString = "";
+    if (todaysDayNumber === 0) { todaysMonthString = "Sunday" }
+    else if (todaysDayNumber === 1) { todaysDayString = "Monday" }
+    else if (todaysDayNumber === 2) { todaysDayString = "Tuesday" }
+    else if (todaysDayNumber === 3) { todaysDayString = "Wednesday" }
+    else if (todaysDayNumber === 4) { todaysDayString = "Thursday" }
+    else if (todaysDayNumber === 5) { todaysDayString = "Friday" }
+    else if (todaysDayNumber === 6) { todaysDayString = "Saturday" }
+
+    // Get string for Date Number
+    var todaysDateNumberString = todaysTimeStamp.getDate().toString();
+    if (todaysDateNumberString.length < 2) { todaysDateNumberString = zero.concat(todaysDateNumberString) }
+
+    // Get String for month name
+    var todaysMonthNumber = (todaysTimeStamp.getMonth() + 1);
+    var todaysMonthString = "";
+    if (todaysMonthNumber === 1) { todaysMonthString = "Jan" }
+    else if (todaysMonthNumber === 2) { todaysMonthString = "Feb" }
+    else if (todaysMonthNumber === 3) { todaysMonthString = "Mar" }
+    else if (todaysMonthNumber === 4) { todaysMonthString = "Apr" }
+    else if (todaysMonthNumber === 5) { todaysMonthString = "May" }
+    else if (todaysMonthNumber === 6) { todaysMonthString = "Jun" }
+    else if (todaysMonthNumber === 7) { todaysMonthString = "Jul" }
+    else if (todaysMonthNumber === 8) { todaysMonthString = "Aug" }
+    else if (todaysMonthNumber === 9) { todaysMonthString = "Sep" }
+    else if (todaysMonthNumber === 10) { todaysMonthString = "Oct" }
+    else if (todaysMonthNumber === 11) { todaysMonthString = "Nov" }
+    else if (todaysMonthNumber === 12) { todaysMonthString = "Dec" }
+
+    //get 4 digit year
+    var todaysYearNumberString = todaysTimeStamp.getFullYear().toString();
 
     // GET WEATHER RESULTS
     const weatherCursor = await myClient.db('data').collection('weather').find({
@@ -63,10 +87,14 @@ export default async function makePrintableHeaderObj(myClient, myZip) {
     var headerObj = await {
         "type": "header",
         "data": {
-            "header_title_day": repDateDayLong,
-            "header_title_month": repDateMonth,
-            "header_title_date": repDateDate,
-            "header_title_year": repDateYear,
+            "header_first_name": firstName,
+            "header_last_name": lastName,
+            "header_email": email,
+            "header_zip_code": zipCode,
+            "header_title_day": todaysDayString,
+            "header_title_month": todaysMonthString,
+            "header_title_date": todaysDateNumberString,
+            "header_title_year": todaysYearNumberString,
             "header_weather_sunrise_time": repSunrise,
             "header_weather_sunset_time": repSunset,
             "header_weather_temp_high": repHighTemperature,

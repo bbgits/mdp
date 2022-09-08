@@ -43,14 +43,12 @@ module.exports.register = async (req, res, next) => {
         //Declare all variables
         const { firstName, lastName, email, password, stripeID, reportName, reportType, reportZip, reportQuote1Sports, reportQuote2Politics, reportQuote3Art, reportQuote4Love, reportQuote5Business, reportLgDiv1Type, reportLgDiv1Data1, reportLgDiv1Data2, reportLgDiv1Data3, reportLgDiv1Data4, reportLgDiv1Data5, reportLgDiv2Type, reportLgDiv2Data1, reportLgDiv2Data2, reportLgDiv2Data3, reportLgDiv2Data4, reportLgDiv2Data5, reportLgDiv3Type, reportLgDiv3Data1, reportLgDiv3Data2, reportLgDiv3Data3, reportLgDiv3Data4, reportLgDiv3Data5 } = req.body;
 
-
-
         //Send user data to "users" collection
         const user = await User.create({ firstName, lastName, email, password, stripeID });
 
 
         //Send report data to "reports" collection
-        const report = await Report.create({ reportName, reportType, email, reportZip, reportQuote1Sports, reportQuote2Politics, reportQuote3Art, reportQuote4Love, reportQuote5Business, reportLgDiv1Type, reportLgDiv1Data1, reportLgDiv1Data2, reportLgDiv1Data3, reportLgDiv1Data4, reportLgDiv1Data5, reportLgDiv2Type, reportLgDiv2Data1, reportLgDiv2Data2, reportLgDiv2Data3, reportLgDiv2Data4, reportLgDiv2Data5, reportLgDiv3Type, reportLgDiv3Data1, reportLgDiv3Data2, reportLgDiv3Data3, reportLgDiv3Data4, reportLgDiv3Data5 });
+        const report = await Report.create({ email, firstName, lastName, reportZip, reportQuote1Sports, reportQuote2Politics, reportQuote3Art, reportQuote4Love, reportQuote5Business, reportLgDiv1Type, reportLgDiv1Data1, reportLgDiv1Data2, reportLgDiv1Data3, reportLgDiv1Data4, reportLgDiv1Data5, reportLgDiv2Type, reportLgDiv2Data1, reportLgDiv2Data2, reportLgDiv2Data3, reportLgDiv2Data4, reportLgDiv2Data5, reportLgDiv3Type, reportLgDiv3Data1, reportLgDiv3Data2, reportLgDiv3Data3, reportLgDiv3Data4, reportLgDiv3Data5 });
 
         const token = createToken(user._id);
 

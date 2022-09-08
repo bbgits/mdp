@@ -2,7 +2,17 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const reportSchema = new mongoose.Schema({
-    reportName: {
+    email: {
+        type: String,
+        required: [false, "Report must have associated email"],
+        unique: false,
+    },
+    firstName: {
+        type: String,
+        required: [false, "Report Name is Required :("],
+        unique: false,
+    },
+    lastName: {
         type: String,
         required: [false, "Report Name is Required :("],
         unique: false,
@@ -10,11 +20,6 @@ const reportSchema = new mongoose.Schema({
     reportType: {
         type: String,
         required: [false, "Report Type is Required :("],
-    },
-    email: {
-        type: String,
-        required: [false, "Report must have associated email"],
-        unique: false,
     },
     reportZip: {
         type: String,

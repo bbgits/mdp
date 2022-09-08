@@ -8,7 +8,7 @@ import index from "./index.mjs";
 
 const job = schedule.scheduleJob({
     second: 0,
-    minute: [0, 6, 12, 18, 22, 30, 36, 42, 48, 54]
+    minute: [45, 49]
 }, async function () {
     var startTime = await new Date(Date.now()).toLocaleString();
     console.log(await 'STARTING scheduledRun.js at ' + startTime);

@@ -53,7 +53,7 @@ export default async function makePrintableNewsObj(myClient, myType, myData1, my
     }
 
     // retrieve story and parse to local variables
-    var contents = await readTextFile.readSync('../news_txt/' + storyTxtFileName);
+    var contents = await readTextFile.readSync('news_txt/' + storyTxtFileName);
     var contentsArray = contents.split("::")
     var storyDate = contentsArray[1];
     var storyTitle = contentsArray[3];

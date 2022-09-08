@@ -31,17 +31,17 @@ userSchema.statics.login = async function (email, password) {
     throw Error("incorrect email");
 };
 
-const reportSchema = new mongoose.Schema({
-    reportName: {
-        type: String,
-        required: [true, "Need Report Name!"],
-        unique: false,
-    },
-    reportType: {
-        type: String,
-        required: [true, "Need Report Type!"],
-    },
-});
+// const reportSchema = new mongoose.Schema({
+//     reportName: {
+//         type: String,
+//         required: [true, "Need Report Name!"],
+//         unique: false,
+//     },
+//     reportType: {
+//         type: String,
+//         required: [true, "Need Report Type!"],
+//     },
+// });
 
 module.exports = {
     User: mongoose.model("Users", userSchema),

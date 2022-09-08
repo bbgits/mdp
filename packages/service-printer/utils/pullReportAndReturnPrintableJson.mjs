@@ -13,7 +13,7 @@ import makePrintableLgDivObj from './makePrintableLgDivObj.mjs';
 
 
 // set env path and get env variables
-let env = dotenv.config({ path: '../.env' });
+let env = dotenv.config({ path: '.env' });
 const MONGO_USER = env.parsed.MONGO_USER
 const MONGO_PASS = env.parsed.MONGO_PASS
 
@@ -37,11 +37,15 @@ export default async function pullReportAndReturnPrintableJson(client, reportId)
 
     /// CREATE HEADER OBJECT   
     // grab type, name, and zip from report object
+    var firstName = results[0]["firstName"];
+    var lastName = results[0]["lastName"];
+    var email = results[0]["email"];
     var reportType = results[0]["reportType"]
     var repTitleName = results[0]["reportName"];
     var repZipCode = await results[0]["reportZip"];
+    console.log("repZipCode from pullReportAndReturn...:" + repZipCode)
     // ToDo: make quote generation dynamic based on preferences
-    var myHeaderObj = await makePrintableHeaderObj(client, repZipCode)
+    var myHeaderObj = await makePrintableHeaderObj(client, repZipCode, firstName, lastName, email)
     myPrintable["divs"].push(myHeaderObj);
 
 
@@ -92,7 +96,7 @@ export default async function pullReportAndReturnPrintableJson(client, reportId)
         console.log("JSON data is saved");
     })
 
-    console.log(await myPrintable);
+    return await myPrintable;
 };
 
 

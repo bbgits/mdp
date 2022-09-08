@@ -18,7 +18,7 @@
 
         p {
             padding: 0;
-            margin: 0;
+            margin-bottom: 5px;
             font-family: Poppins;
             font-weight: 300;
         }
@@ -63,6 +63,13 @@
             padding-bottom: 20px
         }
 
+        #header-welcome-note-div {
+            text-align: center;
+            font-style: italic;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
         #header-top-title-div {
             outline-style: solid;
             outline-width: 0px;
@@ -78,6 +85,7 @@
             font-family: "Poppins";
             font-size: 20px;
             text-align: center;
+            padding: 10px;
 
         }
 
@@ -91,12 +99,22 @@
         #header-report-title-div {
 
             font-weight: 700;
+            font-size: 20px;
+
+        }
+
+
+        #header-report-day-div {
+
+            font-weight: 400;
+            font-size: 16px;
 
         }
 
         #header-report-date-div {
 
-            font-weight: 400;
+            font-weight: 300;
+            font-size: 14px;
 
         }
 
@@ -139,6 +157,7 @@
             width: 40px;
             height: 40px;
             display: contain;
+            padding: 10px;
 
         }
 
@@ -178,7 +197,7 @@
             color: rgb(0, 0, 0);
             height: 25px;
             display: flex;
-            font-size: 14px;
+            font-size: 13px;
             align-items: center;
             justify-content: left;
         }
@@ -202,14 +221,13 @@
 
         .quote-holder {
             background-color: rgb(255, 255, 255);
-            height: 152px;
             width: 800px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-
-
+            justify-items: center;
+            padding: 10px;
         }
 
         .quote-title {
@@ -217,7 +235,6 @@
             font-weight: 400;
             color: gray;
             font-size: 18px;
-
         }
 
         .quote-text {
@@ -447,12 +464,21 @@ START HTML DOC
             {{!-- if TYPE is "header"--}}
             {{#ifCond type '==' 'header'}}
             <div id="header-main-div">
+                <div id="header-welcome-note-div">
+                    <p>
+                        Good morning <b>{{data.header_first_name}}</b>! Weather data below is for Zip Code
+                        <b>{{data.header_zip_code}}</b>. Have
+                        a great day!
+                    </p>
+                </div>
                 <div id="header-top-title-div">
                     {{!-- Report Title and Date --}}
                     <span id="header-report-title-span">
-                        <div id="header-report-title-div">{{data.header_title_report_name}}</div>
-                        <div id="header-report-date-div">{{data.header_title_day}}
-                            {{data.header_title_date}}</div>
+                        <div id="header-report-title-div">Daily Report</div>
+                        <div id="header-report-day-div">{{data.header_title_day}}
+                        </div>
+                        <div id="header-report-date-div">
+                            {{data.header_title_date}} {{data.header_title_month}} {{data.header_title_year}}</div>
                     </span>
                     {{!-- Sunrise Badge --}}
                     <span>
@@ -464,13 +490,13 @@ START HTML DOC
                             </div>
 
                             <div class="weather-badge-labels-box">
-                                <div class="weather-badge-label-text">rise</div>
-                                <div class="weather-badge-value-text">6:15am</div>
+                                <div class="weather-badge-label-text">sunrise</div>
+                                <div class="weather-badge-value-text">{{data.header_weather_sunrise_time}}am</div>
                             </div>
 
                             <div class="weather-badge-labels-box">
-                                <div class="weather-badge-label-text">set</div>
-                                <div class="weather-badge-value-text">8:02pm</div>
+                                <div class="weather-badge-label-text">sunset</div>
+                                <div class="weather-badge-value-text">{{data.header_weather_sunset_time}}pm</div>
                             </div>
                         </div>
                     </span>
@@ -485,26 +511,26 @@ START HTML DOC
 
                             <div class="weather-badge-labels-box">
                                 <div class="weather-badge-label-text">low</div>
-                                <div class="weather-badge-value-text">-17 F</div>
+                                <div class="weather-badge-value-text">{{data.header_weather_temp_low}} F</div>
                             </div>
 
                             <div class="weather-badge-labels-box">
                                 <div class="weather-badge-label-text">hi</div>
-                                <div class="weather-badge-value-text">105 F</div>
+                                <div class="weather-badge-value-text">{{data.header_weather_temp_high}} F</div>
                             </div>
                         </div>
                     </span>
                     {{!-- Weather String Textbox --}}
                     <span>
                         <div class="weather-string-div">
-                            slightly cloudy with chance of rain in the afternoon
+                            {{data.header_weather_string}}
                         </div>
                     </span>
                 </div>
                 <div class="quote-holder">
-                    <div class="quote-title">Daily Motivational Quote:</div>
-                    <div class="quote-text">Whether you think you can or you think you can't, you're right.</div>
-                    <div class="quote-author">Henry Ford</div>
+                    <div class="quote-title">Daily Quote:</div>
+                    <div class="quote-text">{{data.header_quote_string}}</div>
+                    <div class="quote-author">{{data.header_quote_author}}</div>
                 </div>
             </div>
             {{/ifCond}}
@@ -727,7 +753,7 @@ START HTML DOC
             <div id="twitter-main-div">
                 <div class="main-title">Top News Items for 'politics'</div>
                 <div class="main-news-div">
-                    <div class="news-content">AUTHOR: {{data.newsAuthor}}<br></br>{{data.newsStory}}
+                    <div class="news-content">AUTHOR: {{data.newsAuthor}}<br></br>{{{data.newsStory}}}
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 const { register, login } = require("../Middlewares/AuthControllers");
-const { checkUser } = require("../middlewares/authMiddleware");
+const { checkUser } = require("../Middlewares/AuthMiddleware");
 const UserModel = require("../models/UserModel");
 const ReportModel = require("../models/ReportModel");
 const router = require("express").Router();
