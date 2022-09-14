@@ -28,6 +28,19 @@ router.get('/getOneReport/:id', async (req, res) => {
     }
 })
 
+router.put('/updateOneUser/:id', async (req, res) => {
+    try {
+        console.log("update user endpoint running...")
+        const data = await UserModel.findByIdAndUpdate(req.params.id, req.body, { returnDocument: "after" });
+        console.log(req);
+        res.json(data)
+    }
+    catch (error) {
+        console.log("something broke im updateOneUser", error.message)
+        res.status(500).json({ message: error.message })
+    }
+})
+
 // New Routes... 
 
 module.exports = router;

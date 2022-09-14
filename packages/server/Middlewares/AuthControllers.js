@@ -102,3 +102,26 @@ module.exports.login = async (req, res) => {
         res.json({ errors, status: false });
     }
 };
+
+// module.exports.updateUser = async (req, res, next) => {
+//     try {
+//         //Declare all variables
+//         const { firstName, lastName, email, password, stripeID } = req.body;
+
+//         //Send user data to "users" collection
+//         const user = await User.updateOne(user._id, { firstName, lastName, email, password, stripeID });
+
+//         let thisUserId = user._id.toString()
+//         console.log("UPDATE USER ID: " + thisUserId)
+
+
+
+
+
+//     } catch (err) {
+//         console.log("Auth Controler broke...")
+//         console.log(err);
+//         const errors = handleErrors(err);
+//         res.json({ errors, created: false });
+//     }
+// };

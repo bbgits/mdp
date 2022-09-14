@@ -112,12 +112,12 @@ mongoose
 app.use(
     cors({
         origin: ["http://localhost:3000"],
-        methods: ["GET", "POST"],
+        methods: ["GET", "POST", "PUT"],
         credentials: true,
     })
 );
 
-console.log("sucessfully connected to port 3000...")
+console.log("sucessfully connected to port 3000....")
 app.use(cookieParser());
 app.use(express.json());
 app.use("/", authRoutes);

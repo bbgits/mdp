@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 
-export default function DisplayAndEditReport(props) {
+export default function DisplayReport(props) {
     const [report, setReport] = useState(null);
 
     var fetchString = "http://localhost:4000/getOneReport/" + props.myReportId;
 
-    console.log("fetchString: " + fetchString);
+
 
     async function fetchReportData() {
-        const response = await fetch(fetchString);
-        setReport(await response.json());
+        if (!report) {
+            console.log("fetchString: " + fetchString);
+            const response = await fetch(fetchString);
+            setReport(await response.json());
+        }
     };
 
     useEffect(() => {
