@@ -36,7 +36,7 @@ Modal.setAppElement('#root')
 
 
 // ACCOUNT MAIN
-export default function Account() {
+export default async function Account() {
     var allCookies = document.cookie;
     var newCookie = "testkey=a test value as single string"
     document.cookie = newCookie;
@@ -61,11 +61,17 @@ export default function Account() {
 
     // navigation setup
     const navigate = useNavigate();
+    var firstName;
+    var lastName;
+    var email;
+
 
     //cookie setup
     const [cookies, setCookie, removeCookie] = useCookies([]);
-    useEffect(() => {
-        const verifyUser = async () => {
+
+
+    useEffect(async () => {
+        const verifyAndLoadUser = async () => {
             if (!cookies.jwt) {
                 navigate("/login");
             } else {
@@ -77,15 +83,37 @@ export default function Account() {
                     toast(`Hi ${data.user} 🦄`, {
                         theme: "dark",
                     });
+                let userArray = await findOneUserByEmail(data.user)
+                var userData = await userArray.data[0];
+                return await userData
             }
         };
-        verifyUser();
+        verifyAndLoadUser();
+        console.log(myUser)
     }, [cookies, navigate, removeCookie]);
 
     const logOut = () => {
         removeCookie("jwt");
         navigate("/login");
     };
+
+    const findOneUserByEmail = async (email) => {
+        const result = await api.get(  // PUT data
+            "/findOneUserByEmail/" + email).then(console.log(result))
+        return result
+    }
+
+
+    console.log("MY DATA: ", myData)
+    var userArray = await findOneUserByEmail(myData.user)
+    var myUser = await userArray.myData[0];
+    var firstName = myUser.firstName;
+    var lastName = myUser.lastName;
+    var email = myUser.email;
+
+
+
+
 
     //Account Page JSX
     return (
@@ -94,7 +122,7 @@ export default function Account() {
                 <h1>Welcome to Your Account Page</h1>
                 <h2>User Profile Info:</h2>
                 {/* don't use verbs in component names for react */}
-                <DisplayUser myUserId={userIdValue} />
+                <DisplayUser firstName={firstName} lastName={lastName} email={email} />
 
                 <h2>Report Details</h2>
                 <DisplayReport myReportId={reportIdValue} />

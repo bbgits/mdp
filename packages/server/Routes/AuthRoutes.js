@@ -18,6 +18,18 @@ router.get('/getOneUser/:id', async (req, res) => {
     }
 })
 
+router.get('/findOneUserByEmail/:email', async (req, res) => {
+    try {
+        const data = await UserModel.find({ email: req.params.email });
+        console.log(data)
+        res.json(data)
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
+
+
 router.get('/getOneReport/:id', async (req, res) => {
     try {
         const data = await ReportModel.findById(req.params.id);

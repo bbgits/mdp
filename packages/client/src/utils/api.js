@@ -7,6 +7,21 @@ import axios from "axios";
 const API_URL = process.env.REACT_APP_SERVER_API_URL;
 
 export const api = {
+    get: async (path = '/', variables = {}) => {
+        try {
+            return await axios.get(
+                `${API_URL}${path}`,
+                variables,
+                {
+                    withCredentials: true,
+                }
+            )
+        } catch (e) {
+            console.error('Server Error, tried to POST', e)
+            // todo: give user feedback on error
+        }
+    },
+
     post: async (path = '/', variables = {}) => {
         try {
             return await axios.post(

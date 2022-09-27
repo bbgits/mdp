@@ -62,9 +62,9 @@ export default function DisplayUser(props) {
     console.log(user)
     return (
         <div className="displaySubDiv">
-            <p>first name: <b>{user.firstName}</b></p>
-            <p>last name: <b>{user.lastName}</b></p>
-            <p>email: <b>{user.email}</b></p>
+            <p>first name: <b>{props.firstName}</b></p>
+            <p>last name: <b>{props.lastName}</b></p>
+            <p>email: <b>{props.email}</b></p>
             <button onClick={openModal}>Open Modal!</button>
             <Modal
                 isOpen={modalIsOpen}
