@@ -15,7 +15,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 // import authRoutes to help manage routing logic
-const authRoutes = require("./routes/authRoutes");
+const authRoutes = require("./Routes/AuthRoutes.js");
 
 // import cookieParser to help manage cookies
 const cookieParser = require("cookie-parser");

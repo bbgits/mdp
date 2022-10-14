@@ -80,31 +80,8 @@ export default function DisplayUser(props) {
                 <button onClick={closeModal}>close</button>
             </Modal>
         </div>
-
-
     );
 }
-
-
-const a = () => {
-    let d = () => {
-        console.log('hello 1')
-    }
-    const b = () => {
-        let d = () => {
-            console.log('hello 2')
-        }
-    }
-
-    const c = () => {
-        d()
-        b()
-        d()
-    }
-    c()
-}
-a()
-
 
 
 

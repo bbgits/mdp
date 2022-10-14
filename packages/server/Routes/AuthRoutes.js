@@ -1,7 +1,7 @@
 const { register, login } = require("../Middlewares/AuthControllers");
 const { checkUser } = require("../Middlewares/AuthMiddleware");
-const UserModel = require("../models/UserModel");
-const ReportModel = require("../models/ReportModel");
+const UserModel = require("../Models/UserModel");
+const ReportModel = require("../Models/ReportModel");
 const router = require("express").Router();
 
 router.post("/", checkUser);
