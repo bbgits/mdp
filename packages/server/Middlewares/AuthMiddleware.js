@@ -1,5 +1,5 @@
-const User = require("../models/UserModel");
-const Report = require("../models/ReportModel");
+const User = require("../Models/UserModel");
+const Report = require("../Models/ReportModel");
 const jwt = require("jsonwebtoken");
 
 module.exports.checkUser = (req, res, next) => {

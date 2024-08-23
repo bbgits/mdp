@@ -1,5 +1,5 @@
 /**
- * Primary React Onboarding Form with Stripe Connection
+  Primary React Onboarding Form with Stripe Connection
  */
 
 import React, { useState } from "react";

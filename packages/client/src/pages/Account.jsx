@@ -3,9 +3,6 @@ ACCOUNTS PAGE:
 -landing page after logging in
 -displays info about user and any report
 -passes  
-
-
-
 */
 
 // IMPORTS
@@ -65,7 +62,6 @@ export default async function Account() {
     var lastName;
     var email;
 
-
     //cookie setup
     const [cookies, setCookie, removeCookie] = useCookies([]);
 
@@ -73,8 +69,10 @@ export default async function Account() {
     useEffect(async () => {
         const verifyAndLoadUser = async () => {
             if (!cookies.jwt) {
+                console.log("no cookies.jwt found!")
                 navigate("/login");
             } else {
+                console.log(cookies.jwt);
                 const { data } = await api.post();
                 if (!data.status) {
                     removeCookie("jwt");
@@ -89,7 +87,7 @@ export default async function Account() {
             }
         };
         verifyAndLoadUser();
-        console.log(myUser)
+        // console.log(userData)
     }, [cookies, navigate, removeCookie]);
 
     const logOut = () => {
@@ -104,12 +102,16 @@ export default async function Account() {
     }
 
 
-    console.log("MY DATA: ", myData)
-    var userArray = await findOneUserByEmail(myData.user)
-    var myUser = await userArray.myData[0];
-    var firstName = myUser.firstName;
-    var lastName = myUser.lastName;
-    var email = myUser.email;
+    // console.log("MY DATA: ", myData)
+    // var userArray = await findOneUserByEmail(myData.user)
+    // var myUser = await userArray.myData[0];
+    // var firstName = myUser.firstName;
+    // var lastName = myUser.lastName;
+    // var email = myUser.email;
+
+    var firstName = "Brian";
+    var lastName = "Burns";
+    var email = "bb@aol.com";
 
 
 
@@ -122,17 +124,17 @@ export default async function Account() {
                 <h1>Welcome to Your Account Page</h1>
                 <h2>User Profile Info:</h2>
                 {/* don't use verbs in component names for react */}
-                <DisplayUser firstName={firstName} lastName={lastName} email={email} />
+                {/* <DisplayUser firstName={firstName} lastName={lastName} email={email} /> */}
 
                 <h2>Report Details</h2>
-                <DisplayReport myReportId={reportIdValue} />
+                {/* <DisplayReport myReportId={reportIdValue} /> */}
                 <p>PLEASE NOTE:</p>
                 <p> At this time we do not support user-made changes to reports.</p>
                 <p> To make a change, please send email to support@mydailypdf.com</p>
-                <button onClick={logOut}>Log out</button>
+                {/* <button onClick={logOut}>Log out</button> */}
             </div>
 
-            <ToastContainer />
+            {/* <ToastContainer /> */}
         </>
 
     );
